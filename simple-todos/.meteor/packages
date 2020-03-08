@@ -28,3 +28,4 @@ cfs:gridfs
 cfs:filesystem
 accounts-facebook
 cfs:s3
+ostrio:files

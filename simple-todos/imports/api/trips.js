@@ -21,7 +21,7 @@ if (Meteor.isServer) {
    
 Meteor.methods({
 
-    'trips.insert'(destination, days, startDate, endDate, departure, destinationInformation) {
+    'trips.insert'(destination, days, startDate, endDate, image, departure, destinationInformation) {
       check(destination, String);
       //check(days, Int);
       //check(startDate, Date);
@@ -42,7 +42,8 @@ Meteor.methods({
         endDate: endDate,
         departure: departure,
         destinationInformation: destinationInformation,
-        /******************image: function (id) {
+        image: image
+        /*function (id) {
           // console.log(id);
           var imageBook = Images.findOne({_id:id});
           // console.log("img: "+imageBook);

@@ -6,7 +6,7 @@ import { Trips } from '../api/trips.js';
 import AccountsUIWrapper from './AccountsUIWrapper.js';
 import Trip from './Trip.js';
 //*******import {BOOK} from '../../lib/ImageCollection';
-//*******import {Images} from '../../lib/ImageCollection';
+import {Images} from '../api/images.js';
 
 
 // App component - represents the whole app
@@ -22,15 +22,15 @@ class App extends Component {
     handleSubmit(event) {
         event.preventDefault();
         // Find the text field via the React ref
-        const destination = ReactDOM.findDOMNode(this.refs.destination).value.trim();
-        const days = ReactDOM.findDOMNode(this.refs.days).value.trim();
-        const startDate = ReactDOM.findDOMNode(this.refs.startDate).value.trim();
-        const endDate = ReactDOM.findDOMNode(this.refs.endDate).value.trim();
-        //*******const image = localStorage.setItem(ReactDOM.findDOMNode(this.refs.image).value.trim(), destination);
-        //*******const image = ReactDOM.findDOMNode(this.refs.image).name;
-        const departure = ReactDOM.findDOMNode(this.refs.departure).value.trim();
-        const destinationInformation = ReactDOM.findDOMNode(this.refs.destinationInformation).value.trim();
-        /*******const image = ReactDOM.findDOMNode(this.refs.image).value.trim();
+        const destination = this.refs.destination.value;
+        const days = this.refs.days.value;
+        const startDate = this.refs.startDate.value;
+        const endDate = this.refs.endDate.value;
+        //const image = localStorage.setItem(this.refs.image).value.trim(), destination);
+        const image = this.refs.image.value;
+        const departure = this.refs.departure.value;
+        const destinationInformation = this.refs.destinationInformation.value;
+        /*******const image = this.refs.image).value.trim();
         bookImage: function (id) {
           // console.log(id);
           var imageBook = Images.findOne({_id:id});
@@ -38,16 +38,40 @@ class App extends Component {
           var imageUrl = imageBook.url();
           return imageUrl; // Where Images is an FS.Collection instance
       }*/
-        Meteor.call('trips.insert', destination, days, startDate, endDate, departure, destinationInformation);
+
+      /*const upload = Images.insert({
+        file: image,
+        streams: 'dynamic',
+        chunkSize: 'dynamic'
+      }, false);
+
+      upload.on('start', function () {
+        template.currentUpload.set(this);
+      });
+
+      upload.on('end', function (error, fileObj) {
+        if (error) {
+          alert('Error during upload: ' + error);
+        } else {
+          alert('File "' + fileObj.name + '" successfully uploaded');
+        }
+        template.currentUpload.set(false);
+      });
+
+      upload.start(); */
+        //Meteor.call(image.insert(image))
+        Meteor.call('trips.insert', destination, days, startDate, endDate, image, departure, destinationInformation);
         
+        
+
         // Clear form
-        ReactDOM.findDOMNode(this.refs.destination).value = '';
-        ReactDOM.findDOMNode(this.refs.days).value = '0';
-        ReactDOM.findDOMNode(this.refs.startDate).value = '';
-        ReactDOM.findDOMNode(this.refs.endDate).value = '';
-        ReactDOM.findDOMNode(this.refs.image).value = '';
-        ReactDOM.findDOMNode(this.refs.departure).value = '';
-        ReactDOM.findDOMNode(this.refs.destinationInformation).value = '';
+        this.refs.destination.value = '';
+        this.refs.days.value = '0';
+        this.refs.startDate.value = '';
+        this.refs.endDate.value = '';
+        this.refs.image.value = '';
+        this.refs.departure.value = '';
+        this.refs.destinationInformation.value = '';
       }  
       
       // remove toggle  
