@@ -1,8 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
-//*******import {Images} from '../../lib/ImageCollection';
-//*******import {BOOK} from '../../lib/ImageCollection';
+
 
 export const Trips = new Mongo.Collection('trips');
 

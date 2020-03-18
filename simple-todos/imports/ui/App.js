@@ -5,8 +5,6 @@ import { Meteor } from 'meteor/meteor';
 import { Trips } from '../api/trips.js';
 import AccountsUIWrapper from './AccountsUIWrapper.js';
 import Trip from './Trip.js';
-//*******import {BOOK} from '../../lib/ImageCollection';
-import {Images} from '../api/images.js';
 
 
 // App component - represents the whole app
@@ -26,43 +24,14 @@ class App extends Component {
         const days = this.refs.days.value;
         const startDate = this.refs.startDate.value;
         const endDate = this.refs.endDate.value;
-        //const image = localStorage.setItem(this.refs.image).value.trim(), destination);
-        const image = this.refs.image.value;
         const departure = this.refs.departure.value;
         const destinationInformation = this.refs.destinationInformation.value;
-        /*******const image = this.refs.image).value.trim();
-        bookImage: function (id) {
-          // console.log(id);
-          var imageBook = Images.findOne({_id:id});
-          // console.log("img: "+imageBook);
-          var imageUrl = imageBook.url();
-          return imageUrl; // Where Images is an FS.Collection instance
-      }*/
-
-      /*const upload = Images.insert({
-        file: image,
-        streams: 'dynamic',
-        chunkSize: 'dynamic'
-      }, false);
-
-      upload.on('start', function () {
-        template.currentUpload.set(this);
-      });
-
-      upload.on('end', function (error, fileObj) {
-        if (error) {
-          alert('Error during upload: ' + error);
-        } else {
-          alert('File "' + fileObj.name + '" successfully uploaded');
-        }
-        template.currentUpload.set(false);
-      });
-
-      upload.start(); */
-        //Meteor.call(image.insert(image))
-        Meteor.call('trips.insert', destination, days, startDate, endDate, image, departure, destinationInformation);
-        
-        
+        var input = document.getElementById("image");
+        var fReader = new FileReader();
+        fReader.readAsDataURL(input.files[0]);
+        fReader.onloadend = function(event){
+          Meteor.call('trips.insert', destination, days, startDate, endDate, event.target.result, departure, destinationInformation);         
+}
 
         // Clear form
         this.refs.destination.value = '';
@@ -88,14 +57,14 @@ class App extends Component {
       filteredTrips = filteredTrips.filter(trip => !trip.checked);
     }*/
     return filteredTrips.map((trip) => {
-      const currentUserId = this.props.currentUser && this.props.currentUser._id;
-      const showPrivateButton = trip.owner === currentUserId;
+      //const currentUserId = this.props.currentUser && this.props.currentUser._id;
+      //const showPrivateButton = trip.owner === currentUserId;
 
       return (
         <Trip
           key={trip._id}
           trip={trip}
-          showPrivateButton={showPrivateButton}
+          //showPrivateButton={showPrivateButton}
         />
       );
     });
@@ -143,6 +112,7 @@ class App extends Component {
             Image of the destination:  
             <input
               type="file"
+              id="image"
               ref="image"
               accept="image/*"
             />
@@ -163,7 +133,6 @@ class App extends Component {
         }
         </header>
         <ul>
-          <img src={this.refs.image}></img>
           {this.renderTrips()}
         </ul>
       </div>
