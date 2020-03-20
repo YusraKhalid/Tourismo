@@ -52,12 +52,14 @@ class App extends Component {
 
   renderTrips() {
     let filteredTrips = this.props.trips;
+    //filteredTrips = filteredTrips.filter(trip.owner => currentUserId);
     /******* can be used for filtering
      * if (this.state.hideCompleted) {
       filteredTrips = filteredTrips.filter(trip => !trip.checked);
     }*/
     return filteredTrips.map((trip) => {
-      //const currentUserId = this.props.currentUser && this.props.currentUser._id;
+      const currentUserId = this.props.currentUser && this.props.currentUser._id;
+      if (trip.owner === currentUserId){
       //const showPrivateButton = trip.owner === currentUserId;
 
       return (
@@ -67,6 +69,7 @@ class App extends Component {
           //showPrivateButton={showPrivateButton}
         />
       );
+        }
     });
   }
 
