@@ -20,6 +20,11 @@ if (Meteor.isServer) {
    
 Meteor.methods({
 
+    'trips.findOne'(tripId){
+      console.log(Trips.find({ _id: new Mongo.ObjectID(toString(tripId)) }));
+      return (Trips.findOne({_id: new Mongo.ObjectID(tripId)}));
+    },
+    
     'trips.insert'(destination, days, startDate, endDate, image, departure, destinationInformation) {
       check(destination, String);
       //check(days, Int);

@@ -46,7 +46,7 @@ export default class Trip extends Component {
  
         <span className="text">
           <strong>{this.props.trip.username}</strong> <br/>
-          Destination: {this.props.trip.destination} <br/>
+          Destination: <a href={"IndividualTrip/"+this.props.trip._id}>{this.props.trip.destination}</a>  <br/>
           Days: {this.props.trip.days} <br/>
           Starting date: {this.props.trip.startDate} <br/>
           Ending date: {this.props.trip.endDate} <br/>

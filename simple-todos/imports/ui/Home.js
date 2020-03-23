@@ -19,9 +19,15 @@ class Home extends Component {
                         <a href="DisplayTrips">Looking for Trips</a>
                     </li>
                     <li>
-                        <a href="BookTourGuide">Looking for a Tour Guide</a>
+                        <a href="BookGuide">Looking for a Tour Guide</a>
                     </li>
-
+                    <p>Following 2 will be removed later from here</p>
+                    <li>
+                        <a href="IndividualTrip">IndividualTrip</a>
+                    </li>
+                    <li>
+                        <a href="AddTrips">Add Trips</a>
+                    </li>
                 </ul>
                 </h2>
                 </center>
