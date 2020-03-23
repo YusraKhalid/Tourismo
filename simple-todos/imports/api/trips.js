@@ -1,8 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
-//*******import {Images} from '../../lib/ImageCollection';
-//*******import {BOOK} from '../../lib/ImageCollection';
+
 
 export const Trips = new Mongo.Collection('trips');
 
@@ -21,6 +20,11 @@ if (Meteor.isServer) {
    
 Meteor.methods({
 
+    'trips.findOne'(tripId){
+      console.log(Trips.find({ _id: new Mongo.ObjectID(toString(tripId)) }));
+      return (Trips.findOne({_id: new Mongo.ObjectID(tripId)}));
+    },
+    
     'trips.insert'(destination, days, startDate, endDate, image, departure, destinationInformation) {
       check(destination, String);
       //check(days, Int);

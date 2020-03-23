@@ -11,10 +11,12 @@
     "@babel/runtime": "^7.8.3",
     "bcrypt": "^3.0.7",
     "classnames": "^2.2.6",
+    "history": "^4.10.1",
     "jquery": "^3.4.1",
     "meteor-node-stubs": "^1.0.0",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2"
   },
   "meteor": {
     "mainModule": {

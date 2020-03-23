@@ -77,16 +77,8 @@ class App extends Component {
     return (
       <div className="container">
         <header>
-        <h1>Todo List ({this.props.incompleteCount})</h1>
-          <label className="hide-completed">
-          <input
-            type="checkbox"
-            readOnly
-            checked={this.state.hideCompleted}
-            onClick={this.toggleHideCompleted.bind(this)}
-          />
-          Hide Completed Trips
-        </label>
+        <h1>{this.props.id} <br/>
+            All Trips of This company{this.props.owner}</h1>
         <AccountsUIWrapper />
         { this.props.currentUser ?
           <form className="new-trip" onSubmit={this.handleSubmit.bind(this)} >

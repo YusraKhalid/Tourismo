@@ -2,8 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { Trips } from '../api/trips.js';
 import classnames from 'classnames';
-//********import {BOOK} from '../../lib/ImageCollection';
-// Trip component - represents a single todo item
+// Trip component - represents a single trip item
 
 export default class Trip extends Component {
     toggleChecked() {
@@ -18,7 +17,7 @@ export default class Trip extends Component {
       }
      
   render() {
-      // Give trips a different className when they are checked off,
+    // Give trips a different className when they are checked off,
     // so that we can style them nicely in CSS
     const tripClassName = classnames({
       checked: this.props.trip.checked,
@@ -47,14 +46,13 @@ export default class Trip extends Component {
  
         <span className="text">
           <strong>{this.props.trip.username}</strong> <br/>
-          Destination: {this.props.trip.destination} <br/>
+          Destination: <a href={"IndividualTrip/"+this.props.trip._id}>{this.props.trip.destination}</a>  <br/>
           Days: {this.props.trip.days} <br/>
           Starting date: {this.props.trip.startDate} <br/>
           Ending date: {this.props.trip.endDate} <br/>
           Departure: {this.props.trip.desparture} <br/>
           Destination's Information: {this.props.trip.destinationInformation} <br/>
-          {this.props.trip.image}
-          <img src={this.props.trip.image} alt="image"></img>
+          <img src={this.props.trip.image} alt="image" width='200' height='200'></img>
         </span>
         
        </li>
