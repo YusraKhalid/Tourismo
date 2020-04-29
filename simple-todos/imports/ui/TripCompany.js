@@ -59,6 +59,8 @@ class App extends Component {
     }*/
     return filteredTrips.map((trip) => {
       const currentUserId = this.props.currentUser && this.props.currentUser._id;
+      console.log("currentuserprofile: ", this.props.currentUser.profile.age)
+      console.log("currentuserid: ", this.props.currentUser._id)
       if (trip.owner === currentUserId){
       //const showPrivateButton = trip.owner === currentUserId;
 
@@ -140,6 +142,7 @@ class App extends Component {
     return {
         incompleteCount: Trips.find({ checked: { $ne: true } }).count(),
         trips: Trips.find({}, { sort: { createdAt: -1 } }).fetch(),
-        currentUser: Meteor.user(),   
+        currentUser: Meteor.user(),
+        //profile: currentUser.profile, 
     };
   })(App);
