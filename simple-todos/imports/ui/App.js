@@ -6,6 +6,7 @@ import { Trips } from '../api/trips.js';
 import AccountsUIWrapper from './AccountsUIWrapper.js';
 import Trip from './Trip.js';
 
+//Should not use this
 
 // App component - represents the whole app
 class App extends Component {

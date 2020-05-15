@@ -16,6 +16,16 @@ body {
  
   font-size: 14px;
 }
+
+#logo{
+  width: 10%;
+  height: 10%;
+}
+
+#rate{
+  width: 5%;
+  height: 5%;
+}
  
 .container {
   max-width: 600px;

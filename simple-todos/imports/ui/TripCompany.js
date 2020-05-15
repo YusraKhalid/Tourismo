@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Trips } from '../api/trips.js';
-import AccountsUIWrapper from './AccountsUIWrapper.js';
 import Trip from './Trip.js';
 
 
@@ -20,17 +18,20 @@ class App extends Component {
     handleSubmit(event) {
         event.preventDefault();
         // Find the text field via the React ref
-        const destination = this.refs.destination.value;
-        const days = this.refs.days.value;
-        const startDate = this.refs.startDate.value;
-        const endDate = this.refs.endDate.value;
-        const departure = this.refs.departure.value;
-        const destinationInformation = this.refs.destinationInformation.value;
+        const trip = {
+            userId: Meteor.userId(),
+            destination : this.refs.destination.value,
+            days : this.refs.days.value,
+            startDate : this.refs.startDate.value,
+            endDate : this.refs.endDate.value,
+            departure : this.refs.departure.value,
+            destinationInformation : this.refs.destinationInformation.value,
+            detail : this.refs.detail.value};
         var input = document.getElementById("image");
         var fReader = new FileReader();
         fReader.readAsDataURL(input.files[0]);
         fReader.onloadend = function(event){
-          Meteor.call('trips.insert', destination, days, startDate, endDate, event.target.result, departure, destinationInformation);         
+          Meteor.call('trips.insert', trip, event.target.result);         
 }
 
         // Clear form
@@ -41,6 +42,7 @@ class App extends Component {
         this.refs.image.value = '';
         this.refs.departure.value = '';
         this.refs.destinationInformation.value = '';
+        this.refs.detail.value = '';
       }  
       
       // remove toggle  
@@ -59,8 +61,10 @@ class App extends Component {
     }*/
     return filteredTrips.map((trip) => {
       const currentUserId = this.props.currentUser && this.props.currentUser._id;
-      console.log("currentuserprofile: ", this.props.currentUser.profile.age)
-      console.log("currentuserid: ", this.props.currentUser._id)
+      //console.log("currentuserprofile: ", this.props.currentUser.profile.age)
+      console.log("currentuserid: ", this.props.currentUser._id);
+      //const role = Meteor.call('user.checkrole', this.props.currentUser._id, 'customer');
+
       if (trip.owner === currentUserId){
       //const showPrivateButton = trip.owner === currentUserId;
 
@@ -76,12 +80,12 @@ class App extends Component {
   }
 
   render() {
+    console.log("check here**: ", this.props.check);
     return (
       <div className="container">
         <header>
         <h1>{this.props.id} <br/>
             All Trips of This company{this.props.owner}</h1>
-        <AccountsUIWrapper />
         { this.props.currentUser ?
           <form className="new-trip" onSubmit={this.handleSubmit.bind(this)} >
             Destination:
@@ -119,11 +123,17 @@ class App extends Component {
               ref="departure"
               placeholder="Type to add departure location"
             />
-            Information about the tourism destination:
+            Brief information about the tourism destination:
             <input
               type="text"
               ref="destinationInformation"
               placeholder="Type to add historic information about the desination"
+            />
+            Details of the trip:
+            <input
+              type="text"
+              ref="detail"
+              placeholder="Type to add all informantion regarding your trip"
             />
             <button type="submit">Submit</button>
           </form> : ''
@@ -139,10 +149,11 @@ class App extends Component {
 
   export default withTracker(() => {
     Meteor.subscribe('trips');
+    // console.log("sub: ",Meteor.subscribe('Meteor.users'));
     return {
         incompleteCount: Trips.find({ checked: { $ne: true } }).count(),
         trips: Trips.find({}, { sort: { createdAt: -1 } }).fetch(),
         currentUser: Meteor.user(),
-        //profile: currentUser.profile, 
+        check: Trips.find({company:'My Company'},{destination:1}).fetch()
     };
   })(App);

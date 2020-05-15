@@ -25,6 +25,11 @@ class Login extends Component {
         return(
             <div>
                 <h1>Login to continue</h1>
+                <div>
+                    <h3>Not a User?
+                        <a href='/signup'>signup</a>
+                    </h3>
+                </div>
             
                 <div id='sign-in-form'>
                     <form className="sign-in" onSubmit={this.onSubmit.bind(this)} >

@@ -8,12 +8,12 @@ export const Trips = new Mongo.Collection('trips');
 if (Meteor.isServer) {
     // This code only runs on the server
     // Only publish trips that are public or belong to the current user
-  Meteor.publish('trips', function tripsPublication() {
+  Meteor.publish('trips', () => {
     return Trips.find({
-      $or: [
-        { private: { $ne: true } },
-        { owner: this.userId },
-      ],
+      // $or: [
+      //   { private: { $ne: true } },
+      //   { owner: this.userId },
+      // ],
     });
     });
 }
@@ -25,28 +25,34 @@ Meteor.methods({
       return (Trips.findOne({_id: new Mongo.ObjectID(tripId)}));
     },
     
-    'trips.insert'(destination, days, startDate, endDate, image, departure, destinationInformation) {
-      check(destination, String);
+    'trips.insert'(trip, image) {
+      check(trip.destination, String);
       //check(days, Int);
       //check(startDate, Date);
       //check(endDate, Date);
-      check(departure, String);
-      check(destinationInformation, String);
+      check(trip.departure, String);
+      check(trip.destinationInformation, String);
       // Make sure the user is logged in before inserting a trip
       if (! this.userId) {
         throw new Meteor.Error('not-authorized');
       }
+      if (! Roles.userIsInRole(this.userId, 'company')){
+        throw new Meteor.Error('not-authorized');
+      }
+      console.log("company", Meteor.user({"_id":this.userId}))
       Trips.insert({
-        destination: destination,
+        destination: trip.destination,
         createdAt: new Date(),
         owner: this.userId,
-        username: Meteor.users.findOne(this.userId).username,
-        days: days,
-        startDate: startDate,
-        endDate: endDate,
-        departure: departure,
-        destinationInformation: destinationInformation,
-        image: image
+        company: Meteor.user({"_id":this.userId}).company,
+        // username: trip.userId, //Meteor.users.findOne(this.userId).username,
+        days: trip.days,
+        startDate: trip.startDate,
+        endDate: trip.endDate,
+        departure: trip.departure,
+        destinationInformation: trip.destinationInformation,
+        image: image,
+        detail: trip.detail
         /*function (id) {
           // console.log(id);
           var imageBook = Images.findOne({_id:id});

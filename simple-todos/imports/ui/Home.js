@@ -25,9 +25,9 @@ class Home extends Component {
                     <li>
                         <a href="IndividualTrip">IndividualTrip</a>
                     </li>
-                    <li>
+                    {/* <li>
                         <a href="AddTrips">Add Trips</a>
-                    </li>
+                    </li> */}
                 </ul>
                 </h2>
                 </center>
