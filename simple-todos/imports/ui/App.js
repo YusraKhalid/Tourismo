@@ -136,7 +136,7 @@ class App extends Component {
           </form> : ''
         }
         </header>
-        <ul>
+        <ul className='trips'>
           {this.renderTrips()}
         </ul>
       </div>

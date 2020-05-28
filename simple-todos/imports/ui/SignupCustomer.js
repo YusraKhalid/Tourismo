@@ -24,6 +24,7 @@ class SignupCustomer extends Component {
         console.log(fields);
 
         Meteor.call('user.addFields', userId, fields);
+        this.props.history.push("../")
       }
 
     render() {

@@ -84,7 +84,7 @@ class Company extends Component {
             All Trips of {this.props.trips[0] ? this.props.trips[0].company : ""}</h1>
             <h2>Rating: {this.state.rating}</h2>
         </header>
-        <ul>
+        <ul className='trips'>
           {this.renderTrips()}
         </ul>
         <h3>These are the reviews</h3><br/>

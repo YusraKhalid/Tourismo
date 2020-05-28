@@ -84,7 +84,8 @@ class Signup extends Component {
                         <input type="password" ref="password" placeholder="Enter your password"/><br/>
                         Password Again: 
                         <input type="password" ref="passwordRepeat" placeholder="Enter your password again"/><br/>
-                        <span ref='incorrectPassword'></span>
+                        <div className='error'>
+                        <span ref='incorrectPassword'></span></div>
                         {/* {this.refs.password!=this.refs.passwordRepeat ? 
                         <div> password do not match</div>
                         : <div>Password match</div> } */}

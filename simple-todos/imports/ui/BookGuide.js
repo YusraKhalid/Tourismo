@@ -1,13 +1,148 @@
 import React, { Component } from 'react';
+import {GuideBookings} from '../api/guide.js';
+import { withTracker } from 'meteor/react-meteor-data';
+import { Meteor } from 'meteor/meteor';
 
-class Home extends Component {
+class BookGuide extends Component {
+
+    handleSubmit(event) {
+        event.preventDefault();
+        const today = new Date();
+        // Find the text field via the React ref
+        const guide = {
+            userId: Meteor.userId(),
+            destination : this.refs.destination.value,
+            days : this.refs.days.value,
+            hours : this.refs.hours.value,
+            date : this.refs.date.value,
+            departure : this.refs.departure.value,
+            additionalInformation : this.refs.additionalInformation.value,
+        };
+        var flag = true;
+        const date = new Date(guide.date);
+        if (today > date){
+          flag = false;
+          this.refs.incorrectDate.replaceWith("Enter the future date");
+        }
+        if ((guide.days < 0) & (guide.hours<0)){
+          flag = false
+          this.refs.incorrectDays.replaceWith('Enter valid number of days or hours');
+        }
+        if (flag == true){
+            console.log("guide: ", guide);
+            Meteor.call('guideBookings.book', guide);      
+        }
+    
+        // Clear form
+        this.refs.destination.value = '';
+        this.refs.days.value = '0';
+        this.refs.date.value = '';
+        this.refs.hours.value = '';
+        this.refs.departure.value = '';
+        this.refs.additionalInformation.value = '';
+      }  
+    handleRemove(){
+        // console.log('Handle remove');
+        // console.log(this.owner);
+        alert("Sure you want to remove this?") (
+        Meteor.call('guideBookings.remove', this._id));
+    }
+
+    renderBookings(){
+        const bookings = this.props.guideBookings;
+        return(bookings.map((booking)=>{
+            return(
+                <div className='booking'>
+                    <div className='delete'>
+                        <button type='button' onClick={this.handleRemove.bind(booking)}>x</button>
+                    </div>
+                    destination:<b>{booking.destination}</b> <br/>
+                    Days:<b>{booking.days}</b><br/>
+                    hours:<b>{booking.hours}</b><br/>
+                    Date:<b>{booking.date}</b><br/>
+                    departure:<b>{booking.departure}</b><br/>
+                    additionalInformation:<b>{booking.additionalInformation}</b><br/>
+                </div>
+            )
+        })
+        )
+    }
+
     render() {
         //const { url } = this.props.match
+        console.log("Bookings", this.props.guideBookings);
         return(
             <div>
-                <h1>Book Tour Guide</h1>
-            </div> 
+                <div>
+                    <ul>
+                        {this.renderBookings()}
+                    </ul>
+                </div>
+                <div>
+                    <h1>Book Tour Guide</h1>
+                    { Meteor.userId() ?
+                        <form className="hire-guide" onSubmit={this.handleSubmit.bind(this)} >
+                            Destination that you want to explore:
+                            <input
+                            type="text"
+                            ref="destination"
+                            placeholder="Type to add desination"
+                            /> <br/>
+                            Number of Days you want to hire guide for:
+                            <input
+                            type="number"
+                            ref="days"
+                            placeholder="Type to add number of days"
+                            /><br/>
+                            Except for the number of days mentioned above enter the hours you want to hire guide for (days+hours = total time):
+                            <input
+                            type="number"
+                            ref="hours"
+                            placeholder="Type to add number of hours"
+                            />
+                            <br/><p color='grey'>if you want a person for 3 hours only enter 0 for days and 3 for hours.</p>
+                            <div className='error'>
+                            <span ref='incorrectDays' ></span></div><br/>
+                            Date: 
+                            <input
+                            type="date"
+                            ref="date"
+                            /> Enter Starting date for more than one day<br/>
+                            <div className='error'>
+                            <span ref='incorrectDate'  ></span></div><br/>
+                            {/* Image of the destination:  
+                            <input
+                            type="file"
+                            id="image"
+                            ref="image"
+                            accept="image/*"
+                            /><br/> */}
+                            Do you want to take the guide to another destination? If so enter the destination you will departure from:
+                            <input
+                            type="text"
+                            ref="departure"
+                            placeholder="Type to add departure location"
+                            /><br/>
+                            Any other information you want to tell the guide beforehand:
+                            <input
+                            type="text"
+                            ref="additionalInformation"
+                            placeholder="Type to add historic information about the desination"
+                            /><br/>
+                            <button type="submit">Submit</button>
+                        </form> : ''
+                        }
+                </div> 
+            </div>
         )
     };
 };
-export default Home
+export default withTracker(() => {
+    Meteor.subscribe('guideBookings');
+    // console.log("sub: ",Meteor.subscribe('Meteor.users'));
+    return {
+        guideBookings: GuideBookings.find({}, { sort: { createdAt: -1 } }).fetch(),
+        // trips: Trips.find({}, { sort: { createdAt: -1 } }).fetch(),
+        currentUser: Meteor.user(),
+    };
+  })(BookGuide);

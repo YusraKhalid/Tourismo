@@ -43,12 +43,12 @@ Meteor.methods({
     },
 
     'reviews.companyRate'(companyId){
-        console.log("Company********************************", companyId);
+        // console.log("Company********************************", companyId);
         rates = Reviews.find({company: companyId}).map((company) => { return parseFloat(company.rating); });
         if (rates.length == 0){
             return 0;
         }
-        console.log("review rate^^^^^^^^^^^^^^^^: ", rates);
+        // console.log("review rate^^^^^^^^^^^^^^^^: ", rates);
         const sum = rates.reduce((total, value) => { return total + value; });
         const avg = sum/(rates.length);
         console.log("avg: ", avg);

@@ -36,7 +36,7 @@ class App extends Component {
         <h1>Trips</h1>
         <AccountsUIWrapper />
         </header>
-        <ul>
+        <ul className='trips'>
           {this.renderTrips()}
         </ul>
       </div>

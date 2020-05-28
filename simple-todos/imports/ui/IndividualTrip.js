@@ -32,7 +32,7 @@ class IndividualTrip extends Component {
             <header>
             <h1>Trips</h1>
             </header>
-            <ul>
+            <ul className='trips'>
               {trip ? <div>
               <a href={'../Company/'+trip.owner}>{trip.company}</a>
               </div>:""}

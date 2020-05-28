@@ -3,74 +3,71 @@ import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 
 
-export const Trips = new Mongo.Collection('trips');
+export const GuideBookings = new Mongo.Collection('guideBookings');
 
 if (Meteor.isServer) {
     // This code only runs on the server
     // Only publish trips that are public or belong to the current user
-  Meteor.publish('trips', () => {
-    return Trips.find({
+  Meteor.publish('guideBookings', () => {
+    if (Roles.userIsInRole(Meteor.userId(), 'guide')){
+    return GuideBookings.find({
       // $or: [
       //   { private: { $ne: true } },
       //   { owner: this.userId },
       // ],
     });
+  }
+  if (Roles.userIsInRole(Meteor.userId(), 'customer')){
+    return GuideBookings.find({
+        owner:Meteor.userId()
+      // $or: [
+      //   { private: { $ne: true } },
+      //   { owner: this.userId },
+      // ],
+    });
+  }
     });
 }
    
 Meteor.methods({
 
-    'trips.findOne'(tripId){
-      console.log(Trips.find({ _id: new Mongo.ObjectID(toString(tripId)) }));
-      return (Trips.findOne({_id: new Mongo.ObjectID(tripId)}));
-    },
+    // 'trips.findOne'(tripId){
+    //   console.log(Trips.find({ _id: new Mongo.ObjectID(toString(tripId)) }));
+    //   return (Trips.findOne({_id: new Mongo.ObjectID(tripId)}));
+    // },
     
-    'trips.insert'(trip, image) {
-      check(trip.destination, String);
-      //check(days, Int);
-      //check(startDate, Date);
-      //check(endDate, Date);
-      check(trip.departure, String);
-      check(trip.destinationInformation, String);
+    'guideBookings.book'(guide){
       // Make sure the user is logged in before inserting a trip
-      if (! this.userId) {
+      if (! Meteor.userId()) {
         throw new Meteor.Error('not-authorized');
       }
-      if (! Roles.userIsInRole(this.userId, 'company')){
+      if (! Roles.userIsInRole(Meteor.userId(), 'customer')){
         throw new Meteor.Error('not-authorized');
       }
-      console.log("company", Meteor.user({"_id":this.userId}))
-      Trips.insert({
-        destination: trip.destination,
+      // console.log("company", Meteor.user({"_id":this.userId}))
+      console.log("GUIDE: ", guide);
+      GuideBookings.insert({
+        destination: guide.destination,
         createdAt: new Date(),
-        owner: this.userId,
-        company: Meteor.user({"_id":this.userId}).company,
-        // username: trip.userId, //Meteor.users.findOne(this.userId).username,
-        days: trip.days,
-        startDate: trip.startDate,
-        endDate: trip.endDate,
-        departure: trip.departure,
-        destinationInformation: trip.destinationInformation,
-        image: image,
-        detail: trip.detail
-        /*function (id) {
-          // console.log(id);
-          var imageBook = Images.findOne({_id:id});
-          // console.log("img: "+imageBook);
-          var imageUrl = imageBook.url();
-          return imageUrl; // Where Images is an FS.Collection instance
-      }*/
-      });
+        owner: Meteor.userId(),
+        days: guide.days,
+        hours: guide.hours,
+        date: guide.date,
+        departure: guide.departure,
+        additionalInformation: guide.additionalInformation,
+      },function(){
+                    return ("Request approved");
+                  });
     },
 
-    'trips.remove'(tripId) {
-      check(tripId, String);
-      const trip = Trips.findOne(tripId);
-      if (trip.owner !== this.userId) {
+    'guideBookings.remove'(bookingId) {
+      check(bookingId, String);
+      const booking = GuideBookings.findOne(bookingId);
+      if (booking.owner !== Meteor.userId()) {
         // make sure only the owner can delete it
         throw new Meteor.Error('not-authorized');
       }
-      Trips.remove(tripId);
+      GuideBookings.remove(bookingId);
     },
 
     // can be used for filtering of trips
