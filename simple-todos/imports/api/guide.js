@@ -4,6 +4,7 @@ import { check } from 'meteor/check';
 
 
 export const GuideBookings = new Mongo.Collection('guideBookings');
+export const AcceptedRequests = new Mongo.Collection('acceptedRequests');
 
 if (Meteor.isServer) {
     // This code only runs on the server
@@ -26,6 +27,19 @@ if (Meteor.isServer) {
       // ],
     });
   }
+    });
+}
+if (Meteor.isServer) {
+  Meteor.publish('acceptedRequests', () => {
+    if (Roles.userIsInRole(Meteor.userId(), 'guide')){
+      console.log("Accepted at server", GuideBookings.find({guide_id: Meteor.userId()}));
+      return AcceptedRequests.find({
+        guide_id: Meteor.userId()});
+    }
+    if (Roles.userIsInRole(Meteor.userId(), 'customer')){
+      return AcceptedRequests.find({
+        customer_id:Meteor.userId()});
+    }
     });
 }
    
@@ -69,6 +83,38 @@ Meteor.methods({
       }
       GuideBookings.remove(bookingId);
     },
+
+    'guideBookings.accept'(bookingId) {
+      const booking = GuideBookings.findOne(bookingId);
+      const guide = Meteor.users.findOne({_id: Meteor.userId()});
+      const customer = Meteor.users.findOne({_id: booking.owner})
+      console.log("guide", guide);
+      console.log("customer", customer);
+      console.log("booking", booking);
+      if (booking){
+        AcceptedRequests.insert({
+          request: 'accepted',
+          guide_id: guide._id,
+          guide_name: guide.name,
+          guide_phone: guide.phone,
+          guide_age: guide.age,
+          guide_cnic: guide.cnic,
+          guide_city: guide.city,
+          customer_id: booking.owner,
+          customer_name: customer.name,
+          customer_phone: customer.phone,
+          destination: booking.destination,
+          date: booking.date,
+          days: booking.days,
+          hours: booking.hours,
+          departure: booking.departure,
+          additionalInformation: booking.additionalInformation
+        },
+        GuideBookings.remove(bookingId)
+      );
+      }
+      console.log("Booking updated", AcceptedRequests);
+    }
 
     // can be used for filtering of trips
     // 'trips.setChecked'(tripId, setChecked) {

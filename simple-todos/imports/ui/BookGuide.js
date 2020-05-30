@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {GuideBookings} from '../api/guide.js';
+import {GuideBookings, AcceptedRequests} from '../api/guide.js';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 
@@ -68,15 +68,45 @@ class BookGuide extends Component {
         )
     }
 
+    renderAcceptedRequests(){
+        const acceptedRequests = this.props.acceptedRequests;
+        // console.log("Accepted Requests", acceptedRequests);
+        return(acceptedRequests.map((acceptedRequest)=>{
+            return(
+                <div className='acceptedRequest' >
+                    Your Request has been Accepted by <b>{acceptedRequest.guide_name} </b> 
+                     who is<b> {acceptedRequest.guide_age} </b>years old and lives in {acceptedRequest.guide_city}<br/>
+                    The Contact Number is <b>{acceptedRequest.guide_phone}</b><br/>
+                    CNIC Number is <b>{acceptedRequest.guide_cnic}</b><br/>
+                    For the following booking<br/>
+                    <div>
+                    destination:<b>{acceptedRequest.destination}</b> <br/>
+                    Days:<b>{acceptedRequest.days}</b><br/>
+                    hours:<b>{acceptedRequest.hours}</b><br/>
+                    Date:<b>{acceptedRequest.date}</b><br/>
+                    departure:<b>{acceptedRequest.departure}</b><br/>
+                    additionalInformation:<b>{acceptedRequest.additionalInformation}</b><br/>
+                    </div>
+                </div>
+            )
+        })
+        )
+    }
+
     render() {
         //const { url } = this.props.match
         console.log("Bookings", this.props.guideBookings);
         return(
             <div>
                 <div>
-                    <ul>
-                        {this.renderBookings()}
-                    </ul>
+                <center><h3>Your Following Requests are accepted</h3></center>
+                <ul>
+                    {this.renderAcceptedRequests()}
+                </ul>
+                <center><h3>Pending Requests</h3></center>
+                <ul>
+                    {this.renderBookings()}
+                </ul>
                 </div>
                 <div>
                     <h1>Book Tour Guide</h1>
@@ -139,9 +169,11 @@ class BookGuide extends Component {
 };
 export default withTracker(() => {
     Meteor.subscribe('guideBookings');
+    Meteor.subscribe('acceptedRequests');
     // console.log("sub: ",Meteor.subscribe('Meteor.users'));
     return {
         guideBookings: GuideBookings.find({}, { sort: { createdAt: -1 } }).fetch(),
+        acceptedRequests: AcceptedRequests.find({}, { sort: { createdAt: 1 } }).fetch(),
         // trips: Trips.find({}, { sort: { createdAt: -1 } }).fetch(),
         currentUser: Meteor.user(),
     };
