@@ -20,6 +20,20 @@ body {
 #logo{
   width: 10%;
   height: 10%;
+  float: left;
+}
+
+.home{
+  width: 80%;
+  padding-right: 5%;
+}
+
+.name{
+  width: 80%;
+  float: left;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  /* border: solid black 2px; */
 }
 
 #rate{

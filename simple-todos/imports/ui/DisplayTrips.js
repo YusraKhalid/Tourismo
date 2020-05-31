@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Trips } from '../api/trips.js';
-import AccountsUIWrapper from './AccountsUIWrapper.js';
 import Trip from './Trip.js';
 
 
@@ -34,7 +33,6 @@ class App extends Component {
       <div className="container">
         <header>
         <h1>Trips</h1>
-        <AccountsUIWrapper />
         </header>
         <ul className='trips'>
           {this.renderTrips()}

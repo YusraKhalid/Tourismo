@@ -45,7 +45,7 @@ class TourGuide extends Component {
         return(acceptedRequests.map((acceptedRequest)=>{
             return(
                 <div className='acceptedRequest' >
-                    Your Request has been Accepted by <b>{acceptedRequest.customer_name}</b><br/>
+                    Your Request you accepted is by <b>{acceptedRequest.customer_name}</b><br/>
                     The Contact Number is <b>{acceptedRequest.customer_phone}</b><br/>
                     For the following booking<br/>
                     <div>
@@ -84,7 +84,7 @@ export default withTracker(() => {
     Meteor.subscribe('acceptedRequests');
     // console.log("sub: ",Meteor.subscribe('Meteor.users'));
     return {
-        guideBookings: GuideBookings.find({}, { sort: { createdAt: 1 } }).fetch(),
+        guideBookings: GuideBookings.find({owner: { $ne: Meteor.userId() }}, { sort: { createdAt: 1 } }).fetch(),
         acceptedRequests: AcceptedRequests.find({}, { sort: { createdAt: 1 } }).fetch(),
         // trips: Trips.find({}, { sort: { createdAt: -1 } }).fetch(),
         currentUser: Meteor.user(),

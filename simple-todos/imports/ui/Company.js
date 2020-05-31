@@ -117,6 +117,6 @@ class Company extends Component {
     return {
         trips: Trips.find({ owner: (window.location.pathname).match('[^/]*$')[0] }, { sort: { createdAt: -1 } }).fetch(),
         currentUser: Meteor.user(),
-        reviews: Reviews.find({}),
+        reviews: Reviews.find({}).fetch(),
     };
   })(Company);

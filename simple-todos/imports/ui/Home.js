@@ -8,7 +8,7 @@ class Home extends Component {
                 <h2 font = 'arial'>Welcome to Tourismo.<br/>
                 How may we help you?<br/>
                 Are you: <br/>
-                <ul>
+                <ul className='home'>
                     <li>
                         <a href="TripCompany">Trip Organizer</a>
                     </li>
@@ -21,13 +21,6 @@ class Home extends Component {
                     <li>
                         <a href="BookGuide">Looking for a Tour Guide</a>
                     </li>
-                    <p>Following 2 will be removed later from here</p>
-                    <li>
-                        <a href="IndividualTrip">IndividualTrip</a>
-                    </li>
-                    {/* <li>
-                        <a href="AddTrips">Add Trips</a>
-                    </li> */}
                 </ul>
                 </h2>
                 </center>

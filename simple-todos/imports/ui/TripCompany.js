@@ -177,7 +177,7 @@ class App extends Component {
     Meteor.subscribe('trips');
     // console.log("sub: ",Meteor.subscribe('Meteor.users'));
     return {
-        incompleteCount: Trips.find({ checked: { $ne: true } }).count(),
+        // incompleteCount: Trips.find({ checked: { $ne: true } }).count(),
         trips: Trips.find({}, { sort: { createdAt: -1 } }).fetch(),
         currentUser: Meteor.user(),
     };

@@ -140,13 +140,7 @@ class BookGuide extends Component {
                             /> Enter Starting date for more than one day<br/>
                             <div className='error'>
                             <span ref='incorrectDate'  ></span></div><br/>
-                            {/* Image of the destination:  
-                            <input
-                            type="file"
-                            id="image"
-                            ref="image"
-                            accept="image/*"
-                            /><br/> */}
+
                             Do you want to take the guide to another destination? If so enter the destination you will departure from:
                             <input
                             type="text"
@@ -170,11 +164,9 @@ class BookGuide extends Component {
 export default withTracker(() => {
     Meteor.subscribe('guideBookings');
     Meteor.subscribe('acceptedRequests');
-    // console.log("sub: ",Meteor.subscribe('Meteor.users'));
     return {
-        guideBookings: GuideBookings.find({}, { sort: { createdAt: -1 } }).fetch(),
-        acceptedRequests: AcceptedRequests.find({}, { sort: { createdAt: 1 } }).fetch(),
-        // trips: Trips.find({}, { sort: { createdAt: -1 } }).fetch(),
+        guideBookings: GuideBookings.find({owner:Meteor.userId()}, { sort: { createdAt: -1 } }).fetch(),
+        acceptedRequests: AcceptedRequests.find({guide_id: { $ne: Meteor.userId() }}, { sort: { createdAt: 1 } }).fetch(),
         currentUser: Meteor.user(),
     };
   })(BookGuide);
