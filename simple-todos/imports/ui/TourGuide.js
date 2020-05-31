@@ -12,10 +12,6 @@ class TourGuide extends Component {
         );
     }
 
-    handleReject(){
-
-    }
-
     renderBookings(){
         const bookings = this.props.guideBookings;
         return(bookings.map((booking)=>{
@@ -30,9 +26,6 @@ class TourGuide extends Component {
                     <div className='accept' float='left'>
                         <button type='button' onClick={this.handleAccept.bind(booking)}>Accept Offer</button>
                     </div>
-                    {/* <div className='reject' float='right'>
-                        <button type='button' onClick={this.handleReject.bind(acceptedRequest)}>Reject Offer</button>
-                    </div> */}
                 </div>
             )
         })
@@ -41,7 +34,6 @@ class TourGuide extends Component {
 
     renderAcceptedRequests(){
         const acceptedRequests = this.props.acceptedRequests;
-        // console.log("Accepted Requests", acceptedRequests);
         return(acceptedRequests.map((acceptedRequest)=>{
             return(
                 <div className='acceptedRequest' >
@@ -63,7 +55,6 @@ class TourGuide extends Component {
     }
 
     render() {
-        //const { url } = this.props.match
         return(
             <div>
                 <h1>Tour Guide</h1>
@@ -82,11 +73,9 @@ class TourGuide extends Component {
 export default withTracker(() => {
     Meteor.subscribe('guideBookings');
     Meteor.subscribe('acceptedRequests');
-    // console.log("sub: ",Meteor.subscribe('Meteor.users'));
     return {
         guideBookings: GuideBookings.find({owner: { $ne: Meteor.userId() }}, { sort: { createdAt: 1 } }).fetch(),
         acceptedRequests: AcceptedRequests.find({}, { sort: { createdAt: 1 } }).fetch(),
-        // trips: Trips.find({}, { sort: { createdAt: -1 } }).fetch(),
         currentUser: Meteor.user(),
     };
   })(TourGuide);

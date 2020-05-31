@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
-import { useParams } from 'react-router-dom';
-import { Accounts } from 'meteor/accounts-base';
 import '../api/accounts.js';
 
 class SignupCompany extends Component {
     onSubmit(event) {
-        // event.preventDefault();
-        console.log("lala");
-        
-        // Find the text field via the React ref
         const fields = {
             name: this.refs.name.value,
             phone: this.refs.phone.value,
@@ -22,20 +16,14 @@ class SignupCompany extends Component {
         // for email verification:    https://docs.meteor.com/api/passwords.html#Accounts-createUser
         event.preventDefault();
         const userId = Meteor.user()._id
-        console.log("user" ,userId);
-
-        console.log(fields);
-
         Meteor.call('user.addFields', userId, fields);
         this.props.history.push("../")
       }
 
     render() {
-        //const { url } = this.props.match
         return(
             <div>
                 <h1>Signup as Company to continue</h1>
-            
                 <div id='sign-up-form'>
                     <form className="new-trip" onSubmit={this.onSubmit.bind(this)} >
                         Full Name: 
@@ -61,9 +49,4 @@ class SignupCompany extends Component {
         );
     };
 };
-export default /*withTracker(() => {
-    return {
-        currentUser: Meteor.user(),
-        //profile: currentUser.profile, 
-    };
-})*/(SignupCompany);
+export default (SignupCompany);

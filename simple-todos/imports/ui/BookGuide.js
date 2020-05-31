@@ -29,7 +29,6 @@ class BookGuide extends Component {
           this.refs.incorrectDays.replaceWith('Enter valid number of days or hours');
         }
         if (flag == true){
-            console.log("guide: ", guide);
             Meteor.call('guideBookings.book', guide);      
         }
     
@@ -42,8 +41,6 @@ class BookGuide extends Component {
         this.refs.additionalInformation.value = '';
       }  
     handleRemove(){
-        // console.log('Handle remove');
-        // console.log(this.owner);
         alert("Sure you want to remove this?") (
         Meteor.call('guideBookings.remove', this._id));
     }
@@ -70,7 +67,6 @@ class BookGuide extends Component {
 
     renderAcceptedRequests(){
         const acceptedRequests = this.props.acceptedRequests;
-        // console.log("Accepted Requests", acceptedRequests);
         return(acceptedRequests.map((acceptedRequest)=>{
             return(
                 <div className='acceptedRequest' >
@@ -94,8 +90,6 @@ class BookGuide extends Component {
     }
 
     render() {
-        //const { url } = this.props.match
-        console.log("Bookings", this.props.guideBookings);
         return(
             <div>
                 <div>

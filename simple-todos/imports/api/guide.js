@@ -8,23 +8,14 @@ export const AcceptedRequests = new Mongo.Collection('acceptedRequests');
 
 if (Meteor.isServer) {
     // This code only runs on the server
-    // Only publish trips that are public or belong to the current user
   Meteor.publish('guideBookings', () => {
     if (Roles.userIsInRole(Meteor.userId(), 'guide')){
     return GuideBookings.find({
-      // $or: [
-      //   { private: { $ne: true } },
-      //   { owner: this.userId },
-      // ],
     });
   }
   if (Roles.userIsInRole(Meteor.userId(), 'customer')){
     return GuideBookings.find({
         owner:Meteor.userId()
-      // $or: [
-      //   { private: { $ne: true } },
-      //   { owner: this.userId },
-      // ],
     });
   }
     });
@@ -45,11 +36,6 @@ if (Meteor.isServer) {
    
 Meteor.methods({
 
-    // 'trips.findOne'(tripId){
-    //   console.log(Trips.find({ _id: new Mongo.ObjectID(toString(tripId)) }));
-    //   return (Trips.findOne({_id: new Mongo.ObjectID(tripId)}));
-    // },
-    
     'guideBookings.book'(guide){
       // Make sure the user is logged in before inserting a trip
       if (! Meteor.userId()) {
@@ -88,9 +74,6 @@ Meteor.methods({
       const booking = GuideBookings.findOne(bookingId);
       const guide = Meteor.users.findOne({_id: Meteor.userId()});
       const customer = Meteor.users.findOne({_id: booking.owner})
-      console.log("guide", guide);
-      console.log("customer", customer);
-      console.log("booking", booking);
       if (booking){
         AcceptedRequests.insert({
           request: 'accepted',
@@ -115,27 +98,4 @@ Meteor.methods({
       }
       console.log("Booking updated", AcceptedRequests);
     }
-
-    // can be used for filtering of trips
-    // 'trips.setChecked'(tripId, setChecked) {
-    //   check(tripId, String);
-    //   check(setChecked, Boolean);
-    //   const trip = Trips.findOne(tripId);
-    //   if (trip.private && trip.owner !== this.userId) {
-    //     // If the trip is private, make sure only the owner can check it off
-    //     throw new Meteor.Error('not-authorized');
-    //   }
-    //   Trips.update(tripId, { $set: { checked: setChecked } });
-    // },
-
-    // 'trips.setPrivate'(tripId, setToPrivate) {
-    //     check(tripId, String);
-    //     check(setToPrivate, Boolean);    
-    //     const trip = Trips.findOne(tripId);
-    //     // Make sure only the trip owner can make a trip private
-    //     if (trip.owner !== this.userId) {
-    //       throw new Meteor.Error('not-authorized');
-    //     }
-    //     Trips.update(tripId, { $set: { private: setToPrivate } });
-    //   },
   });

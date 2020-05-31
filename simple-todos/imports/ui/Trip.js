@@ -1,11 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
-import { Trips } from '../api/trips.js';
 import classnames from 'classnames';
-import { withTracker } from 'meteor/react-meteor-data';
 
 // Trip component - represents a single trip item
-
 export default class Trip extends Component {
 
   getRating(id) {
@@ -25,14 +22,10 @@ export default class Trip extends Component {
   }
      
   render() {
-    // Give trips a different className when they are checked off,
-    // so that we can style them nicely in CSS
     const tripClassName = classnames({
       checked: this.props.trip.checked,
       private: this.props.trip.private,
     });
-    console.log("User id here: ", Meteor.userId());
-    console.log("Trip owner: ", this.props.trip.owner);
 
     return (
         <li className={tripClassName}>
@@ -40,8 +33,7 @@ export default class Trip extends Component {
         {Meteor.userId()==this.props.trip.owner ?
          <div className='delete'>
           <button onClick={this.handleRemove.bind(this)} >x</button></div>  :""}
-          <strong><a href={"IndividualTrip/"+this.props.trip._id}>{this.props.trip.destination}</a>
-               {/*this.props.trip.username*/}</strong> <br/>
+          <strong><a href={"IndividualTrip/"+this.props.trip._id}>{this.props.trip.destination}</a></strong> <br/>
           Company: {this.props.trip.company} <br/>
           Days: {this.props.trip.days} <br/>
           Starting date: {this.props.trip.startDate} <br/>

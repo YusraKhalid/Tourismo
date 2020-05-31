@@ -24,7 +24,6 @@ class IndividualTrip extends Component {
       }
 
     render() {
-      console.log("Here:", this.props.trips[0])
       const trip = this.props.trips[0]
         return(
             <div className="container">
@@ -47,7 +46,6 @@ export default withTracker(() => {
     Meteor.subscribe('trips');
     return {
         trips: Trips.find({ _id: (window.location.pathname).match('[^/]*$')[0] }).fetch(),
-        // detail: Trips.find({ _id: (window.location.pathname).match('[^/]*$')[0] }).fetch()[0].detail,
         currentUser: Meteor.user(),   
     };
   })(IndividualTrip);

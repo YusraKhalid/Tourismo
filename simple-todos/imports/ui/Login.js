@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 
 class Login extends Component {
     onSubmit(event) {
-        // event.preventDefault();
-        console.log("login");
         event.preventDefault();
-
-        // Find the text field via the React ref
         const username = this.refs.username.value;
         const password = this.refs.password.value;
 
@@ -21,7 +17,6 @@ class Login extends Component {
       }
 
     render() {
-        //const { url } = this.props.match
         return(
             <div>
                 <h1>Login to continue</h1>

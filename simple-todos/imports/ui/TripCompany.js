@@ -5,7 +5,6 @@ import { Trips } from '../api/trips.js';
 import Trip from './Trip.js';
 
 
-// App component - represents the whole app
 class App extends Component {
 
   constructor(props) {
@@ -18,7 +17,6 @@ class App extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const today = new Date();
-    // Find the text field via the React ref
     const trip = {
         userId: Meteor.userId(),
         destination : this.refs.destination.value,
@@ -58,43 +56,17 @@ class App extends Component {
     this.refs.destinationInformation.value = '';
     this.refs.detail.value = '';
   }  
-      
-  // remove toggle  
-  // toggleHideCompleted() {
-  //   this.setState({
-  //     hideCompleted: !this.state.hideCompleted,
-  //   });
-  // }
-    
-  // handleRemove(event) {
-  //   console.log("handleremove");
-  //   console.log(event);
-  // }
 
   renderTrips() {
     let filteredTrips = this.props.trips;
-    //filteredTrips = filteredTrips.filter(trip.owner => currentUserId);
-    /******* can be used for filtering
-     * if (this.state.hideCompleted) {
-      filteredTrips = filteredTrips.filter(trip => !trip.checked);
-    }*/
     return filteredTrips.map((trip) => {
       const currentUserId = this.props.currentUser && this.props.currentUser._id;
-      //console.log("currentuserprofile: ", this.props.currentUser.profile.age)
-      // console.log("currentuserid: ", this.props.currentUser._id);
-      //const role = Meteor.call('user.checkrole', this.props.currentUser._id, 'customer');
-
       if (trip.owner === currentUserId){
-      //const showPrivateButton = trip.owner === currentUserId;
-
       return (
         <div>
-          {/* <div>
-          <button onClick={this.handleRemove.bind({trip})} >x</button>{trip._id}</div> */}
           <Trip
             key={trip._id}
             trip={trip}
-            //showPrivateButton={showPrivateButton}
           ></Trip>        
         </div>
       );
@@ -175,9 +147,7 @@ class App extends Component {
 
   export default withTracker(() => {
     Meteor.subscribe('trips');
-    // console.log("sub: ",Meteor.subscribe('Meteor.users'));
     return {
-        // incompleteCount: Trips.find({ checked: { $ne: true } }).count(),
         trips: Trips.find({}, { sort: { createdAt: -1 } }).fetch(),
         currentUser: Meteor.user(),
     };

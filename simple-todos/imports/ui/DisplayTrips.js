@@ -5,24 +5,15 @@ import { Trips } from '../api/trips.js';
 import Trip from './Trip.js';
 
 
-// App component - represents the whole app
 class App extends Component {
 
   renderTrips() {
     let filteredTrips = this.props.trips;
-    /******* can be used for filtering
-     * if (this.state.hideCompleted) {
-      filteredTrips = filteredTrips.filter(trip => !trip.checked);
-    }*/
     return filteredTrips.map((trip) => {
-      //const currentUserId = this.props.currentUser && this.props.currentUser._id;
-      //const showPrivateButton = trip.owner === currentUserId;
-
       return (
         <Trip
           key={trip._id}
           trip={trip}
-          //showPrivateButton={showPrivateButton}
         />
       );
     });
@@ -45,7 +36,6 @@ class App extends Component {
   export default withTracker(() => {
     Meteor.subscribe('trips');
     return {
-        //incompleteCount: Trips.find({ checked: { $ne: true } }).count(),
         trips: Trips.find({}, { sort: { createdAt: -1 } }).fetch(),
         currentUser: Meteor.user(),   
     };

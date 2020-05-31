@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+import { withTracker } from 'meteor/react-meteor-data';
+import {HomeLinks} from '../api/home.js'
+
 
 class Home extends Component {
     render() {
-        //const { url } = this.props.match
+        const requiredLink = this.props.homeLink;
+        console.log("Links: ", requiredLink);
         return(
             <div><center>
                 <h2 font = 'arial'>Welcome to Tourismo.<br/>
@@ -10,22 +14,23 @@ class Home extends Component {
                 Are you: <br/>
                 <ul className='home'>
                     <li>
-                        <a href="TripCompany">Trip Organizer</a>
-                    </li>
-                    <li>
-                        <a href="TourGuide">Tour Guide</a>
-                    </li>
-                    <li>
                         <a href="DisplayTrips">Looking for Trips</a>
                     </li>
                     <li>
-                        <a href="BookGuide">Looking for a Tour Guide</a>
+                    {requiredLink ? <a href={requiredLink.link}>{requiredLink.link}</a> : ""}
                     </li>
                 </ul>
+                
                 </h2>
                 </center>
             </div> 
         )
     };
 };
-export default Home
+export default withTracker(() => {
+    Meteor.subscribe('homeLinks');
+    return {
+        homeLink: HomeLinks.findOne({}),
+    };
+  })(Home);
+

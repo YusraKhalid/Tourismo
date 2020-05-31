@@ -16,8 +16,6 @@ class Account extends Component {
     render() {
         if (this.props.currentUser){
             const user = this.props.currentUser.username;
-            // const user = Meteor.users(_id=Meteor.userId())
-            //console.log('user', user);
         return(
             <div align='right'>
                 <h5>{user}</h5>

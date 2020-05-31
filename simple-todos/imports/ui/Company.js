@@ -7,7 +7,6 @@ import { Reviews } from '../api/reviews.js';
 import Review from './Review.js';
 
 
-// App component - represents the whole app
 class Company extends Component {
 
   constructor(props) {
@@ -17,11 +16,6 @@ class Company extends Component {
       rating: ''
     };
   }
-
-  // setRating = (rating) => { 
-  //   this.setState({rating: rating});
-  // }
-
   handleSubmit(event){
     event.preventDefault();
     if (Meteor.userId()){
@@ -71,10 +65,7 @@ class Company extends Component {
       if (err) {
         console.error("Got error in company:", error);
       } else {
-        // success!
-        console.log("rating: ", result );
         this.state.rating = result;
-        //this.setRating(result);
       }
     });
     return (
