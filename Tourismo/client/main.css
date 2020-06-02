@@ -1,0 +1,260 @@
+/* CSS declarations go here */
+/* body {
+  font-family: sans-serif;
+  background-color: #315481;
+  background-image: linear-gradient(to bottom, #315481, #918e82 100%);
+  background-attachment: fixed;
+ 
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+ 
+  padding: 0;
+  margin: 0;
+ 
+  font-size: 14px;
+}
+*/
+#logo{
+  width: 120px;
+  height: 120px;
+  float: left;
+}
+
+.sign-button{
+  border-radius: 12px;
+  background-color: #e7e7e7; color: black;
+  font-size: 16px;
+  /* float: right; */
+}
+
+/*
+.home{
+  width: 80%;
+  padding-right: 5%;
+}
+*/
+
+
+.name{
+  width: 80%;
+  float: left;
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+
+.seats-sold{
+  float: right;
+}
+
+.error{
+  color: red;
+}
+
+.dp{
+  border-radius: 50%;
+  object-fit: cover;
+  width:50px;
+  height:50px;
+}
+
+.delete {
+  float: right;
+  font-weight: bold;
+  background: none;
+  font-size: 1em;
+  border: none;
+  position: relative;
+}
+
+.add-review{
+  clear: both;
+}
+
+.reviewer-dp{
+  border-radius: 50%;
+  object-fit: cover;
+  width: 50px;
+  height: 50px;
+}
+#star{
+  height: 20px;
+  width: 20px;
+}
+.review-box{
+  align-content: center;
+  /* -align: center; */
+  padding: 10px;
+  width: 100%;
+  /* border:black solid 2px; */
+}
+
+.form-field{
+  padding-top: 2px;
+  width:  40%;
+}
+
+.form-instruction{
+  color: #999999;
+  width: 40%;
+}
+
+div.reviews{
+  float: left;
+  margin: 2px;
+  float: top;
+  width: 250px;
+
+  /* border:black solid 2px; */
+  /* background-color: black; */
+}
+
+.review-remarks{
+  width: 200px;
+  text-align: center;
+}
+
+/*
+#rate{
+  width: 5%;
+  height: 5%;
+}
+ 
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: 100%;
+  background: white;
+}
+ 
+header {
+  background: #d2edf4;
+  background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
+  padding: 20px 15px 15px 15px;
+  position: relative;
+}
+ 
+#login-buttons {
+  display: block;
+}
+ 
+h1 {
+  font-size: 1.5em;
+  margin: 0;
+  margin-bottom: 10px;
+  display: inline-block;
+  margin-right: 1em;
+}
+ 
+form {
+  margin-top: 10px;
+  margin-bottom: -10px;
+  position: relative;
+}
+ 
+.new-task input {
+  box-sizing: border-box;
+  padding: 10px 0;
+  background: transparent;
+  border: 0.25;
+  width: 100%;
+  padding-right: 80px;
+  font-size: 1em;
+}
+ 
+.new-task input:focus{
+  outline: 0;
+}
+
+.error{
+  color: red;
+}
+.booking{
+  background: none;
+  border:#eee solid 1px;
+  fill: black;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-left: 2%;
+}
+ 
+ul.trips {
+  margin: 0;
+  padding: 0;
+  background: white;
+
+}
+
+.acceptedRequest{
+  border: #eee solid 1px;
+  padding: 2%;
+}
+ 
+.delete {
+  float: right;
+  font-weight: bold;
+  background: none;
+  font-size: 1em;
+  border: none;
+  position: relative;
+}
+ 
+li {
+  position: relative;
+  list-style: none;
+  padding: 15px;
+  border: #eee solid 1px;
+}
+ 
+li .text {
+  margin-left: 10px;
+}
+ 
+li.checked {
+  color: #888;
+}
+ 
+li.checked .text {
+  text-decoration: line-through;
+}
+ 
+li.private {
+  background: #eee;
+  border-color: #ddd;
+}
+ 
+header .hide-completed {
+  float: right;
+}
+ 
+.toggle-private {
+  margin-left: 5px;
+}
+ 
+@media (max-width: 600px) {
+  li {
+    padding: 12px 15px;
+  }
+ 
+  .search {
+    width: 150px;
+    clear: both;
+  }
+ 
+  .new-task input {
+    padding-bottom: 5px;
+  }
+}
+
+ */
+
+
+
+
+
+
+
+
+
