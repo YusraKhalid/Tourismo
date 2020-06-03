@@ -18,5 +18,20 @@ if (Meteor.isServer) {
         return HomeLinks.find({link:"TripCompany"});
     }
     });
+
+    // Meteor.methods({
+    //     'homeLinks.insert'(){
+    //         console.log("here", HomeLinks.find({link:"TourGuide"}));
+    //         if (!HomeLinks.find({link:"TourGuide"}).fetch()){
+    //             HomeLinks.insert({link:"TourGuide"});
+    //         }
+    //         if (!HomeLinks.find({link:"BookGuide"}).fetch()){
+    //             HomeLinks.insert({link:"BookGuide"});
+    //         }
+    //         if (!HomeLinks.find({link:"TripCompany"}).fetch()){
+    //             HomeLinks.insert({link:"TripCompany"});
+    //         }
+    //     }
+    // })
     
 }

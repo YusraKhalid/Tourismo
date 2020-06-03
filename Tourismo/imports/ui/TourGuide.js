@@ -4,6 +4,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import Account from './Account';
 import { render } from 'react-dom';
+import {HomeLinks} from '../api/home.js'
 
 
 class TourGuide extends Component {
@@ -63,6 +64,13 @@ class TourGuide extends Component {
             </div>,
             document.getElementById('signin')
             );
+        const requiredLink = this.props.homeLink;
+        if (requiredLink){
+            render(<li><a href={'../'+requiredLink.link}>{requiredLink.text}</a></li>,
+                document.getElementById('link')
+                );
+        }
+        document.getElementById('only-home').innerHTML = '<span></span>';
         return(
             <div>
                 <h1>Tour Guide</h1>
@@ -74,6 +82,7 @@ class TourGuide extends Component {
                 <ul>
                     {this.renderBookings()}
                 </ul>
+                <div className='clear-end'></div>
             </div> 
         )
     };
@@ -81,7 +90,9 @@ class TourGuide extends Component {
 export default withTracker(() => {
     Meteor.subscribe('guideBookings');
     Meteor.subscribe('acceptedRequests');
+    Meteor.subscribe('homeLinks');
     return {
+        homeLink: HomeLinks.findOne({}),
         guideBookings: GuideBookings.find({owner: { $ne: Meteor.userId() }}, { sort: { createdAt: 1 } }).fetch(),
         acceptedRequests: AcceptedRequests.find({}, { sort: { createdAt: 1 } }).fetch(),
         currentUser: Meteor.user(),

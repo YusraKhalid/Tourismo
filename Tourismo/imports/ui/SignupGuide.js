@@ -21,6 +21,7 @@ class SignupGuide extends Component {
     }
 
     render() {
+        document.getElementById('only-home').innerHTML = '<span></span>';
         return(
             <div>
                 <h1>Signup as Guide to continue</h1>
@@ -46,6 +47,7 @@ class SignupGuide extends Component {
                         <button type="submit">Submit</button>
                     </form>
                 </div>
+                <div className='clear-end'></div>
             </div>
         );
     };

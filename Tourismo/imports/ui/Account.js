@@ -9,11 +9,12 @@ class Account extends Component {
         Meteor.logout()
         return(
             <div>
-                <a href='/Login'><button>Sign In</button></a>
+                <a href='../Login'><button>Sign In</button></a>
             </div>
         )
       }
     render() {
+        
         if (this.props.currentUser){
             const user = this.props.currentUser.username;
             const profile = this.props.currentUser.profile;
@@ -27,7 +28,7 @@ class Account extends Component {
         else{
         return(
             <div align='right'>
-                <a href='/Login' className='sign-button'><button>Sign In</button></a>
+                <a href='../Login' className='sign-button'><button>Sign In</button></a>
             </div>
         );}
 

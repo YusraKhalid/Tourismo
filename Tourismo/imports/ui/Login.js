@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {HomeLinks} from '../api/home.js'
 
 class Login extends Component {
     onSubmit(event) {
@@ -17,12 +18,13 @@ class Login extends Component {
       }
 
     render() {
+        document.getElementById('only-home').innerHTML = '<span></span>';
         return(
             <div>
                 <h1>Login to continue</h1>
                 <div>
                     <h3>Not a User?
-                        <a href='/signup'>signup</a>
+                        <a href='../signup'>signup</a>
                     </h3>
                 </div>
             
@@ -35,6 +37,7 @@ class Login extends Component {
                         <button type="submit">Submit</button>
                     </form>
                 </div>
+                <div className='clear-end'></div>
             </div>
         );
     };

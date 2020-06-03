@@ -7,6 +7,7 @@ import { Reviews } from '../api/reviews.js';
 import Review from './Review.js';
 import Account from './Account';
 import { render } from 'react-dom';
+import {HomeLinks} from '../api/home.js'
 
 
 
@@ -69,6 +70,12 @@ class Company extends Component {
       </div>,
       document.getElementById('signin')
       );
+      const requiredLink = this.props.homeLink;
+      if (requiredLink){
+          render(<li><a href={'../'+requiredLink.link}>{requiredLink.text}</a></li>,
+              document.getElementById('link')
+              );
+      }
     Meteor.call('reviews.companyRate', (window.location.pathname).match('[^/]*$')[0],
       (err, result) => {
       if (err) {
@@ -77,34 +84,35 @@ class Company extends Component {
         this.state.rating = result;
       }
     });
+    document.getElementById('only-home').innerHTML = '<span></span>';
     return (
       <div className="container">
         <header>
         <h1>{this.props.id} <br/>
-            All Trips of {this.props.trips[0] ? this.props.trips[0].company : ""}</h1>
+            All Trips of  {this.props.trips[0] ? this.props.trips[0].company : ""}</h1>
             <h2>Rating: {this.state.rating}</h2>
         </header>
         <ul className='trips'>
           {this.renderTrips()}
         </ul>
         <h3>These are the reviews</h3><br/>
-        <section class="section testimonial-section bg-light-2">
+        <center><section class="section testimonial-section bg-light-2">
           <div class="container">
             <div class="row justify-content-center text-center mb-5">
               <div class="col-md-8">
-                <h2 class="heading" data-aos="fade-up">Customers Feedback</h2>
+                <h2 class="heading" data-aos="/fade-up">Customers Feedback</h2>
               </div>
             </div>
             <br></br>
-            <div className='Review-box'>
+            <div className='review-box'>
             <div class="row">
-            <ul>
+            {/* <ul> */}
               {this.renderReviews()}
-              </ul>
+              {/* </ul> */}
             </div>
           </div>
           </div>
-        </section>
+        </section></center>
         <br/>
         <div className='add-review'>
         <h3>Add Review:</h3><br/>
@@ -122,7 +130,7 @@ class Company extends Component {
         </form>
         </div>
         {/* <br/><br/><br/><br/><br/><br/><br/><br/><br/> */}
-
+        <div className='clear-end'></div>
       </div>
     );
     }
@@ -131,7 +139,9 @@ class Company extends Component {
   export default withTracker(() => {
     Meteor.subscribe('trips');
     Meteor.subscribe('reviews');
+    Meteor.subscribe('homeLinks');
     return {
+        homeLink: HomeLinks.findOne({}),
         trips: Trips.find({ owner: (window.location.pathname).match('[^/]*$')[0] }, { sort: { createdAt: -1 } }).fetch(),
         currentUser: Meteor.user(),
         reviews: Reviews.find({}).fetch(),

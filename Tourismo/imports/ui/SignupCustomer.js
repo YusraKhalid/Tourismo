@@ -18,6 +18,7 @@ class SignupCustomer extends Component {
       }
 
     render() {
+        document.getElementById('only-home').innerHTML = '<span></span>';
         return(
             <div>
                 <h1>Signup as Tourist to continue</h1>
@@ -37,6 +38,7 @@ class SignupCustomer extends Component {
                         <button type="submit">Submit</button>
                     </form>
                 </div>
+                <div className='clear-end'></div>
             </div>
         );
     };

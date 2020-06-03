@@ -46,6 +46,11 @@ class Signup extends Component {
                         console.log("Got error: ", error);
                     } else {
                         console.log("successful", Meteor.user()._id );
+                        // Meteor.loginWithPassword(username, password, (error) => {
+                        //     if (error) {
+                        //         console.log("Got error: ", error);
+                        //     }
+                        //     });
                         redirect(role);
                         Meteor.call('user.role', Meteor.user()._id , role);
                     }
@@ -55,6 +60,7 @@ class Signup extends Component {
     }
 
     render() {
+        document.getElementById('only-home').innerHTML = '<span></span>';
         return(
             <div>
                 <h1>Login to continue</h1>
@@ -87,6 +93,8 @@ class Signup extends Component {
                         <button type="submit">Submit</button>
                     </form>
                 </div>
+                <div className='clear-end'></div>
+
             </div>
         );
     };

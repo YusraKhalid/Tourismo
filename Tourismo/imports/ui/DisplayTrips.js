@@ -5,6 +5,7 @@ import { Trips, UserTripBookings } from '../api/trips.js';
 import Trip from './Trip.js';
 import { render } from 'react-dom';
 import Account from './Account';
+import {HomeLinks} from '../api/home.js'
 
 
 
@@ -41,23 +42,34 @@ class App extends Component {
       </div>,
       document.getElementById('signin')
       );
-    render(<div> **************<a href='/'> homelink</a></div>, document.getElementById('second-main'));
+      const requiredLink = this.props.homeLink;
+        if (requiredLink){
+            render(<li><a href={'../'+requiredLink.link}>{requiredLink.text}</a></li>,
+                document.getElementById('link')
+                );
+        }
+      document.getElementById('only-home').innerHTML = '<span></span>';
+    // render(<div> **************<a href='/'> homelink</a></div>, document.getElementById('second-main'));
     return (
       <div className="container">
           {this.props.userBookings ?
             <div>
-              <header>
-                Bookings
-              </header>
-              {this.renderBookings()}
+              <center>
+                <h1>
+                  Bookings
+                </h1>
+                {this.renderBookings()}
+              </center>
             </div>
           :""}
         <header>
-        <h1>Trips</h1>
+        <center><h1>Trips</h1></center>
         </header>
         <ul className='trips'>
           {this.renderTrips()}
         </ul>
+        <br></br>
+        <div className='clear-end'></div>
       </div>
     );
     }
@@ -66,7 +78,9 @@ class App extends Component {
   export default withTracker(() => {
     Meteor.subscribe('trips');
     Meteor.subscribe('userTripBookings');
+    Meteor.subscribe('homeLinks');
     return {
+        homeLink: HomeLinks.findOne({}),
         trips: Trips.find({}, { sort: { createdAt: -1 } }).fetch(),
         currentUser: Meteor.user(),   
         userBookings: UserTripBookings.find({}).fetch()

@@ -5,6 +5,7 @@ import { Trips } from '../api/trips.js';
 import Trip from './Trip.js';
 import Account from './Account';
 import { render } from 'react-dom';
+import {HomeLinks} from '../api/home.js'
 
 
 class IndividualTrip extends Component {
@@ -60,6 +61,12 @@ class IndividualTrip extends Component {
         </div>,
         document.getElementById('signin')
         );
+        const requiredLink = this.props.homeLink;
+        if (requiredLink){
+            render(<li><a href={'../'+requiredLink.link}>{requiredLink.text}</a></li>,
+                document.getElementById('link')
+                );
+        }
       const trip = this.props.trips[0];
       if (trip){
         console.log("TRip id:", trip._id);
@@ -67,34 +74,36 @@ class IndividualTrip extends Component {
       console.log("Bookings",this.props.bookings);
       // console.log("user", this.props.currentUser);
       // console.log("role", this.props.role);
-        return(
+      document.getElementById('only-home').innerHTML = '<span></span>';
+      return(
             <div className="container">
             <header>
             <h1>Trips</h1>
             </header>
             <ul className='trips'>
-              {trip ? <div>
+              {/* {trip ? <div>
               <a href={'../Company/'+trip.owner}>{trip.company}</a>
-              </div>:""}
+              </div>:""} */}
               {this.renderTrips()}
+              <div className='trip-booking'>
+              <form className='tripBooking' onSubmit={this.handleSubmit.bind(this)}>
+                <b>Number of participants or seats: </b>
+                <input type='number' ref='seats'></input>
+                <button type='submit'>Book</button>
+              </form></div>
               {trip ?
-              <div>
+              <div className='trip-detail'>
                 {trip.detail}<br/>
                 {/* {trip.image1 ? <img src={trip.image1} alt="image" width='100%' height='100%'></img>:""} */}
-              
-                {trip.bookings ? 
-                  <div>
+                <br/>
+              {trip.bookings ? 
+                  <div className='trip-bookings'>
                     {this.renderBookings()}
                   </div> 
                 :""}
-              </div>
-              :""}
-              <form className='tripBooking' onSubmit={this.handleSubmit.bind(this)}>
-                Number of participants or seats: 
-                <input type='number' ref='seats'></input>
-                <button type='submit'>Book</button>
-              </form>
+              </div>:""}
             </ul>
+            <div className='clear-end'></div>
           </div>
         );
     };
@@ -105,7 +114,9 @@ export default withTracker(() => {
     Meteor.subscribe('Meteor.users');
     Meteor.subscribe('tripsBookings');
     console.log("userid: ", Meteor.userId());
+    Meteor.subscribe('homeLinks');
     return {
+        homeLink: HomeLinks.findOne({}),
         trips: Trips.find({ _id: (window.location.pathname).match('[^/]*$')[0] }).fetch(),
         currentUser: Meteor.user(),   
         // bookings: Trips.find({owner: Meteor.userId()}).fetch()

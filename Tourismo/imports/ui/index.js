@@ -14,12 +14,12 @@ import Account from './Account';
 
 class Index extends Component {
     render(){
-        render(<div>
-            <Account /><br/>
-          </div>,
-          document.getElementById('signin')
-          );
-        render(<a href='/homeLink'> homelink</a>, document.getElementById('link'));
+        // render(<div>
+        //     <Account /><br/>
+        //   </div>,
+        //   document.getElementById('signin')
+        //   );
+        // render(<a href='../homeLink'> homelink</a>, document.getElementById('link'));
         
         return(
             <div></div>

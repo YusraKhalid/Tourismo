@@ -30,24 +30,32 @@ export default class Trip extends Component {
 
     return (
         <li className={tripClassName}>
-        <span className="text">
-        {Meteor.userId()==this.props.trip.owner ?
-         <div className='delete'>
-          <button onClick={this.handleRemove.bind(this)} >x</button></div>  :""}
-          <strong><a href={"IndividualTrip/"+this.props.trip._id}>{this.props.trip.destination}</a></strong> <br/>
-        Company: {this.props.trip.company} <div className='seats-sold'> Seats booked: <b>{this.props.trip.seats}</b></div> <br/>
-          Cost: {this.props.trip.price} <br/>
-          Days: {this.props.trip.days} <br/>
-          Starting date: {this.props.trip.startDate} <br/>
-          Ending date: {this.props.trip.endDate} <br/>
-          Departure: {this.props.trip.desparture} <br/>
-          Destination's Information: {this.props.trip.destinationInformation} <br/>
-          <img src={this.props.trip.image} alt="image" width='100%' height='100%'></img><br/>
-          {this.getRating(this.props.trip.owner)}
-          {/* {this.props.trip.image1 ? <img src={this.props.trip.image1} alt="image" width='100%' height='100%'></img>:""} */}
-          Company's Rating:
-          <span ref='rate'></span><br/>
-        </span>
+        <div className='trip-box'>
+          <hr></hr>
+          <span className="text">
+          {Meteor.userId()==this.props.trip.owner ?
+          <div className='delete'>
+            <button onClick={this.handleRemove.bind(this)} >x</button></div>  :""}
+            <strong><a href={"../IndividualTrip/"+this.props.trip._id}>{this.props.trip.destination}</a></strong> <br/>
+            <div className='trip-basic-info'>
+              <b>Company:</b> <a href={'../Company/'+this.props.trip.owner}>{this.props.trip.company}</a> <div className='seats-sold'> <b>Seats booked:</b> {this.props.trip.seats}</div> <br/>
+              <b>Cost:</b> {this.props.trip.price} <br/>
+              <b>Days:</b> {this.props.trip.days} <br/>
+              <b>Starting date:</b> {this.props.trip.startDate} <br/>
+              <b>Ending date:</b> {this.props.trip.endDate} <br/>
+              <b>Departure:</b> {this.props.trip.desparture} <br/>
+              <div className='trip-destination'>
+              <b>Destination's Information:</b> {this.props.trip.destinationInformation} <br/>
+              </div>
+              {this.getRating(this.props.trip.owner)}
+            {/* {this.props.trip.image1 ? <img src={this.props.trip.image1} alt="image" width='100%' height='100%'></img>:""} */}
+            <b>Company's Rating:</b> 
+            <span ref='rate'></span><br/>
+            </div>
+            <div className='trip-img'>
+            <img class="img-fluid" src={this.props.trip.image} alt="image" width='100%' height='100%'></img></div><br/>
+          </span>
+        </div>
         
        </li>
     );

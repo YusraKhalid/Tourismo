@@ -19,6 +19,11 @@ if (Meteor.isServer) {
         };
         return Meteor.users.find(selector, options, role);
     });
+    // Meteor.publish('companies', () => {
+    //     return(
+    //         Meteor.users.find({},{company:1})
+    //     )
+    //     });
 }
 
 Meteor.methods({

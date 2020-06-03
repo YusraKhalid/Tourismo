@@ -3,6 +3,7 @@ import {GuideBookings, AcceptedRequests} from '../api/guide.js';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import Account from './Account';
+import {HomeLinks} from '../api/home.js'
 import { render } from 'react-dom';
 
 
@@ -93,19 +94,27 @@ class BookGuide extends Component {
     }
 
     render() {
+        console.log("accepted requests:", this.props.acceptedRequests);
         render(<div>
             <Account /><br/>
           </div>,
           document.getElementById('signin')
           );
+          const requiredLink = this.props.homeLink;
+        if (requiredLink){
+            render(<li><a href={'../'+requiredLink.link}>{requiredLink.text}</a></li>,
+                document.getElementById('link')
+                );
+        }
+        document.getElementById('only-home').innerHTML = '<span></span>';
         return(
             <div>
-                <div>{this.props.acceptedRequests? 
+                <div>{this.props.acceptedRequests[0] ? 
                 <center><h3>Your Following Requests are accepted</h3></center>:""}
                 <ul>
                     {this.renderAcceptedRequests()}
                 </ul>
-                {this.props.guideBookings ?
+                {this.props.guideBookings[0] ?
                 <center><h3>Pending Requests</h3></center> :""}
                 <ul>
                     {this.renderBookings()}
@@ -163,6 +172,7 @@ class BookGuide extends Component {
                         }
 
                 </div> 
+                <div className='clear-end'></div>
             </div>
         )
     };
@@ -170,7 +180,9 @@ class BookGuide extends Component {
 export default withTracker(() => {
     Meteor.subscribe('guideBookings');
     Meteor.subscribe('acceptedRequests');
+    Meteor.subscribe('homeLinks');
     return {
+        homeLink: HomeLinks.findOne({}),
         guideBookings: GuideBookings.find({owner:Meteor.userId()}, { sort: { createdAt: -1 } }).fetch(),
         acceptedRequests: AcceptedRequests.find({guide_id: { $ne: Meteor.userId() }}, { sort: { createdAt: 1 } }).fetch(),
         currentUser: Meteor.user(),

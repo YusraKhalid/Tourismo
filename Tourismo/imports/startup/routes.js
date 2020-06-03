@@ -26,23 +26,24 @@ export const renderRoutes = () => (
     {/* <div>
       <Account />
     </div> */}
-    <div>
-    <section class="d-block ftco-img-flaticon">
+    <div className='route-render'>
+    {/* <section class="d-block ftco-img-flaticon"> */}
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route exact path="/DisplayTrips" component={DisplayTrips} />
+      <Route exact path="*/DisplayTrips" component={DisplayTrips} />
       <Route exact path="/IndividualTrip*" component={IndividualTrip} />
-      <Route exact path="/TourGuide" component={TourGuide} />
-      <Route exact path="/BookGuide" component={BookGuide} />
-      <Route exact path="/TripCompany" component={TripCompany} />
-      <Route exact path="/Signup" component={Signup} />
-      <Route exact path="/Login" component={Login} />
-      <Route exact path="/SignupCustomer" component={SignupCustomer} />
-      <Route exact path="/SignupGuide" component={SignupGuide} />
-      <Route exact path="/SignupCompany" component={SignupCompany} />
+      <Route exact path="*/TourGuide" component={TourGuide} />
+      <Route exact path="*/BookGuide" component={BookGuide} />
+      <Route exact path="*/TripCompany" component={TripCompany} />
+      <Route exact path="*/Signup" component={Signup} />
+      <Route exact path="*/Login" component={Login} />
+      <Route exact path="*/SignupCustomer" component={SignupCustomer} />
+      <Route exact path="*/SignupGuide" component={SignupGuide} />
+      <Route exact path="*/SignupCompany" component={SignupCompany} />
       <Route exact path="/Company*" component={Company} />
       <Route exact path="/index" component={Index} />
-    </Switch></section>
+    </Switch>
+    {/* </section> */}
     </div>
   </Router>
 );

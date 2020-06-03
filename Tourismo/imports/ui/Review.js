@@ -10,12 +10,12 @@ export default class Trip extends Component {
     return (
         <div>
         {/* <div class="row"> */}
-          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-md-4" data-aos="/fade-up" data-aos-delay="100">
             <div class="testimonial">
                 <div className='reviews'>
-              <div class="reviewer-dp">
-                <img src={this.props.review.reviewer_dp} alt="Image placeholder" className="rounded-circle reviewer-dp"/>
-                </div>
+              {/* <div class="reviewer-dp"> */}
+                <img src={this.props.review.reviewer_dp} alt="Image placeholder" width='70px' height='70px' className="rounded-circle reviewer-dp"/>
+                {/* </div> */}
                 {this.props.review.rating == '1' ? <img width='5%' height='5%' id='star'src='/img/star.png' ></img> : ""}
                 {this.props.review.rating == '2' ? <div>
                     <img width='5%' height='5%' id='star'src='/img/star.png' ></img>
