@@ -36,14 +36,20 @@ export default class Trip extends Component {
           {Meteor.userId()==this.props.trip.owner ?
           <div className='delete'>
             <button onClick={this.handleRemove.bind(this)} >x</button></div>  :""}
-            <strong><a href={"../IndividualTrip/"+this.props.trip._id}>{this.props.trip.destination}</a></strong> <br/>
+            <strong>
+              <h2>
+                <center>
+                  <a href={"../IndividualTrip/"+this.props.trip._id}>{this.props.trip.destination}</a>
+                </center>
+              </h2>
+            </strong> <br/>
             <div className='trip-basic-info'>
               <b>Company:</b> <a href={'../Company/'+this.props.trip.owner}>{this.props.trip.company}</a> <div className='seats-sold'> <b>Seats booked:</b> {this.props.trip.seats}</div> <br/>
-              <b>Cost:</b> {this.props.trip.price} <br/>
+              <b>Cost:</b> Rs. {this.props.trip.price} <br/>
               <b>Days:</b> {this.props.trip.days} <br/>
               <b>Starting date:</b> {this.props.trip.startDate} <br/>
               <b>Ending date:</b> {this.props.trip.endDate} <br/>
-              <b>Departure:</b> {this.props.trip.desparture} <br/>
+              <b>Departure:</b> {this.props.trip.departure} <br/>
               <div className='trip-destination'>
               <b>Destination's Information:</b> {this.props.trip.destinationInformation} <br/>
               </div>

@@ -53,7 +53,7 @@ class BookGuide extends Component {
         const bookings = this.props.guideBookings;
         return(bookings.map((booking)=>{
             return(
-                <div className='booking'>
+                <tr><td><div className='booking'>
                     <div className='delete'>
                         <button type='button' onClick={this.handleRemove.bind(booking)}>x</button>
                     </div>
@@ -64,6 +64,7 @@ class BookGuide extends Component {
                     departure:<b>{booking.departure}</b><br/>
                     additionalInformation:<b>{booking.additionalInformation}</b><br/>
                 </div>
+                </td></tr>
             )
         })
         )
@@ -73,10 +74,7 @@ class BookGuide extends Component {
         const acceptedRequests = this.props.acceptedRequests;
         return(acceptedRequests.map((acceptedRequest)=>{
             return(
-                <div className='acceptedRequest' >
-                    Your Request has been Accepted by <b>{acceptedRequest.guide_name} </b> 
-                     who is<b> {acceptedRequest.guide_age} </b>years old and lives in {acceptedRequest.guide_city}<br/>
-                    The Contact Number is <b>{acceptedRequest.guide_phone}</b><br/>
+                <tr><td><div className='acceptedRequest' >
                     CNIC Number is <b>{acceptedRequest.guide_cnic}</b><br/>
                     For the following booking<br/>
                     <div>
@@ -88,6 +86,7 @@ class BookGuide extends Component {
                     additionalInformation:<b>{acceptedRequest.additionalInformation}</b><br/>
                     </div>
                 </div>
+                </td></tr>
             )
         })
         )
@@ -111,14 +110,23 @@ class BookGuide extends Component {
             <div>
                 <div>{this.props.acceptedRequests[0] ? 
                 <center><h3>Your Following Requests are accepted</h3></center>:""}
-                <ul>
-                    {this.renderAcceptedRequests()}
-                </ul>
+                <center>
+                    <table className='mytable table table-striped'>
+                        <tbody>
+                            {this.renderAcceptedRequests()}
+                        </tbody>
+                    </table>
+                </center>
                 {this.props.guideBookings[0] ?
                 <center><h3>Pending Requests</h3></center> :""}
-                <ul>
-                    {this.renderBookings()}
-                </ul>
+                {/* <ul> */}
+                <center><table className='mytable table table-striped'>
+                    <tbody>
+                        {this.renderBookings()}
+                    </tbody>
+                </table>
+                </center>
+                {/* </ul> */}
                 </div>
                 <div>
                    <center><h1>Book Tour Guide</h1></center>
@@ -126,11 +134,148 @@ class BookGuide extends Component {
                     <center>
                         <form className="hire-guide" onSubmit={this.handleSubmit.bind(this)} >
                             <div className='form-field'>Destination that you want to explore:</div>
-                            <input
+                            <input autoComplete
                             type="text"
                             ref="destination"
                             placeholder="Type to add desination"
-                            /> <br/><br/>
+                            list='cities'
+                            />
+                            <select class="form-control" ref='city' id="sel1">
+                                <option>	Alpūrai	</option>
+                                <option>	Athmuqam	</option>
+                                <option>	Attock City	</option>
+                                <option>	Awārān	</option>
+                                <option>	Ayubia	</option>
+                                <option>	Babusar	</option>
+                                <option>	Badīn	</option>
+                                <option>	Bāgh	</option>
+                                <option>	Bahāwalnagar	</option>
+                                <option>	Bahāwalpur	</option>
+                                <option>	Bannu	</option>
+                                <option>	Bardār	</option>
+                                <option>	Bārkhān	</option>
+                                <option>	Batgrām	</option>
+                                <option>	Bhakkar	</option>
+                                <option>	Chakwāl	</option>
+                                <option>	Chaman	</option>
+                                <option>	Chārsadda	</option>
+                                <option>	Chilās	</option>
+                                <option>	Chiniot	</option>
+                                <option>	Chitrāl	</option>
+                                <option>	Dādu	</option>
+                                <option>	Daggar	</option>
+                                <option>	Dālbandīn	</option>
+                                <option>	Dasu	</option>
+                                <option>	Dera Allāhyār	</option>
+                                <option>	Dera Bugti	</option>
+                                <option>	Dera Ghāzi Khān	</option>
+                                <option>	Dera Ismāīl Khān	</option>
+                                <option>	Dera Murād Jamāli	</option>
+                                <option>	Eidgāh	</option>
+                                <option>	Faisalābād	</option>
+                                <option>	Gākuch	</option>
+                                <option>	Gandāvā	</option>
+                                <option>	Ghotki	</option>
+                                <option>	Gilgit	</option>
+                                <option>	Gujrānwāla	</option>
+                                <option>	Gujrāt	</option>
+                                <option>	Gwādar	</option>
+                                <option>	Hāfizābād	</option>
+                                <option>	Hangu	</option>
+                                <option>	Harīpur	</option>
+                                <option>	Hyderābād City	</option>
+                                <option>	Islamabad	</option>
+                                <option>	Jacobābād	</option>
+                                <option>	Jāmshoro	</option>
+                                <option>	Jhang City	</option>
+                                <option>	Jhang Sadr	</option>
+                                <option>	Jhelum	</option>
+                                <option>	Kalāt	</option>
+                                <option>	Kandhkot	</option>
+                                <option>	Karachi	</option>
+                                <option>	Karak	</option>
+                                <option>	Kashmir	</option>
+                                <option>	Kasūr	</option>
+                                <option>	Khairpur	</option>
+                                <option>	Khānewāl	</option>
+                                <option>	Khārān	</option>
+                                <option>	Khushāb	</option>
+                                <option>	Khuzdār	</option>
+                                <option>	Kohāt	</option>
+                                <option>	Kohlu	</option>
+                                <option>	Kotli	</option>
+                                <option>	Kumrat	</option>
+                                <option>	Kundiān	</option>
+                                <option>	Lahore	</option>
+                                <option>	Lakki Marwat	</option>
+                                <option>	Lārkāna	</option>
+                                <option>	Leiah	</option>
+                                <option>	Lodhrān	</option>
+                                <option>	Loralai	</option>
+                                <option>	Malakand	</option>
+                                <option>	Mandi Bahāuddīn	</option>
+                                <option>	Mānsehra	</option>
+                                <option>	Mardan	</option>
+                                <option>	Masīwāla	</option>
+                                <option>	Mastung	</option>
+                                <option>	Matiāri	</option>
+                                <option>	Mehra	</option>
+                                <option>	Miānwāli	</option>
+                                <option>	Mīrpur Khās	</option>
+                                <option>	Multān	</option>
+                                <option>	Murree	</option>
+                                <option>	Mūsa Khel Bāzār	</option>
+                                <option>	Muzaffargarh	</option>
+                                <option>	Nankāna Sāhib	</option>
+                                <option>	Nārowāl	</option>
+                                <option>	Nathia Gali	</option>
+                                <option>	Naushahro Fīroz	</option>
+                                <option>	Nawābshāh	</option>
+                                <option>	Neelam	</option>
+                                <option>	New Mīrpur	</option>
+                                <option>	Nowshera	</option>
+                                <option>	Okāra	</option>
+                                <option>	Pākpattan	</option>
+                                <option>	Panjgūr	</option>
+                                <option>	Parachinār	</option>
+                                <option>	Peshāwar	</option>
+                                <option>	Pishin	</option>
+                                <option>	Qila Abdullāh	</option>
+                                <option>	Qila Saifullāh	</option>
+                                <option>	Quetta	</option>
+                                <option>	Rahīmyār Khān	</option>
+                                <option>	Rājanpur	</option>
+                                <option>	Rāwala Kot	</option>
+                                <option>	Rāwalpindi	</option>
+                                <option>	Rawlakot	</option>
+                                <option>	Sādiqābād	</option>
+                                <option>	Sāhīwāl	</option>
+                                <option>	Saidu Sharif	</option>
+                                <option>	Sānghar	</option>
+                                <option>	Sargodha	</option>
+                                <option>	Serai	</option>
+                                <option>	Shahdād Kot	</option>
+                                <option>	Sheikhupura	</option>
+                                <option>	Shikārpur	</option>
+                                <option>	Siālkot City	</option>
+                                <option>	Sibi	</option>
+                                <option>	Sukkur	</option>
+                                <option>	Swābi	</option>
+                                <option>	Tando Allāhyār	</option>
+                                <option>	Tando Muhammad Khān	</option>
+                                <option>	Tānk	</option>
+                                <option>	Thatta	</option>
+                                <option>	Timargara	</option>
+                                <option>	Toba Tek Singh	</option>
+                                <option>	Tolipeer	</option>
+                                <option>	Turbat	</option>
+                                <option>	Umarkot	</option>
+                                <option>	Upper Dir	</option>
+                                <option>	Uthal	</option>
+                                <option>	Vihāri	</option>
+                                <option>	Zhob	</option>
+                                <option>	Ziārat	</option>
+                                </select> <br/><br/>
                             <div className='form-field'>Number of Days you want to hire guide for:</div> 
                             <input
                             type="number"

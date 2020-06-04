@@ -16,10 +16,11 @@ class TourGuide extends Component {
         );
     }
 
-    renderBookings(){
-        const bookings = this.props.guideBookings;
+    renderBookings(bookings){
+        // const bookings = this.props.guideBookings;
         return(bookings.map((booking)=>{
             return(
+                <tr><td>
                 <div className='booking' >
                     destination:<b>{booking.destination}</b> <br/>
                     Days:<b>{booking.days}</b><br/>
@@ -31,6 +32,7 @@ class TourGuide extends Component {
                         <button type='button' onClick={this.handleAccept.bind(booking)}>Accept Offer</button>
                     </div>
                 </div>
+                </td></tr>
             )
         })
         )
@@ -40,6 +42,7 @@ class TourGuide extends Component {
         const acceptedRequests = this.props.acceptedRequests;
         return(acceptedRequests.map((acceptedRequest)=>{
             return(
+                <tr><td>
                 <div className='acceptedRequest' >
                     Your Request you accepted is by <b>{acceptedRequest.customer_name}</b><br/>
                     The Contact Number is <b>{acceptedRequest.customer_phone}</b><br/>
@@ -53,9 +56,33 @@ class TourGuide extends Component {
                     additionalInformation:<b>{acceptedRequest.additionalInformation}</b><br/>
                     </div>
                 </div>
+                </td></tr>
             )
         })
         )
+    }
+
+    getMatching(){
+        // event.preventDefault();
+        console.log("get matching:", Meteor.userId());
+        Meteor.call('guideBookings.matching', Meteor.userId(), (error, result) => {
+            console.log('error: ', error);
+            if (error) {
+                console.log("Error ", error);
+            }
+            console.log('result: ', result);
+            render(<div><center>
+                        <h3>Requests for You</h3>
+                        <table className='mytable table table-striped'>
+                            <tbody>
+                                {this.renderBookings(result)}
+                            </tbody>
+                        </table>
+                    </center></div>
+                ,
+                document.getElementById('matching')
+            );
+         });
     }
 
     render() {
@@ -74,14 +101,23 @@ class TourGuide extends Component {
         return(
             <div>
                 <h1>Tour Guide</h1>
-                <center><h3>The requests you accepted</h3></center>
-                <ul>
-                    {this.renderAcceptedRequests()}
-                </ul>
-                <center><h3>The requests Available</h3></center>
-                <ul>
-                    {this.renderBookings()}
-                </ul>
+                <center><h3>The requests you accepted</h3>
+                    <table className='mytable table table-striped'>
+                        <tbody>
+                            {this.renderAcceptedRequests()}
+                        </tbody>
+                    </table>
+                    {this.getMatching()}
+                    {/* <td><tr> */}
+                        <span id='matching'></span>
+                    {/* </tr></td> */}
+                <h3>Other requests Available</h3>
+                <table className='mytable table table-striped'>
+                        <tbody>
+                            {this.renderBookings(this.props.guideBookings)}
+                        </tbody>
+                    </table>
+                </center>
                 <div className='clear-end'></div>
             </div> 
         )

@@ -143,9 +143,9 @@ class Home extends Component {
     };
 };
 export default withTracker(() => {
-    Meteor.subscribe('homeLinks');
     Meteor.subscribe('reviews');
     // Meteor.subscribe('trips');
+    Meteor.subscribe('homeLinks');
     return {
         homeLink: HomeLinks.findOne({}),
         reviews: Reviews.find({rating:'5'}).fetch().slice(0,3),

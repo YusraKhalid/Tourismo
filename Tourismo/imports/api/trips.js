@@ -107,5 +107,14 @@ Meteor.methods({
         // console.log("trip: ", Trips.findOne(tripId));
         return ("Booked");
       }
+    },
+
+    'trips.search'(search){
+      // console.log('tripsearch');
+      return(
+        Trips.find({destination:search}).fetch()
+      )
     }
+
+
   });

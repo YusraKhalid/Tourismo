@@ -66,7 +66,7 @@
   font-weight: bold;
   background: none;
   font-size: 1em;
-  border: none;
+  border: #65c0ba 1px solid;
   position: relative;
 }
 
@@ -129,6 +129,11 @@
   /* border: lavenderblush 1px solid; */
 }
 
+/* .table{
+  border: indigo 2px solid;
+  width: 100%;
+} */
+
 .trip-booking{
   padding: 50px;
   clear: left;
@@ -182,6 +187,30 @@
   /* background-color: gray; */
 }
 
+.mytable{
+  width: 70%;
+  border: #65c0ba 2px solid;
+}
+
+.booking{
+  width: 100%;
+}
+
+.accept{
+  float: right;
+}
+
+
+/* 
+.table{
+  width:70%;
+} */
+
+/* .acceptedRequest{
+  border: #eee solid 1px;
+  padding: 2%;
+} */
+
 @media only screen and (max-width: 600px) {
   .trip-img{
     width: 100%
@@ -197,6 +226,8 @@
     text-align: center;
   }
 }
+
+
 
 /*
 #rate{
@@ -269,10 +300,7 @@ ul.trips {
 
 }
 
-.acceptedRequest{
-  border: #eee solid 1px;
-  padding: 2%;
-}
+
  
 .delete {
   float: right;
