@@ -7,7 +7,7 @@ class Signup extends Component {
     onSubmit(event) {
         event.preventDefault();
         if (this.refs.password.value!=this.refs.passwordRepeat.value){
-            console.log("Error: Password do not matck");
+            console.log("Error: Password do not match");
             this.refs.incorrectPassword.replaceWith("Passwords do not match");
         }
         else {
@@ -63,39 +63,80 @@ class Signup extends Component {
         document.getElementById('only-home').innerHTML = '<span></span>';
         return(
             <div>
-                <h1>Login to continue</h1>
+            <section className="section contact-section">
+      <div className="container-contact">
+
+        <div className="row">
+        <div className="col-md-2">
+
+
+          </div>
+          <div className="col-md-4">
+            <h1 className="center-text" >Create a new account</h1>
+            <div className="center-text">
+            <p><img src="/img/logo.png" alt="Free Template by Free-Template.co" className="img-fluid"/> 
+                    </p></div>
+
+          </div>
+           <div className="col-md-1">
+
+
+          </div>
+          <div className="col-md-4">
             
-                <div id='sign-up-form'>
-                    <form className="new-trip" onSubmit={this.onSubmit.bind(this)} >
-                        Register As:
-                        <select ref="role">
+            <form action="#" method="post" className="bg-white p-md-5 p-4 mb-5" onSubmit={this.onSubmit.bind(this)} >
+              <div className="row">
+                <div className="col-md-12 form-group">
+                        <select ref="role" className="form-control ">
+                        <option value="" disabled selected>Choose role</option>
                             <option value="customer">Tourist</option>
                             <option value="company">Company</option>
                             <option value="guide">Tour guide</option>
-                        </select>
-                        Username:
-                        <input type="text" ref="username" placeholder="Enter your name"/><br/>
-                        Email:
-                        <input type="email" ref="email" placeholder="Enter your email"/><br/>
-                        Password:
-                        <input type="password" ref="password" placeholder="Enter your password"/><br/>
-                        Password Again: 
-                        <input type="password" ref="passwordRepeat" placeholder="Enter your password again"/><br/>
-                        <div className='error'>
-                        <span ref='incorrectPassword'></span></div><br/>
-                        Upload your profile picture:  
-                        <input
-                        type="file"
-                        id="image"
-                        ref="picture"
-                        accept="image/*"
-                        /><br/>
-                        <button type="submit">Submit</button>
-                    </form>
+                        </select>              
                 </div>
-                <div className='clear-end'></div>
+                <div className="col-md-12 form-group">
+                <input type="text" ref="username" placeholder="Username" className="form-control "/ >
+                </div>
+              </div>
+          
+              <div className="row">
+                <div className="col-md-12 form-group">
+                  <input type="email" ref="email" placeholder="Email" className="form-control"/>
+                </div>
+              </div>
+               
+               <div className="row">
+                <div className="col-md-12 form-group">
+                  <input type="password" ref="password" placeholder="Password" className="form-control"/>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-12 form-group">
+                  <input type="password" ref="passwordRepeat" placeholder="Password Again" className="form-control"/>
+                </div>
+              <div className='col-md-12 form-group error'>
+                        <span ref='incorrectPassword'></span></div>
+              
+                <div className="col-md-12 form-group">
+                  <label className="text align-self-center">Upload Profile Picture:</label>
+                    
+                        <input type="file" id="image" ref="picture" accept="image/*"/>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-6 form-group">
+                  <input type="submit" value="Sign Up" className="btn btn-primary"/>
+                </div>
+              </div>
+            </form>
 
-            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+    </div>
+                
         );
     };
 };

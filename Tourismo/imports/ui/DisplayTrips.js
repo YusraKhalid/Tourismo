@@ -13,21 +13,34 @@ class App extends Component {
 
   handleSubmit(event){
     event.preventDefault();
-    Meteor.call('trips.search', this.refs.search.value, (error, result) => {
-      console.log('error: ', error);
-      if (error) {
-        document.getElementsById('render-trips').replaceWith('No trip found');
-      }
-      console.log('result: ', result);
-      render(
-        this.renderTrips(result),
-        document.getElementById('render-trips')
-      );
-    });
+    console.log("this.refs.search.value: ", this.refs.search.value);
+      const search = {
+        date: this.refs.date.value,
+        location: this.refs.search.value,
+        price: this.refs.priceRange.value
+        }
+      Meteor.call('trips.search', search, (error, result) => {
+        console.log('error: ', error);
+        if (error) {
+          document.getElementsById('render-trips').replaceWith('No trip found');
+        }
+        console.log('result: ', result);
+        if (!result[0]){
+          render(
+            <center><h4>No Trips found</h4></center>,
+            document.getElementById('render-trips')
+          );
+        }
+        else{
+          render(
+            this.renderTrips(result),
+            document.getElementById('render-trips')
+          );
+        }
+      });
   }
 
   renderTrips(filteredTrips) {
-    // let  = this.props.trips;
     return filteredTrips.map((trip) => {
       return (
         <Trip
@@ -54,6 +67,17 @@ class App extends Component {
     }
 
   render() {
+
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    if (slider){
+      output.innerHTML = slider.value;
+      slider.oninput = function() {
+        output.innerHTML = this.value;
+      }
+    }
+
+    
     render(<div>
       <Account /><br/>
       </div>,
@@ -66,7 +90,6 @@ class App extends Component {
                 );
         }
       document.getElementById('only-home').innerHTML = '<span></span>';
-    // render(<div> **************<a href='/'> homelink</a></div>, document.getElementById('second-main'));
     return (
       <div className="container">
           {this.props.userBookings[0] ?
@@ -86,8 +109,15 @@ class App extends Component {
         <header>
         <center>
           <h1>Trips</h1>
+          <div className='search-form-div'>
           <form className='search-form' onSubmit={this.handleSubmit.bind(this)}>
-          <div class="form-group">
+          <div class="slidecontainer search-fields">
+          Price Range:
+            <input type="range" min="0" max="50000" ref='priceRange' class="slider" id="myRange"/>
+            <p>Rs. <span id="demo"></span></p>
+          </div>
+          <div class="form-group search-fields">
+            Location: <br/>
             <input type='text' placeholder='Locations' ref='search' list="cities"/>
               <datalist id="cities">
               <option>	Alīābad	</option>
@@ -227,8 +257,19 @@ class App extends Component {
                 <option>	Ziārat	</option>
               </datalist>
               </div> 
-            <button type='submit'>Search</button>
+              <div className='search-fields'>
+              Filter Dates: <br/>
+                <input
+                  type="date"
+                  ref="date"
+                />
+              </div>
+              <div className='search-fields'><br/>
+                <button type='submit'>Search</button>
+              </div>
           </form>
+          </div>
+          <div className='clear-end'></div>
         </center>
         </header>
         <ul className='trips' id='render-trips'>

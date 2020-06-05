@@ -263,13 +263,13 @@ textarea.form-control {
 }
 
 .page-inside .site-hero-inner, .page-inside {
-  height: 70vh;
-  min-height: 500px;
+  height: 30vh;
+  min-height: 300px;
 }
 
 .page-inside.overlay:before {
-  height: 70vh;
-  min-height: 500px;
+  height: 30vh;
+  min-height: 300px;
 }
 
 .menu-open .site-menu-toggle span {

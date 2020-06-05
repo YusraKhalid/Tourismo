@@ -7,6 +7,7 @@ class Account extends Component {
     signout(event){
         console.log("signout")
         Meteor.logout()
+        document.getElementById('link').innerHTML = '';
         return(
             <div>
                 <a href='../Login'><button>Sign In</button></a>

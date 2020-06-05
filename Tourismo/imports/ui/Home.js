@@ -6,9 +6,18 @@ import { render } from 'react-dom';
 import { Reviews } from '../api/reviews.js';
 import { Trips } from '../api/trips.js';
 import Review from './Review.js';
-
+import ReactDom from 'react-dom';
+import HomeReview from './HomeReview'
 
 class Home extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = { 
+            link: null, 
+            
+        };
+      }
 
     renderReviews() {
         let filteredReviews = this.props.reviews;
@@ -25,54 +34,8 @@ class Home extends Component {
           );
         });
       }
-
-    // findDistinctCompanies(reviews){
-    //     var companies = {}
-    //     for (var i=0; i<length(review);i++){
-    //         if (!(review[i].company in companies)){
-    //             companies[review[i].company] = review[i].compan
-    //         }
-    //     }
-    // }
-    
-
-    render() {
-        // const distinctCompanies = findDistinctCompanies(this.props.companyReview);
-
-        const top = document.getElementById('top-section');
-        top.classList.remove('page-inside');
-        // console.log('top.className',top.classList);
-        document.getElementById('home-description').innerText = "Wallow yourself in the true colours of Pakistan!";
-        document.getElementById('home-trips').innerHTML = '<p class="pt-4" data-aos="/fade-up" data-aos-delay="100"><a href="DisplayTrips" target="_blank" class="btn uppercase btn-outline-light d-sm-inline d-block py-3">See Trips</a></p>'
-        document.getElementById('scroll-down').innerHTML = '<p  data-aos="/fade-up" data-aos-offset="-500"><a href="#next-section" class="scroll-down smoothscroll"> <span class="fa fa-play"></span> Scroll Down</a></p>        '
-        // top.replaceChild(<span id='tophere'></span>);
-        // top.replaceWith(<h1>does this work</h1>);
-        // top.innerHTML = <h1>Lets try this first</h1>
-
-        // render(
-        //     <section class="site-hero overlay" style="background-image: url(/images/index1BG.jpg)">
-        //     <div class="container">
-        //     <div class="row site-hero-inner justify-content-center align-items-center">
-        //         <div class="col-md-10 text-center">
-        //         <h1 class="heading mb-4" data-aos="/fade-up">Tourismo</h1>
-        //         <p class="sub-heading mb-5" data-aos="/fade-up" data-aos-delay="100">
-        //             Wallow yourself in the true colours of Pakistan!
-        //         </p>
-        //         <p class="pt-4" data-aos="/fade-up" data-aos-delay="100">
-        //             <a href="DisplayTrips" target="_blank" class="btn uppercase btn-outline-light d-sm-inline d-block py-3">See Trips</a>
-        //         </p>
-        //         </div>
-        //     </div>
-        //     <p  data-aos="/fade-up" data-aos-offset="-500"><a href="#next-section" class="scroll-down smoothscroll"> <span class="fa fa-play"></span> Scroll Down</a></p>
-        //     </div>
-        //     </section>
-        //     ,
-        //     document.getElementById('tophere')
-        // );
-
-        // console.log("Reviews company: ", this.props.companyReview);
-        // Meteor.call('homeLinks.insert');
-        render(<div>
+    renderAccounts(){
+        ReactDom.render(<div>
             <Account /><br/>
             </div>,
             document.getElementById('signin')
@@ -83,7 +46,18 @@ class Home extends Component {
                 document.getElementById('link')
                 );
         }
-        render(<center>><section className="section testimonial-section bg-light-2">
+    }
+    
+
+    render() {
+        const top = document.getElementById('top-section');
+        top.classList.remove('page-inside');
+        document.getElementById('home-description').innerText = "Wallow yourself in the true colours of Pakistan!";
+        document.getElementById('home-trips').innerHTML = '<p className="pt-4" data-aos="/fade-up" data-aos-delay="100"><a href="DisplayTrips" target="_blank" class="btn uppercase btn-outline-light d-sm-inline d-block py-3">See Trips</a></p>'
+        document.getElementById('scroll-down').innerHTML = '<p  data-aos="/fade-up" data-aos-offset="-500"><a href="#next-section" class="scroll-down smoothscroll"> <span class="fa fa-play"></span> Scroll Down</a></p>        '
+        const requiredLink = this.props.homeLink;
+        
+        ReactDom.render(<div><center>><section className="section testimonial-section bg-light-2">
                     <div className="container">
                         <div className="row justify-content-center text-center mb-5">
                             <div className="col-md-8">
@@ -98,11 +72,15 @@ class Home extends Component {
                         
                     </div>
                     </section></center>
+                    </div>
                 ,
                 document.getElementById('reviews')
                 )
         return(
+
             <div>
+                {/* <HomeReview></HomeReview> */}
+                {this.renderAccounts()}
                 <section className="section" id="next-section">
                 <div className="container">
                 <div className="row align-items-center">
@@ -115,7 +93,7 @@ class Home extends Component {
                     <p >Plan your tour with TOURISMO! </p>
                     <p>Tourismo is your way to travel the bewitching loci of Pakitan. Taking you to each and every niche, Tourismo ensures the welfare and serenity of its excursionist. </p>
                     <p className="pt-4">
-                        <a href="https://vimeo.com/channels/staffpicks/93951774"  data-fancybox class="btn-play d-flex">
+                        <a href="https://vimeo.com/channels/staffpicks/93951774"  data-fancybox className="btn-play d-flex">
                         <span className="icon align-self-center mr-3"><span className="fa fa-play"></span></span>
                         <span className="text align-self-center">Watch The Video</span>
                         </a>
@@ -144,12 +122,10 @@ class Home extends Component {
 };
 export default withTracker(() => {
     Meteor.subscribe('reviews');
-    // Meteor.subscribe('trips');
     Meteor.subscribe('homeLinks');
     return {
         homeLink: HomeLinks.findOne({}),
         reviews: Reviews.find({rating:'5'}).fetch().slice(0,3),
-        // companyReview: Reviews.find({}).fetch()
     };
   })(Home);
 

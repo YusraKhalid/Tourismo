@@ -17,6 +17,61 @@
   font-size: 14px;
 }
 */
+
+.slidecontainer {
+  width: 200px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 80%;
+  height: 8px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border-radius: 50%;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: green solid 2px;
+  background: url('/public/images/button.jpg');
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border:  green solid 2px;
+  border-radius: 50%;
+  background:url('/public/images/button.jpg');
+  cursor: pointer;
+} 
+
+.search-fields{
+  float: left;
+  padding: 2%;
+}
+
+.search-form-div{
+  /* border: solid green 2px; */
+}
+
+.search-form{
+  /* border: hotpink 2px solid; */
+  padding-left: 10%;
+}
+
 #logo{
   width: 100px;
   height: 100px;
@@ -216,6 +271,18 @@
     width: 100%
   }
 
+  .trip-basic-info{
+    /* float: left; */
+    width: 100%;
+    /* background-color: greenyellow; */
+  }
+
+  .search-fields{
+    /* float: left; */
+    padding: 2%;
+    width: 90%;
+  }
+
   .reviews{
     width: 100%;
     padding: 5%;
@@ -225,7 +292,71 @@
     width: 80%;
     text-align: center;
   }
+
+  .contact-section .contact-info p {
+  font-family: "Abril Fatface", times, serif;
+  color: #000;
+  font-size: 30px;
+  margin-bottom: 30px;
 }
+
+.contact-section .contact-info p .d-block {
+  font-size: 14px;
+  letter-spacing: .2em;
+  font-family: "Mukta Mahee", arial, sans-serif;
+  text-transform: uppercase;
+  color: #65c0ba;
+  font-weight: bold;
+}
+
+.contact-section form.bg-white {
+  -webkit-box-shadow: 0 3px 20px -5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 20px -5px rgba(0, 0, 0, 0.5);
+
+}
+
+ .row-contact{
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display:flex;
+  -ms-flex-wrap:wrap;
+  flex-wrap:wrap;
+  margin-right:-15px;
+  margin-left:-15px
+
+}
+
+
+.submit-button{
+  float: right;
+  border: green 2px solid;
+}
+
+ .container-contact{width:100%;
+  padding-right:50px;
+  padding-left:200px;
+  margin-right:auto;
+  margin-left:auto;
+  }
+  @media (min-width:576px)
+  {.container-contact{max-width:540px}}
+  @media (min-width:768px)
+  {.container-contact{max-width:720px}}
+  @media (min-width:992px)
+  {.container-contact{max-width:960px}}
+  @media (min-width:1200px)
+  {.container-contact{max-width:1140px}}
+
+
+  .btn-primary-login:hover{
+    color:#fff;
+    background-color:#265D0C;border-color:#265D0C}
+
+    .center-text{
+      text-align: center;
+    }
+}
+
 
 
 

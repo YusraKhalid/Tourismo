@@ -12,7 +12,7 @@ class Login extends Component {
                 console.log("Got error: ", error);
             } else {
                 console.log("successful");
-                this.props.history.push('/');
+                window.location.pathname = '/';
             }
         });
       }
@@ -21,23 +21,59 @@ class Login extends Component {
         document.getElementById('only-home').innerHTML = '<span></span>';
         return(
             <div>
-                <h1>Login to continue</h1>
-                <div>
-                    <h3>Not a User?
-                        <a href='../signup'>signup</a>
-                    </h3>
-                </div>
+            <section className="section contact-section">
+      <div className="container-contact">
             
-                <div id='sign-in-form'>
-                    <form className="sign-in" onSubmit={this.onSubmit.bind(this)} >
-                        Username:
-                        <input type="text" ref="username" placeholder="Enter your name"/> <br/>
-                        Password:
-                        <input type="password" ref="password" placeholder="Enter your password"/>
-                        <button type="submit">Submit</button>
-                    </form>
+        <div className="row">
+        <div className="col-md-2">
+
+
+          </div>
+          <div className="col-md-4">
+            <h1 >Log in to Tourismo</h1>
+            <p><img src="/img/logo.png" alt="Free Template by Free-Template.co" className="img-fluid"/> 
+                    </p>
+
+          </div>
+           <div className="col-md-1">
+
+
+          </div>
+          <div className="col-md-4">
+            
+            <form action="#" method="post" className="bg-white p-md-5 p-4 mb-5" onSubmit={this.onSubmit.bind(this)}>
+              <div className="row">
+                <div className="col-md-12 form-group">
+                  <input type="text" ref="username" className="form-control " placeholder="Enter username"/>
                 </div>
-                <div className='clear-end'></div>
+                <div className="col-md-12 form-group">
+                <input type="password" ref="password" className="form-control " placeholder="Enter your password"/>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-6 form-group">
+                <button type="submit" className="btn btn-primary" >Log In</button>
+                </div>
+              </div>
+            <div className="row">
+                <div className="col-md-6 form-group">
+                <p>Not a User?</p>
+                </div>
+              </div>
+            <div className="row">
+                <div className="col-md-6 form-group">    
+               <a className="btn btn-primary" href='../signup'>Sign Up</a>
+                </div>
+    
+                </div>
+            </form>
+
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
             </div>
         );
     };
