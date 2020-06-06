@@ -8,7 +8,7 @@ export const Reviews = new Mongo.Collection('reviews');
 if (Meteor.isServer) {
     // This code only runs on the server
   Meteor.publish('reviews', () => {
-    return Reviews.find({});
+        return Reviews.find({});
     });
 }
    

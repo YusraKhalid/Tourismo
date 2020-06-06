@@ -81,7 +81,12 @@ class Company extends Component {
       if (err) {
         console.error("Got error in company:", error);
       } else {
-        this.state.rating = result;
+        const wholenumber = Math.floor(result);
+        if ((result - wholenumber) >= 0.5){
+          wholenumber += 0.5 
+        }
+        this.state.rating = "/images/rating/Star_rating_" + wholenumber + "_of_5.png";
+        // this.state.rating = result;
       }
     });
     document.getElementById('only-home').innerHTML = '<span></span>';
@@ -90,15 +95,38 @@ class Company extends Component {
     document.getElementById('scroll-down').innerHTML = '';
     return (
       <div className="container">
+        {/* <section> */}
         <header>
         <h1>{this.props.id} <br/>
-            All Trips of  {this.props.trips[0] ? this.props.trips[0].company : ""}</h1>
-            <h2>Rating: {this.state.rating}</h2>
+          <center>All Trips of  {this.props.trips[0] ? this.props.trips[0].company : ""}</center>
+        </h1>
+        <center>
+          <h2 className='trip-company-rate'>Rating: <img src={this.state.rating} width='150px' ref='rate'></img></h2>
+        </center>
         </header>
         <ul className='trips'>
           {this.renderTrips()}
         </ul>
-        <h3>These are the reviews</h3><br/>
+        <div className='clear-end'></div>
+          <div className='add-review'>
+            <center><h3>Add Review:</h3><br/>
+            <form className="new-review" onSubmit={this.handleSubmit.bind(this)}>
+              Rating:<select ref="rate" defaultValue="5">
+                  <option value="1">1</option><br/>
+                  <option value="2">2</option><br/>
+                  <option value="3">3</option><br/>
+                  <option value="4">4</option><br/>
+                  <option value="5">5</option><br/>
+              </select>
+              Rewiew:
+                <input type="text" ref="remarks"/>
+              <button type="submit"> Submit </button>
+              </form>
+            </center>
+          </div>
+        <div className='clear-end'></div>
+
+        
         <center><section class="section testimonial-section bg-light-2">
           <div class="container">
             <div class="row justify-content-center text-center mb-5">
@@ -106,6 +134,7 @@ class Company extends Component {
                 <h2 class="heading" data-aos="fade-up">Customers Feedback</h2>
               </div>
             </div>
+            {/* <div className='clear-end'></div> */}
             <br></br>
             <div className='review-box'>
             <div class="row">
@@ -117,23 +146,9 @@ class Company extends Component {
           </div>
         </section></center>
         <br/>
-        <div className='add-review'>
-        <h3>Add Review:</h3><br/>
-        <form className="new-review" onSubmit={this.handleSubmit.bind(this)}>
-        Rating:<select ref="rate" defaultValue="5">
-            <option value="1">1</option><br/>
-            <option value="2">2</option><br/>
-            <option value="3">3</option><br/>
-            <option value="4">4</option><br/>
-            <option value="5">5</option><br/>
-        </select>
-        Rewiew:
-          <input type="text" ref="remarks"/>
-        <button type="submit"> Submit </button>
-        </form>
-        </div>
         {/* <br/><br/><br/><br/><br/><br/><br/><br/><br/> */}
         <div className='clear-end'></div>
+        {/* </section> */}
       </div>
     );
     }
@@ -147,6 +162,6 @@ class Company extends Component {
         homeLink: HomeLinks.findOne({}),
         trips: Trips.find({ owner: (window.location.pathname).match('[^/]*$')[0] }, { sort: { createdAt: -1 } }).fetch(),
         currentUser: Meteor.user(),
-        reviews: Reviews.find({}).fetch(),
+        reviews: Reviews.find({company: (window.location.pathname).match('[^/]*$')[0]}).fetch(),
     };
   })(Company);

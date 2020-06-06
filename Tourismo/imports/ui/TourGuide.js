@@ -20,19 +20,49 @@ class TourGuide extends Component {
         // const bookings = this.props.guideBookings;
         return(bookings.map((booking)=>{
             return(
-                <tr><td>
-                <div className='booking' >
-                    destination:<b>{booking.destination}</b> <br/>
-                    Days:<b>{booking.days}</b><br/>
-                    hours:<b>{booking.hours}</b><br/>
-                    Date:<b>{booking.date}</b><br/>
-                    departure:<b>{booking.departure}</b><br/>
-                    additionalInformation:<b>{booking.additionalInformation}</b><br/>
-                    <div className='accept' float='left'>
-                        <button type='button' onClick={this.handleAccept.bind(booking)}>Accept Offer</button>
+                    <tr><td>
+                    <div className='booking' >
+                        <center><h5>{booking.destination}</h5></center>
+                        destination:<b>{booking.destination}</b> <br/>
+                        Days:<b>{booking.days}</b><br/>
+                        hours:<b>{booking.hours}</b><br/>
+                        Date:<b>{booking.date}</b><br/>
+                        departure:<b>{booking.departure}</b><br/>
+                        additionalInformation:<b>{booking.additionalInformation}</b><br/>
+                        <div className='accept' float='left'>
+                            <button type='button' onClick={this.handleAccept.bind(booking)}>Accept Offer</button>
+                        </div>
                     </div>
+                    </td></tr>
+                )
+            })
+        )
+    }
+
+    renderOtherBookings(bookings){
+        // const bookings = this.props.guideBookings;
+        return(bookings.map((booking)=>{
+            return(
+                <div className='bookings-others'>
+                    <table className=' mytable other-table table'>
+                        <tbody>
+                            <tr><td>
+                            <div className='booking' >
+                                <center><h5>{booking.destination}</h5></center>
+                                destination:<b>{booking.destination}</b> <br/>
+                                Days:<b>{booking.days}</b><br/>
+                                hours:<b>{booking.hours}</b><br/>
+                                Date:<b>{booking.date}</b><br/>
+                                departure:<b>{booking.departure}</b><br/>
+                                additionalInformation:<b>{booking.additionalInformation}</b><br/>
+                            </div>
+                            </td></tr>
+                        </tbody>
+                        <div className='accept accept-other' float='left'>
+                                    <button type='button' onClick={this.handleAccept.bind(booking)}>Accept Offer</button>
+                                </div>
+                    </table>
                 </div>
-                </td></tr>
             )
         })
         )
@@ -103,24 +133,53 @@ class TourGuide extends Component {
         document.getElementById('scroll-down').innerHTML = '';
         return(
             <div>
-                <h1>Tour Guide</h1>
-                <center><h3>The requests you accepted</h3>
-                    <table className='mytable table table-striped'>
-                        <tbody>
-                            {this.renderAcceptedRequests()}
-                        </tbody>
-                    </table>
-                    {this.getMatching()}
-                    {/* <td><tr> */}
-                        <span id='matching'></span>
-                    {/* </tr></td> */}
-                <h3>Other requests Available</h3>
-                <table className='mytable table table-striped'>
-                        <tbody>
-                            {this.renderBookings(this.props.guideBookings)}
-                        </tbody>
-                    </table>
-                </center>
+                <h1><center>Tour Guide</center></h1>
+                <section className="section contact-section bg-light-2">
+                <div className='bookings-accepted'>
+                    {/* <section className="section contact-section"> */}
+                        {/* <div className="container-contact"> */}
+                            <div className="row-contact">
+                                <div data-aos="fade-up">
+                                    <center><h3>Accepted Requests</h3>
+                                        <table className='mytable table table-striped'>
+                                            <tbody>
+                                                {this.renderAcceptedRequests()}
+                                            </tbody>
+                                        </table>
+                                    </center>
+                                </div>
+                            {/* </div> */}
+                        </div>
+                    {/* </section> */}
+                </div>
+                <div className='bookings-special'>
+                    {/* <section className="section contact-section"> */}
+                        {/* <div className="containesr-contact"> */}
+                            <div className="row-contact">
+                                <div className='matching' data-aos="fade-up">
+                                            {this.getMatching()}
+                                            {/* <td><tr> */}
+                                            <span id='matching'></span>
+                                            {/* </tr></td> */}
+                                </div>
+                            </div>
+                        {/* </div> */}
+                    {/* </section> */}
+                </div>
+                
+                <div className='clear-end'></div>
+                </section>
+                <section className="section contact-section">
+                    <center><h3>Other requests Available</h3>
+                    {/* <table className='mytable table table-striped'>
+                            <tbody> */}
+                            <div className='all-other-requests'>
+                                {this.renderOtherBookings(this.props.guideBookings)}
+                            </div>
+                            {/* </tbody>
+                        </table> */}
+                    </center>
+                </section>
                 <div className='clear-end'></div>
             </div> 
         )

@@ -11,10 +11,17 @@ export default class Trip extends Component {
       if (err) {
         console.error("Got error in company:", error);
       } else {
-        this.refs.rate.replaceWith(result);
+        const wholenumber = Math.floor(result);
+        if ((result - wholenumber) >= 0.5){
+          wholenumber += 0.5 
+        }
+        this.refs.rate.src = "/images/rating/Star_rating_" + wholenumber + "_of_5.png";  //replaceWith(result);
+        // console.log("href: ", this.refs.rate.src);
       }
     });
   }
+
+  // /images/rating/Star_rating_5_of_5.png
 
   handleRemove() {
     alert("Sure you want to delete this?") (
@@ -55,8 +62,8 @@ export default class Trip extends Component {
               </div>
               {this.getRating(this.props.trip.owner)}
             {/* {this.props.trip.image1 ? <img src={this.props.trip.image1} alt="image" width='100%' height='100%'></img>:""} */}
-            <b>Company's Rating:</b> 
-            <span ref='rate'></span><br/>
+            <b>Company's Rating: </b> 
+            <img src='/images/rating/Star_rating_0_of_5.png' width='100px' ref='rate'></img><br/>
             </div>
             <div className='trip-img' data-aos="fade-left">
             <img class="img-fluid" src={this.props.trip.image} alt="image" width='100%' height='100%'></img></div><br/>

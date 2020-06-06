@@ -22,6 +22,10 @@
   text-shadow: green 1px 1px;
 }
 
+.trip-company-rate{
+  text-shadow: rgb(184, 184, 184) 2px 2px;
+}
+
 .translate{
   /* border: lightcoral 2px solid; */
   position: relative;
@@ -163,10 +167,10 @@
   /* border:black solid 2px; */
 }
 
-.form-field{
+/* .form-field{
   padding-top: 2px;
   width:  40%;
-}
+} */
 
 .form-instruction{
   color: #999999;
@@ -237,12 +241,12 @@
 
 .trip-basic-info{
   float: left;
-  width: 50%;
+  width: 49%;
   /* background-color: greenyellow; */
 }
 
 .trip-img{
-  width: 50%;
+  width: 49%;
   float: right;
   border: rgb(181, 181, 181) solid 2px;
 }
@@ -259,8 +263,10 @@
 }
 
 .mytable{
-  width: 70%;
+  width: 90%;
   border: #65c0ba 2px solid;
+  -webkit-box-shadow: 0 3px 20px -5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 20px -5px rgba(0, 0, 0, 0.5);
 }
 
 .booking{
@@ -271,6 +277,75 @@
   float: right;
 }
 
+.form-left{
+  float: left;
+  width: 65%;
+  padding-left: 3%;
+  /* background-color: greenyellow; */
+}
+
+.accept-other{
+  padding-right: 3%;
+  padding-bottom: 3%;
+}
+
+.bookings-right{
+  padding: 10px;
+  width: 35%;
+  float: right;
+  /* border: rgb(181, 181, 181) solid 2px; */
+}
+
+.bookings-accepted{
+  padding-right: 5%;
+  padding-left: 0.5%;
+  width: 40%;
+  float: right;
+}
+
+.bookings-special{
+  padding-left: 5%;
+  padding-right: 0.5%;
+  width: 60%;
+  float: left;
+}
+
+.bookings-others{
+  float: left;
+  padding: 2%;
+  width: 30%;
+  height: 400px;
+}
+
+.all-other-requests{
+  padding-left: 7%;
+}
+
+@media only screen and (max-width: 1000px) {
+
+.bookings-others{
+  float: left;
+  padding: 2%;
+  width: 50%;
+  height: 450px;
+}
+
+.all-other-requests{
+  padding-left: 0;
+}
+
+}
+
+
+.mytable.other-table{
+  width: 100%;
+  height: 100%;
+  border: #65c0ba 2px solid;
+  -webkit-box-shadow: 0 3px 20px -5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 20px -5px rgba(0, 0, 0, 0.5);
+  background: rgba(236, 235, 235, 0.753);  /* width: 400px;
+  height: 500px; */
+}
 
 /* 
 .table{
@@ -287,10 +362,58 @@
     width: 100%
   }
 
+  .bookings-accepted{
+    /* padding: 2px; */
+    width: 80%;
+    padding: 10%;
+    /* float: left;   */
+    }
+
+  .bookings-special{
+    /* padding-right: 20px; */
+    width: 80%;
+    /* float: left; */
+    /* border: tomato 2px solid; */
+  }
+
+  .matching{
+    width: 90%;
+    /* align-content: center; */
+    float: left;
+    padding-left: 5%;
+    /* border: yellow 3px solid; */
+  }
+
+  .bookings-others{
+    align-self: center;
+    /* float: left; */
+    /* padding: 2%; */
+    width: 90%;
+    /* height: 400px; */
+  }
+
+  .all-other-requests{
+    padding-left: 10%;
+  }
+
   /* .site-menu-toggle{
     width: 0;
     opacity: 0;
   } */
+
+
+  .bookings-accepted{
+    /* padding: 2px; */
+    width: 100%;
+    /* float: right; */
+  }
+
+  .bookings-special{
+    /* padding-left: 20px; */
+    width: 100%;
+    /* float: left; */
+  }
+
 
   .sign-button{
     border-radius: 12px;
@@ -322,6 +445,27 @@
     /* background-color: greenyellow; */
   }
 
+  .three-lines{
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+  }
+
+  .form-left{
+    align-content: center;
+    padding-left: 10%;
+    /* float: left; */
+    width: 90%;
+    /* background-color: greenyellow; */
+  }
+  
+  .bookings-right{
+    width: 90%;
+    padding-right: 10%;
+    /* float: right; */
+    /* border: rgb(181, 181, 181) solid 2px; */
+  }
 
   .search-fields{
     /* float: left; */
