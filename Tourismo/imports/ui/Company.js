@@ -85,6 +85,9 @@ class Company extends Component {
       }
     });
     document.getElementById('only-home').innerHTML = '<span></span>';
+    document.getElementById('home-description').innerText = "";
+    document.getElementById('home-trips').innerHTML = ''
+    document.getElementById('scroll-down').innerHTML = '';
     return (
       <div className="container">
         <header>
@@ -100,7 +103,7 @@ class Company extends Component {
           <div class="container">
             <div class="row justify-content-center text-center mb-5">
               <div class="col-md-8">
-                <h2 class="heading" data-aos="/fade-up">Customers Feedback</h2>
+                <h2 class="heading" data-aos="fade-up">Customers Feedback</h2>
               </div>
             </div>
             <br></br>

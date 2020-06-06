@@ -10,7 +10,7 @@ export default class Trip extends Component {
     return (
         <div>
         {/* <div class="row"> */}
-          <div class="col-md-4" data-aos="/fade-up" data-aos-delay="100">
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
             <div class="testimonial">
                 <div className='reviews'>
               {/* <div class="reviewer-dp"> */}

@@ -37,13 +37,13 @@ export default class Trip extends Component {
           <div className='delete'>
             <button onClick={this.handleRemove.bind(this)} >x</button></div>  :""}
             <strong>
-              <h2>
+              <h2 className='trip-name'>
                 <center>
                   <a href={"../IndividualTrip/"+this.props.trip._id}>{this.props.trip.destination}</a>
                 </center>
               </h2>
             </strong> <br/>
-            <div className='trip-basic-info'>
+            <div className='trip-basic-info' data-aos="fade-right">
               <b>Company:</b> <a href={'../Company/'+this.props.trip.owner}>{this.props.trip.company}</a> <div className='seats-sold'> <b>Seats booked:</b> {this.props.trip.seats}</div> <br/>
               <b>Cost:</b> Rs. {this.props.trip.price} <br/>
               <b>Days:</b> {this.props.trip.days} <br/>
@@ -58,7 +58,7 @@ export default class Trip extends Component {
             <b>Company's Rating:</b> 
             <span ref='rate'></span><br/>
             </div>
-            <div className='trip-img'>
+            <div className='trip-img' data-aos="fade-left">
             <img class="img-fluid" src={this.props.trip.image} alt="image" width='100%' height='100%'></img></div><br/>
           </span>
         </div>

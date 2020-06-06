@@ -22,6 +22,9 @@ class SignupGuide extends Component {
 
     render() {
         document.getElementById('only-home').innerHTML = '<span></span>';
+        document.getElementById('home-description').innerText = "";
+        document.getElementById('home-trips').innerHTML = ''
+        document.getElementById('scroll-down').innerHTML = '';
         return(
             <div className='form-div'>
             {/* <center> */}
@@ -32,7 +35,7 @@ class SignupGuide extends Component {
         <div className="col-md-4">
         <p></p>
         </div>
-        <div className="col-md-11">    
+        <div className="col-md-11" data-aos="fade-up">    
             <form action="#" method="post" className="bg-white p-md-5 p-4 mb-5" onSubmit={this.onSubmit.bind(this)}>
               <div className="row">
                 <div className="col-md-12 form-group">

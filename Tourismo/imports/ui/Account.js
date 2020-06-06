@@ -21,8 +21,8 @@ class Account extends Component {
             const profile = this.props.currentUser.profile;
             // console.log("user", this.props.currentUser);
         return(
-            <div align='right'>
-                <h5>{profile?<img className='dp' src={profile.dp}></img>:""}<br/>{user}</h5><br/>
+            <div align='right' className='animated fadeInDownBig'>
+                <h5>{profile?<img className='dp' src={profile.dp}></img>:""}<br/><div className='username'>{user}</div></h5>
                 <button className='sign-button' onClick={this.signout.bind(this)}>Sign out</button>
             </div>
         );}

@@ -98,6 +98,9 @@ class TourGuide extends Component {
                 );
         }
         document.getElementById('only-home').innerHTML = '<span></span>';
+        document.getElementById('home-description').innerText = "";
+        document.getElementById('home-trips').innerHTML = ''
+        document.getElementById('scroll-down').innerHTML = '';
         return(
             <div>
                 <h1>Tour Guide</h1>

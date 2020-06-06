@@ -4,10 +4,14 @@ import {HomeLinks} from '../api/home.js'
 import Account from './Account';
 import { render } from 'react-dom';
 import { Reviews } from '../api/reviews.js';
-import { Trips } from '../api/trips.js';
+// import { Trips } from '../api/trips.js';
 import Review from './Review.js';
 import ReactDom from 'react-dom';
-import HomeReview from './HomeReview'
+import ScrollAnimation from 'react-animate-on-scroll';
+
+// import '/js/main.js'
+// import HomeReview from './HomeReview'
+
 
 class Home extends Component {
 
@@ -51,21 +55,22 @@ class Home extends Component {
 
     render() {
         const top = document.getElementById('top-section');
+        // console.log("URL: ", window.location);
         top.classList.remove('page-inside');
-        document.getElementById('home-description').innerText = "Wallow yourself in the true colours of Pakistan!";
-        document.getElementById('home-trips').innerHTML = '<p className="pt-4" data-aos="/fade-up" data-aos-delay="100"><a href="DisplayTrips" target="_blank" class="btn uppercase btn-outline-light d-sm-inline d-block py-3">See Trips</a></p>'
-        document.getElementById('scroll-down').innerHTML = '<p  data-aos="/fade-up" data-aos-offset="-500"><a href="#next-section" class="scroll-down smoothscroll"> <span class="fa fa-play"></span> Scroll Down</a></p>        '
+        // document.getElementById('home-description').innerText = "Wallow yourself in the true colours of Pakistan!";
+        // document.getElementById('home-trips').innerHTML = '<p class="pt-4  animated fadeInUpBig"><a href="/DisplayTrips" class="btn uppercase btn-outline-light d-sm-inline d-block py-3">See Trips</a></p>'
+        // document.getElementById('scroll-down').innerHTML = '<p  className=" animated fadeInUpBig slower"><a href="#next-section" class="scroll-down smoothscroll"> <span class="fa fa-play"></span> Scroll Down</a></p>';
         const requiredLink = this.props.homeLink;
         
-        ReactDom.render(<div><center>><section className="section testimonial-section bg-light-2">
-                    <div className="container">
-                        <div className="row justify-content-center text-center mb-5">
-                            <div className="col-md-8">
-                               <h2 className="heading" data-aos="/fade-up">Happy Customers  </h2>
+        ReactDom.render(<div><center>><section class="section testimonial-section bg-light-2">
+                    <div class="container">
+                        <div class="row justify-content-center text-center mb-5">
+                            <div class="col-md-8">
+                               <h2 className="heading" data-aos="fade-up">Happy Customers  </h2>
                             </div>
                         </div>
                         <div className='review-box'>
-                        <div className="row">
+                        <div class="row">
                             {this.renderReviews()}
                         </div>
                         </div>
@@ -76,19 +81,40 @@ class Home extends Component {
                 ,
                 document.getElementById('reviews')
                 )
+                console.log("host:----------: ", window.location.host);
+                console.log("hostname:----------: ", window.location.hostname);
+                console.log("origin:----------: ", window.location.origin);
+                console.log("href:----------: ", window.location.href);
+
         return(
 
+            // <ul>
+            // {{#transition in="zoomIn" out="bounceOut"}}
+            //   {/* {{#each items}} */}
+            //     <li class="animated out">{{name}}</li>
+            //   {/* {{/each}} */}
+            // {{/transition}}
+            
+            // </ul>
+            
             <div>
+                {/* <ScrollAnimation animateIn="fadeInDown">
+                        Some Text
+                    </ScrollAnimation> */}
+                {/* <base href={window.location}/> */}
+                {/* <h1><a href='/index.html'>Check this</a></h1> */}
                 {/* <HomeReview></HomeReview> */}
                 {this.renderAccounts()}
+
                 <section className="section" id="next-section">
                 <div className="container">
                 <div className="row align-items-center">
-                    <div className="col-lg-6 mb-4" data-aos="/fade-up">
+                    <div className="col-lg-6 mb-4  animated fadeInUpBig">
                     <p><img src="/images/img_1_long.jpg" alt="Free Template by Free-Template.co" className="img-fluid"/> 
                     </p>
                     </div>
-                    <div className="col-lg-6 pl-lg-5" data-aos="/fade-up">
+                    <div className="col-lg-6 pl-lg-5" data-aos="fade-up">
+                    
                     <h2 className="mb-4">Welcome To Our Website</h2>
                     <p >Plan your tour with TOURISMO! </p>
                     <p>Tourismo is your way to travel the bewitching loci of Pakitan. Taking you to each and every niche, Tourismo ensures the welfare and serenity of its excursionist. </p>
@@ -103,7 +129,7 @@ class Home extends Component {
                 </div>
                 </section>
                 
-                <center>
+                {/* <center>
                 <h2 font = 'arial'>Welcome to Tourismo.<br/>
                 How may we help you?<br/>
                 Are you: <br/></h2>
@@ -115,7 +141,7 @@ class Home extends Component {
                     {requiredLink ? <a href={"../"+requiredLink.link}>{requiredLink.link}</a> : ""}
                     </li>
                 </ul>
-                </center>
+                </center> */}
             </div> 
         )
     };

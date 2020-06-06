@@ -32,11 +32,15 @@ class App extends Component {
           );
         }
         else{
+          console.log("Price: ", result[0].price-this.refs.priceRange.value);
           render(
             this.renderTrips(result),
             document.getElementById('render-trips')
           );
         }
+        result = [];
+        this.refs.search.value = '';
+        this.refs.date.value = ''
       });
   }
 
@@ -90,10 +94,13 @@ class App extends Component {
                 );
         }
       document.getElementById('only-home').innerHTML = '<span></span>';
+      document.getElementById('home-description').innerText = "";
+      document.getElementById('home-trips').innerHTML = ''
+      document.getElementById('scroll-down').innerHTML = '';
     return (
       <div className="container">
           {this.props.userBookings[0] ?
-            <div>
+            <div data-aos="fade-down">
               <center>
                 <h1>
                   Bookings
@@ -108,12 +115,13 @@ class App extends Component {
           :""}
         <header>
         <center>
+          <div className=' translate'>
           <h1>Trips</h1>
           <div className='search-form-div'>
           <form className='search-form' onSubmit={this.handleSubmit.bind(this)}>
           <div class="slidecontainer search-fields">
           Price Range:
-            <input type="range" min="0" max="50000" ref='priceRange' class="slider" id="myRange"/>
+            <input type="range" min="500" max="50000" defaultValue='50000' ref='priceRange' class="slider" id="myRange"/>
             <p>Rs. <span id="demo"></span></p>
           </div>
           <div class="form-group search-fields">
@@ -268,6 +276,7 @@ class App extends Component {
                 <button type='submit'>Search</button>
               </div>
           </form>
+          </div>
           </div>
           <div className='clear-end'></div>
         </center>

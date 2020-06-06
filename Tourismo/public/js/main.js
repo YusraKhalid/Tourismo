@@ -142,8 +142,6 @@
   	}
 	});
 
-
-
   $(".animsition").animsition();
 
 })(jQuery);

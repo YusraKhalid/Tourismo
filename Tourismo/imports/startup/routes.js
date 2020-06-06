@@ -16,7 +16,6 @@ import Account from '../ui/Account.js';
 import SignupGuide from '../ui/SignupGuide.js';
 import SignupCustomer from '../ui/SignupCustomer.js';
 import SignupCompany from '../ui/SignupCompany.js';
-import Index from '../ui/index.js'
 
 
 const browserHistory = createBrowserHistory();
@@ -26,6 +25,7 @@ export const renderRoutes = () => (
     {/* <div>
       <Account />
     </div> */}
+    {/* <base href={window.location.origin}/> */}
     <div className='route-render'>
     {/* <section class="d-block ftco-img-flaticon"> */}
     <Switch>
@@ -41,7 +41,7 @@ export const renderRoutes = () => (
       <Route exact path="*/SignupGuide" component={SignupGuide} />
       <Route exact path="*/SignupCompany" component={SignupCompany} />
       <Route exact path="/Company*" component={Company} />
-      <Route exact path="/index" component={Index} />
+
     </Switch>
     {/* </section> */}
     </div>

@@ -106,6 +106,10 @@ class BookGuide extends Component {
                 );
         }
         document.getElementById('only-home').innerHTML = '<span></span>';
+        document.getElementById('home-description').innerText = "";
+        document.getElementById('home-trips').innerHTML = ''
+        document.getElementById('scroll-down').innerHTML = '';
+        
         return(
             <div>
                 <div>{this.props.acceptedRequests[0] ? 

@@ -18,6 +18,22 @@
 }
 */
 
+.trip-name{
+  text-shadow: green 1px 1px;
+}
+
+.translate{
+  /* border: lightcoral 2px solid; */
+  position: relative;
+  animation-name: example;
+  animation-duration: 2s; 
+}
+
+@keyframes example {
+  0%   {top:0px;}
+  100% { top:40px;}
+}
+
 .slidecontainer {
   width: 200px;
 }
@@ -63,9 +79,9 @@
   padding: 2%;
 }
 
-.search-form-div{
+/* .search-form-div{ */
   /* border: solid green 2px; */
-}
+/* } */
 
 .search-form{
   /* border: hotpink 2px solid; */
@@ -271,11 +287,41 @@
     width: 100%
   }
 
+  /* .site-menu-toggle{
+    width: 0;
+    opacity: 0;
+  } */
+
+  .sign-button{
+    border-radius: 12px;
+    background-color: #e7e7e7; color: black;
+    font-size: 10px;
+    /* float: right; */
+  }
+
+  .dp{
+    border-radius: 50%;
+    object-fit: cover;
+    width: 40px;
+    height: 40px;
+  }
+
+  .username{
+    font-size: small;
+  }
+
+  #logo{
+    width: 70px;
+    height: 70px;
+    float: left;
+  }
+
   .trip-basic-info{
     /* float: left; */
     width: 100%;
     /* background-color: greenyellow; */
   }
+
 
   .search-fields{
     /* float: left; */

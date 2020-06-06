@@ -19,12 +19,15 @@ class SignupCustomer extends Component {
 
     render() {
         document.getElementById('only-home').innerHTML = '<span></span>';
+        document.getElementById('home-description').innerText = "";
+        document.getElementById('home-trips').innerHTML = ''
+        document.getElementById('scroll-down').innerHTML = '';
         return(
             <div>
             <section className="section contact-section">
       <div className="container-contact">
 
-        <div className="row-contact">
+        <div className="row-contact" data-aos="fade-up">
           <div className="col-md-11">
             
             <form action="#" method="post" className="bg-white p-md-5 p-4 mb-5" onSubmit={this.onSubmit.bind(this)}>

@@ -61,6 +61,9 @@ class Signup extends Component {
 
     render() {
         document.getElementById('only-home').innerHTML = '<span></span>';
+        document.getElementById('home-description').innerText = "";
+        document.getElementById('home-trips').innerHTML = ''
+        document.getElementById('scroll-down').innerHTML = '';
         return(
             <div>
             <section className="section contact-section">
@@ -71,7 +74,7 @@ class Signup extends Component {
 
 
           </div>
-          <div className="col-md-4">
+          <div className="col-md-4" data-aos="fade-right">
             <h1 className="center-text" >Create a new account</h1>
             <div className="center-text">
             <p><img src="/img/logo.png" alt="Free Template by Free-Template.co" className="img-fluid"/> 
@@ -82,7 +85,7 @@ class Signup extends Component {
 
 
           </div>
-          <div className="col-md-4">
+          <div className="col-md-4" data-aos="fade-left">
             
             <form action="#" method="post" className="bg-white p-md-5 p-4 mb-5" onSubmit={this.onSubmit.bind(this)} >
               <div className="row">
