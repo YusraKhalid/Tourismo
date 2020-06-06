@@ -62,7 +62,7 @@ class Home extends Component {
         // document.getElementById('scroll-down').innerHTML = '<p  className=" animated fadeInUpBig slower"><a href="#next-section" class="scroll-down smoothscroll"> <span class="fa fa-play"></span> Scroll Down</a></p>';
         const requiredLink = this.props.homeLink;
         
-        ReactDom.render(<div><center>><section class="section testimonial-section bg-light-2">
+        ReactDom.render(<div><center><section class="section testimonial-section bg-light-2">
                     <div class="container">
                         <div class="row justify-content-center text-center mb-5">
                             <div class="col-md-8">
@@ -106,7 +106,7 @@ class Home extends Component {
                 {/* <HomeReview></HomeReview> */}
                 {this.renderAccounts()}
 
-                <section className="section" id="next-section">
+                <section className="section bg-light-2" id="next-section">
                 <div className="container">
                 <div className="row align-items-center">
                     <div className="col-lg-6 mb-4  animated fadeInUpBig">
