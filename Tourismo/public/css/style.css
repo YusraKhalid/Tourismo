@@ -238,7 +238,7 @@ textarea.form-control {
 .site-hero-inner .heading {
   font-size: 80px;
   font-family: "Abril Fatface", times, serif;
-  color: #fff;
+  color: rgb(1, 70, 1);
   line-height: 1;
   font-weight: bold;
 }

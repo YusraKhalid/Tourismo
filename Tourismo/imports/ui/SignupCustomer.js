@@ -27,27 +27,29 @@ class SignupCustomer extends Component {
             <section className="section contact-section">
       <div className="container-contact">
 
-        <div className="row-contact" data-aos="fade-up">
-          <div className="col-md-11">
+        <div className="row" data-aos="fade-up">
+                <div className="col-md-3  col-lg-3 col-sm-3 col-xs-3 ">
+          </div>
+          <div className="col-md-6  col-lg-6 col-sm-6 col-xs-6 ">
             
-            <form action="#" method="post" className="bg-white p-md-5 p-4 mb-5" onSubmit={this.onSubmit.bind(this)}>
+            <form action="#" method="post" className="border border-primary bg-white p-md-5 p-4 mb-5" onSubmit={this.onSubmit.bind(this)}>
               <div className="row">
-                <div className="col-md-12 form-group">
+                <div className="col-md-12  col-lg-12 col-sm-12 col-xs-12  form-group">
                   <input type="text" ref="name" placeholder="Full Name" className="form-control " />
                 </div>
                     </div>
                 <div className="row">
-                <div className="col-md-12 form-group">
-                  <input type="text" ref="age" placeholder="Age" className="form-control "/>
+                <div className="col-md-12  col-lg-12 col-sm-12 col-xs-12  form-group">
+                  <input type="text" ref="age" placeholder="Age" className="form-control " pattern="[0-9]"/>
                 </div>
               </div>
               <div className="row">
-                <div className="col-md-12 form-group">
-                  <input type="number" ref="phone" placeholder="Phone Number" className="form-control "/>
+                <div className="col-md-12  col-lg-12 col-sm-12 col-xs-12  form-group">
+                  <input type="text" ref="phone" placeholder="Phone Number" className="form-control " pattern="[0-9]{11}"/>
                 </div>
               </div>
-              <div className="row">
-                <div className="col-md-12 form-group">
+              {/* <div className="row">
+                <div className="col-md-12  col-lg-12 col-sm-12 col-xs-12  form-group">
                   <select className="form-control" ref='city' id="sel1">
                         <option value="" disabled selected>City</option>
                         <option>    Alpūrai </option>
@@ -188,20 +190,23 @@ class SignupCustomer extends Component {
 
 
                         </div>
-              </div>
+              </div> */}
 
                <div className="row">
-                <div className="col-md-12 form-group">
-                 <input type="number" ref="cnic" placeholder="CNIC #" className="form-control "/>
+                <div className="col-md-12  col-lg-12 col-sm-12 col-xs-12  form-group">
+                 <input type="number" ref="cnic" placeholder="CNIC or SSN #" className="form-control "/>
                 </div>
               </div>
               <div className="row">
-                <div className="col-md-6 form-group">
+                <div className="col-md-6  col-lg-6 col-sm-6 col-xs-6 form-group">
                   <input type="submit" value="Sign Up" className="btn btn-primary"/>
                 </div>
               </div>
             </form>
 
+
+          </div>
+                  <div className="col-md-3  col-lg-3 col-sm-3 col-xs-3">
           </div>
           
         </div>

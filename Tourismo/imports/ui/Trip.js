@@ -24,8 +24,10 @@ export default class Trip extends Component {
   // /images/rating/Star_rating_5_of_5.png
 
   handleRemove() {
-    alert("Sure you want to delete this?") (
-    Meteor.call('trips.remove', this.props.trip._id));
+    var remove = confirm("Sure you want to delete this?");
+    if( remove == true ) {
+      Meteor.call('trips.remove', this.props.trip._id);
+    }
   }
      
   render() {
@@ -33,7 +35,7 @@ export default class Trip extends Component {
       checked: this.props.trip.checked,
       private: this.props.trip.private,
     });
-    console.log("trip", this.props.trip);
+    // console.log("trip", this.props.trip);
 
     return (
         <li className={tripClassName}>

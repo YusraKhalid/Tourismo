@@ -17,16 +17,20 @@ class IndividualTrip extends Component {
     handleSubmit(event) {
       event.preventDefault();
         if (Meteor.userId()){
-        const seats = this.refs.seats.value;
-        console.log("Seats: ", seats);
-        alert("You have booked "+seats+" seats") ()
-        Meteor.call('trips.book',this.props.trips[0]._id, parseInt(seats), (error, result) => {
-          console.log('error: ', error);
-          if (error) {
-            this.props.history.push("/SignupCustomer");
+          const seats = this.refs.seats.value;
+          console.log("Seats: ", seats);
+          var book = confirm("Do you want to book "+seats+" seats?");
+          if( book == true ) {
+            Meteor.call('trips.book',this.props.trips[0]._id, parseInt(seats), (error, result) => {
+              console.log('error: ', error);
+              if (error) {
+                this.props.history.push("/SignupCustomer");
+              }
+            });
+          } 
+          else {
+            alert("Your seats were not booked");
           }
-          console.log('result: ', result);
-        });
       }
       else{
         window.location.pathname = '/Login';

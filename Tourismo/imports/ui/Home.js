@@ -46,6 +46,7 @@ class Home extends Component {
             );
         const requiredLink = this.props.homeLink;
         if (requiredLink){
+            document.getElementById("guide-link").href = requiredLink;
             render(<li><a href={'../'+requiredLink.link}>{requiredLink.text}</a></li>,
                 document.getElementById('link')
                 );
@@ -81,10 +82,10 @@ class Home extends Component {
                 ,
                 document.getElementById('reviews')
                 )
-                console.log("host:----------: ", window.location.host);
-                console.log("hostname:----------: ", window.location.hostname);
-                console.log("origin:----------: ", window.location.origin);
-                console.log("href:----------: ", window.location.href);
+                // console.log("host:----------: ", window.location.host);
+                // console.log("hostname:----------: ", window.location.hostname);
+                // console.log("origin:----------: ", window.location.origin);
+                // console.log("href:----------: ", window.location.href);
 
         return(
 
@@ -110,7 +111,7 @@ class Home extends Component {
                 <div className="container">
                 <div className="row align-items-center">
                     <div className="col-lg-6 mb-4  animated fadeInUpBig">
-                    <p><img src="/images/img_1_long.jpg" alt="Free Template by Free-Template.co" className="img-fluid"/> 
+                    <p><img src="/images/index1BG.jpg" alt="Image" className="img-fluid"/> 
                     </p>
                     </div>
                     <div className="col-lg-6 pl-lg-5" data-aos="fade-up">

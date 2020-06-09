@@ -16,6 +16,8 @@ import Account from '../ui/Account.js';
 import SignupGuide from '../ui/SignupGuide.js';
 import SignupCustomer from '../ui/SignupCustomer.js';
 import SignupCompany from '../ui/SignupCompany.js';
+import About from '../ui/About';
+import Contact from '../ui/Contact.js';
 
 
 const browserHistory = createBrowserHistory();
@@ -41,6 +43,8 @@ export const renderRoutes = () => (
       <Route exact path="*/SignupGuide" component={SignupGuide} />
       <Route exact path="*/SignupCompany" component={SignupCompany} />
       <Route exact path="/Company*" component={Company} />
+      <Route exact path="/About" component={About} />
+      <Route exact path="/Contact" component={Contact} />
 
     </Switch>
     {/* </section> */}

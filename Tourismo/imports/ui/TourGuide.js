@@ -10,10 +10,12 @@ import {HomeLinks} from '../api/home.js'
 class TourGuide extends Component {
 
     handleAccept(){
-        alert("Sure you want to accept") (
-            console.log("accepted", this._id),
-            Meteor.call('guideBookings.accept', this._id)
-        );
+        var accept = confirm("Sure you want to remove this?");
+        if( accept == true ) {
+        // alert("Sure you want to accept") (
+            console.log("accepted", this._id);
+            Meteor.call('guideBookings.accept', this._id);
+        }
     }
 
     renderBookings(bookings){

@@ -31,39 +31,38 @@ class SignupGuide extends Component {
         <section className="section contact-section">
         <div className="container-contact">
 
-        <div className="row-contact">
-        <div className="col-md-4">
-        <p></p>
-        </div>
-        <div className="col-md-11" data-aos="fade-up">    
+        <div className="row">
+                  <div className="col-md-3 col-lg-3 col-sm-3 col-xs-3">
+          </div>
+        <div className="col-md-6 col-lg-6 col-sm-6 col-xs-6" data-aos="fade-up">    
             <form action="#" method="post" className="bg-white p-md-5 p-4 mb-5" onSubmit={this.onSubmit.bind(this)}>
               <div className="row">
-                <div className="col-md-12 form-group">
+                <div className="col-md-12 col-lg-12 col-sm-12 col-xs-12 form-group">
                   <input type="text" ref="name" placeholder="Full Name" className="form-control " />
                 </div>
                 </div>
                 <div className="row">
-                <div className="col-md-12 form-group">
+                <div className="col-md-12 col-lg-12 col-sm-12 col-xs-12 form-group">
                   <input type="text" ref="age" placeholder="Age" className="form-control "/>
                 </div>
               </div>
               <div className="row">
-                <div className="col-md-12 form-group">
+                <div className="col-md-12 col-lg-12 col-sm-12 col-xs-12 form-group">
                   <input type="number" ref="phone" placeholder="Phone Number" className="form-control "/>
                 </div>
                 </div>
                 <div className="row">
-               <div className="col-md-12 form-group">
+               <div className="col-md-12 col-lg-12 col-sm-12 col-xs-12 form-group">
                   <input type="number" ref="cnic" placeholder="CINC#" className="form-control "/>
                 </div>
                 </div>
                 <div className="row">
-               <div className="col-md-12 form-group">
+               <div className="col-md-12 col-lg-12 col-sm-12 col-xs-12 form-group">
                   <input type="text" ref="address" placeholder="Address" className="form-control "/>
                 </div>
                 </div>
               <div className="row">
-                <div className="col-md-12 form-group">
+                <div className="col-md-12 col-lg-12 col-sm-12 col-xs-12 form-group">
                 {/* <input type="text" ref="city" placeholder="City" className="form-control "/> */}
                   <select className="form-control" ref='city' id="sel1">
                         <option value="" disabled selected>City</option>
@@ -210,24 +209,24 @@ class SignupGuide extends Component {
                 </div>
               </div> */}
               <div className="row">
-                <div className="col-md-12 form-group">
+                <div className="col-md-12 col-lg-12 col-sm-12 col-xs-12 form-group">
                  <input type="text" ref="experience" placeholder="Past Experience" className="form-control "/>
                 </div>
               </div>
               <div className="row">
-                <div className="col-md-12 form-group">
+                <div className="col-md-12 col-lg-12 col-sm-12 col-xs-12 form-group">
                  <input type="text" ref="expertise" placeholder="Expertise" className="form-control "/>
                 </div>
               </div>
               <div className="row">
-                <div className="col-md-6 form-group">
+                <div className="col-md-6 col-lg-6 col-sm-6 col-xs-6 form-group">
                   <input type="submit" value="Sign Up" className="btn btn-primary"/>
                 </div>
               </div>
             </form>
         </div>
-       <div className="col-md-4">
-        </div>
+                  <div className="col-md-3 col-lg-3 col-sm-3 col-xs-3">
+          </div>
         </div>
       </div>
     </section>

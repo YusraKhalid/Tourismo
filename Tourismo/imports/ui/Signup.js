@@ -44,6 +44,7 @@ class Signup extends Component {
                 Accounts.createUser(userdata, (error) => {
                     if (error) {
                         console.log("Got error: ", error);
+                        this.refs.invalidUsername.replaceWith(error);
                     } else {
                         console.log("successful", Meteor.user()._id );
                         // Meteor.loginWithPassword(username, password, (error) => {
@@ -70,26 +71,33 @@ class Signup extends Component {
       <div className="container-contact">
 
         <div className="row">
-        <div className="col-md-2">
+        <div className="col-md-2 col-lg-2 col-sm-2 col-xs-2">
 
 
           </div>
-          <div className="col-md-4" data-aos="fade-right">
+          <div className="col-md-4 col-lg-4 col-sm-4 col-xs-4" data-aos="fade-right">
             <h1 className="center-text" >Create a new account</h1>
             <div className="center-text">
             <p><img src="/img/logo.png" alt="Free Template by Free-Template.co" className="img-fluid"/> 
                     </p></div>
 
           </div>
-           <div className="col-md-1">
+           <div className="col-md-1 col-lg-1 col-sm-1 col-xs-1">
 
 
           </div>
-          <div className="col-md-4" data-aos="fade-left">
+          <div className="col-md-4 col-lg-4 col-sm-4 col-xs-4" data-aos="fade-left">
             
             <form action="#" method="post" className="bg-white p-md-5 p-4 mb-5" onSubmit={this.onSubmit.bind(this)} >
               <div className="row">
                 <div className="col-md-12 form-group">
+                {/* Choose role<br/>
+                <input type="radio" ref="role" id="vehicle1" value="customer"/>
+                <img width='28%'  src='/images/tourist.jpg'/>
+                <input type="radio" ref="role" id="vehicle2" value="company"/>
+                <img width='28%' src='/images/company.jpg'/>
+                <input type="radio" ref="role" id="vehicle3" value="guide"/>
+                <img width='28%' src='/images/guide.jpg'/> */}
                         <select ref="role" className="form-control ">
                         <option value="" disabled selected>Choose role</option>
                             <option value="customer">Tourist</option>
@@ -100,6 +108,8 @@ class Signup extends Component {
                 <div className="col-md-12 form-group">
                 <input type="text" ref="username" placeholder="Username" className="form-control "/ >
                 </div>
+                <div className='col-md-12 form-group error'>
+                        <span ref='invalidUsername'></span></div>
               </div>
           
               <div className="row">

@@ -45,8 +45,10 @@ class BookGuide extends Component {
         this.refs.additionalInformation.value = '';
       }  
     handleRemove(){
-        alert("Sure you want to remove this?") (
-        Meteor.call('guideBookings.remove', this._id));
+        var remove = confirm("Sure you want to remove this?");
+        if( remove == true ) {
+            Meteor.call('guideBookings.remove', this._id);
+        }
     }
 
     renderBookings(){

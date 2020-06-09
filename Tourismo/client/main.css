@@ -18,6 +18,46 @@
 }
 */
 
+
+.contact{
+  padding-left: 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: 20%;
+  margin-right: 20%;
+  background-color: #65c0ba17;
+  /* background-color: violet; */
+  /* border: tomato 2px solid; */
+  /* background-image: url('/images/round.png'); */
+  border: #65c0ba 2px solid;
+  box-shadow: 0 3px 20px -5px rgba(0, 0, 0, 0.5);
+}
+
+.fields-left{
+  float: left;
+  padding-left: 10%;
+  color: rgb(1, 70, 1);
+  /* border: #265D0C 2px solid; */
+  /* text-decoration: rgb(184, 184, 184); */
+}
+
+.title{
+  color: rgb(1, 70, 1);
+}
+
+.about{
+  background-image: url('/images/hero_2.jpg');
+  border: #16d3c6 2px solid;
+  /* background-color: tomato; */
+}
+
+.about2{
+  background-image: url('/images/hero_1.jpg');
+  border: #65c0ba 2px solid;
+}
+
 .trip-name{
   text-shadow: green 1px 1px;
 }
@@ -93,8 +133,8 @@
 }
 
 #logo{
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   float: left;
 }
 
@@ -362,6 +402,16 @@
     width: 100%
   }
 
+  .contact{
+    padding-left: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin: 5%;
+    background-color: #65c0ba17;
+    border: #65c0ba 2px solid;
+    box-shadow: 0 3px 20px -5px rgba(0, 0, 0, 0.5);
+  }
+
   .bookings-accepted{
     /* padding: 2px; */
     width: 80%;
@@ -437,6 +487,11 @@
     width: 70px;
     height: 70px;
     float: left;
+  }
+
+  h1.main-heading{
+    color: green;
+    border: green 2px solid;
   }
 
   .trip-basic-info{
@@ -516,6 +571,15 @@
 
 }
 
+.navbar-custom { 
+  background-color: #265D0C ; 
+} 
+/* Modify brand and text color */ 
+
+.navbar-custom .navbar-brand, 
+.navbar-custom .navbar-text { 
+  color: black; 
+}
 
 .submit-button{
   float: right;
