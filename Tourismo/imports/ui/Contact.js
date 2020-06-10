@@ -4,7 +4,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import Account from './Account';
 import { render } from 'react-dom';
-import {HomeLinks} from '../api/home.js'
+// import {HomeLinks} from '../api/home.js'
 
 class Contact extends Component {
     
@@ -14,12 +14,12 @@ class Contact extends Component {
         </div>,
         document.getElementById('signin')
         );
-      const requiredLink = this.props.homeLink;
-      if (requiredLink){
-          render(<li><a href={'../'+requiredLink.link}>{requiredLink.text}</a></li>,
-              document.getElementById('link')
-              );
-      }
+      // const requiredLink = this.props.homeLink;
+      // if (requiredLink){
+      //     render(<li><a href={'../'+requiredLink.link}>{requiredLink.text}</a></li>,
+      //         document.getElementById('link')
+      //         );
+      // }
         document.getElementById('only-home').innerHTML = '<span></span>';
         document.getElementById('home-description').innerText = "";
         document.getElementById('home-trips').innerHTML = ''
@@ -85,9 +85,9 @@ class Contact extends Component {
     };
 };
 export default withTracker(() => {
-  Meteor.subscribe('homeLinks');
+  // Meteor.subscribe('homeLinks');
   return {
-      homeLink: HomeLinks.findOne({}),
+      // homeLink: HomeLinks.findOne({}),
       currentUser: Meteor.user(),
   };
 })(Contact);

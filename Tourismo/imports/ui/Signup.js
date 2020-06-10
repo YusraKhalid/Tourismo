@@ -106,7 +106,7 @@ class Signup extends Component {
                         </select>              
                 </div>
                 <div className="col-md-12 form-group">
-                <input type="text" ref="username" placeholder="Username" className="form-control "/ >
+                <input type="text" ref="username" placeholder="Username" className="form-control " />
                 </div>
                 <div className='col-md-12 form-group error'>
                         <span ref='invalidUsername'></span></div>

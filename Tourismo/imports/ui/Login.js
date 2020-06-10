@@ -10,6 +10,7 @@ class Login extends Component {
         Meteor.loginWithPassword(username, password, (error) => {
             if (error) {
                 console.log("Got error: ", error);
+                this.refs.invaliddata.replaceWith(error);
             } else {
                 console.log("successful");
                 window.location.pathname = '/';
@@ -54,6 +55,9 @@ class Login extends Component {
                 <div className="col-md-6 col-lg-6 col-sm-6 col-xs-6 form-group">
                 <button type="submit" className="btn btn-primary" >Log In</button>
                 </div>
+              </div>
+              <div className='col-md-12 form-group error'>
+                  <span ref='invaliddata'></span>
               </div>
             <div className="row">
                 <div className="col-md-12 col-lg-12 col-sm-12 col-xs-12 form-group">

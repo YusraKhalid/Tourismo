@@ -7,7 +7,7 @@ import { Reviews } from '../api/reviews.js';
 import Review from './Review.js';
 import Account from './Account';
 import { render } from 'react-dom';
-import {HomeLinks} from '../api/home.js'
+// import {HomeLinks} from '../api/home.js'
 
 
 
@@ -70,12 +70,12 @@ class Company extends Component {
       </div>,
       document.getElementById('signin')
       );
-      const requiredLink = this.props.homeLink;
-      if (requiredLink){
-          render(<li><a href={'../'+requiredLink.link}>{requiredLink.text}</a></li>,
-              document.getElementById('link')
-              );
-      }
+      // const requiredLink = this.props.homeLink;
+      // if (requiredLink){
+      //     render(<li><a href={'../'+requiredLink.link}>{requiredLink.text}</a></li>,
+      //         document.getElementById('link')
+      //         );
+      // }
     Meteor.call('reviews.companyRate', (window.location.pathname).match('[^/]*$')[0],
       (err, result) => {
       if (err) {
@@ -157,9 +157,9 @@ class Company extends Component {
   export default withTracker(() => {
     Meteor.subscribe('trips');
     Meteor.subscribe('reviews');
-    Meteor.subscribe('homeLinks');
+    // Meteor.subscribe('homeLinks');
     return {
-        homeLink: HomeLinks.findOne({}),
+        // homeLink: HomeLinks.findOne({}),
         trips: Trips.find({ owner: (window.location.pathname).match('[^/]*$')[0] }, { sort: { createdAt: -1 } }).fetch(),
         currentUser: Meteor.user(),
         reviews: Reviews.find({company: (window.location.pathname).match('[^/]*$')[0]}).fetch(),

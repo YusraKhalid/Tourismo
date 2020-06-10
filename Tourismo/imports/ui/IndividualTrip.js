@@ -5,7 +5,7 @@ import { Trips } from '../api/trips.js';
 import Trip from './Trip.js';
 import Account from './Account';
 import { render } from 'react-dom';
-import {HomeLinks} from '../api/home.js'
+// import {HomeLinks} from '../api/home.js'
 
 
 class IndividualTrip extends Component {
@@ -70,12 +70,12 @@ class IndividualTrip extends Component {
         </div>,
         document.getElementById('signin')
         );
-        const requiredLink = this.props.homeLink;
-        if (requiredLink){
-            render(<li><a href={'../'+requiredLink.link}>{requiredLink.text}</a></li>,
-                document.getElementById('link')
-                );
-        }
+        // const requiredLink = this.props.homeLink;
+        // if (requiredLink){
+        //     render(<li><a href={'../'+requiredLink.link}>{requiredLink.text}</a></li>,
+        //         document.getElementById('link')
+        //         );
+        // }
       const trip = this.props.trips[0];
       if (trip){
         console.log("TRip id:", trip._id);
@@ -192,9 +192,9 @@ export default withTracker(() => {
     Meteor.subscribe('Meteor.users');
     Meteor.subscribe('tripsBookings');
     console.log("userid: ", Meteor.userId());
-    Meteor.subscribe('homeLinks');
+    // Meteor.subscribe('homeLinks');
     return {
-        homeLink: HomeLinks.findOne({}),
+        // homeLink: HomeLinks.findOne({}),
         trips: Trips.find({ _id: (window.location.pathname).match('[^/]*$')[0] }).fetch(),
         currentUser: Meteor.user(),   
         // bookings: Trips.find({owner: Meteor.userId()}).fetch()

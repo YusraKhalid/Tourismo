@@ -40,7 +40,7 @@ class SignupCustomer extends Component {
                     </div>
                 <div className="row">
                 <div className="col-md-12  col-lg-12 col-sm-12 col-xs-12  form-group">
-                  <input type="text" ref="age" placeholder="Age" className="form-control " pattern="[0-9]"/>
+                  <input type="text" ref="age" placeholder="Age" className="form-control " pattern="[0-9]*"/>
                 </div>
               </div>
               <div className="row">

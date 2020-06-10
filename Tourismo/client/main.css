@@ -18,6 +18,49 @@
 }
 */
 
+.logo-name{
+  font-size: x-large;
+  /* text-size-adjust: large; */
+  /* border: chocolate 2px solid; */
+}
+
+.not-loggin{
+  /* border: chocolate 2px solid; */
+  margin-bottom: -30px;
+}
+
+.nav-custom{
+  /* padding: -20px; */
+  margin-bottom: -90px;
+  /* margin-top: 10px; */
+  /* padding-bottom: 1px; */
+  /* border: purple 2px solid; */
+  align-content: center;
+}
+
+.username{
+  color: black;
+}
+
+
+/* .nav-link{
+  color: green;
+} */
+
+/* .nav-item{  */
+  /* padding-top: 4%; */
+  /* padding-bottom: 4%; */
+  /* border: rgb(68, 100, 68) 2px solid; */
+/* } */
+
+.have-to-login{
+  text-align: center;
+  padding-left: 35%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  /* padding-right: 30%; */
+  /* border: #65c0ba 1px solid; */
+}
 
 .contact{
   padding-left: 5%;
@@ -132,18 +175,30 @@
   padding-left: 10%;
 }
 
+
+
 #logo{
   width: 80px;
   height: 80px;
   float: left;
 }
 
-.sign-button{
+.sign-button {
+  background: none!important;
+  border: none;
+  /* padding: 0!important; */
+  /*optional*/
+  /* font-family: arial, sans-serif; */
+  /*input has OS specific font-family*/
+  /* color: #069; */
+  /* text-decoration: underline; */
+  cursor: pointer;
+}
+/* .sign-button{
   border-radius: 12px;
   background-color: #e7e7e7; color: black;
   font-size: 16px;
-  /* float: right; */
-}
+} */
 
 /*
 .home{
@@ -168,6 +223,7 @@
 .error{
   color: red;
 }
+
 
 .dp{
   border-radius: 50%;
@@ -475,13 +531,11 @@
   .dp{
     border-radius: 50%;
     object-fit: cover;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
   }
 
-  .username{
-    font-size: small;
-  }
+  
 
   #logo{
     width: 70px;

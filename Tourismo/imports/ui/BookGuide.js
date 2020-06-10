@@ -3,7 +3,7 @@ import {GuideBookings, AcceptedRequests} from '../api/guide.js';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import Account from './Account';
-import {HomeLinks} from '../api/home.js'
+// import {HomeLinks} from '../api/home.js'
 import { render } from 'react-dom';
 
 
@@ -96,17 +96,12 @@ class BookGuide extends Component {
 
     render() {
         console.log("accepted requests:", this.props.acceptedRequests);
+        // console.log("accepted requests:", this.props.guideBookings);
         render(<div>
             <Account /><br/>
           </div>,
           document.getElementById('signin')
           );
-          const requiredLink = this.props.homeLink;
-        if (requiredLink){
-            render(<li><a href={'../'+requiredLink.link}>{requiredLink.text}</a></li>,
-                document.getElementById('link')
-                );
-        }
         document.getElementById('only-home').innerHTML = '<span></span>';
         document.getElementById('home-description').innerText = "";
         document.getElementById('home-trips').innerHTML = ''
@@ -129,12 +124,12 @@ class BookGuide extends Component {
                                             </tbody>
                                         </table>
                                     </center>
-                                    {this.props.guideBookings[0] ?
-                                    <center><h3>Pending Requests</h3></center> :""}
+                                    {/* {this.props.guideBookings[0] ? */}
+                                    {/* <center><h3>Pending Requests</h3></center> :""} */}
                                     {/* <ul> */}
                                     <center><table className='mytable table table-striped'>
                                         <tbody>
-                                            {this.renderBookings()}
+                                            {/* {this.renderBookings()} */}
                                         </tbody>
                                     </table>
                                     </center>
@@ -154,7 +149,7 @@ class BookGuide extends Component {
                             {/* <div className="container-contact"> */}
                                 <div>
                                 <div data-aos="fade-up">
-    {/*                                     
+                                    {/*                                       
                                         <form action="#" method="post" className="bg-white p-md-5 p-4 mb-5" onSubmit={this.onSubmit.bind(this)}>
                                         <div className="row">
                                             <div className="col-md-12 form-group"></div> */}
@@ -383,7 +378,17 @@ class BookGuide extends Component {
                                 {/* </div> */}
                             </section>
                         </div>
-                    : ''
+                    : 
+                    <center>
+                        <div className='have-to-login'>                  
+                            <h3>
+                                
+                                You need an account. <br/><br/>
+                                <a href='login'>Login</a> or <a href='Signup'>Signup</a>
+                            </h3>
+                        
+                        </div>
+                    </center>
                         }
                         </center>
 
@@ -397,9 +402,9 @@ class BookGuide extends Component {
 export default withTracker(() => {
     Meteor.subscribe('guideBookings');
     Meteor.subscribe('acceptedRequests');
-    Meteor.subscribe('homeLinks');
+    // Meteor.subscribe('homeLinks');
     return {
-        homeLink: HomeLinks.findOne({}),
+        // homeLink: HomeLinks.findOne({}),
         guideBookings: GuideBookings.find({owner:Meteor.userId()}, { sort: { createdAt: -1 } }).fetch(),
         acceptedRequests: AcceptedRequests.find({guide_id: { $ne: Meteor.userId() }}, { sort: { createdAt: 1 } }).fetch(),
         currentUser: Meteor.user(),

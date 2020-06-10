@@ -4,7 +4,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import Account from './Account';
 import { render } from 'react-dom';
-import {HomeLinks} from '../api/home.js'
+// import {HomeLinks} from '../api/home.js'
 
 
 class About extends Component {
@@ -15,19 +15,19 @@ class About extends Component {
             </div>,
             document.getElementById('signin')
             );
-        const requiredLink = this.props.homeLink;
-        if (requiredLink){
-            render(<li><a href={'../'+requiredLink.link}>{requiredLink.text}</a></li>,
-                document.getElementById('link')
-                );
-        }
+        // const requiredLink = this.props.homeLink;
+        // if (requiredLink){
+        //     render(<a className='nav-link' href={'../'+requiredLink.link}>{requiredLink.text}</a>,
+        //         document.getElementById('link')
+        //         );
+        // }
         document.getElementById('only-home').innerHTML = '<span></span>';
         document.getElementById('home-description').innerText = "";
         document.getElementById('home-trips').innerHTML = ''
         document.getElementById('scroll-down').innerHTML = '';
         return(
             <div>
-                    <section class="site-hero overlay page-inside">
+                    {/* <section class="site-hero overlay page-inside">
                     <div class="container">
                         <div class="row site-hero-inner justify-content-center align-items-center">
                         <div class="col-md-10 text-center">
@@ -35,9 +35,13 @@ class About extends Component {
                         </div>
                         </div>
                     </div>
-                    </section>
+                    </section> */}
 
-                    <section class="section bg-light slant-top">
+                    <section class="section ">
+                        {/* <center>
+                            <h1 className='title' data-aos="fade-up">About Us</h1>
+                        </center>
+                        <br/> */}
                           <div class="container">
                             <div class="half d-md-flex d-block">
                             <div class="image about" data-aos="fade"></div>
@@ -52,7 +56,7 @@ class About extends Component {
                     </section>
 
 
-                    <section class="section bg-light-2">
+                    <section class="section bg-light">
                     <div class="container">
                         <div class="half d-md-flex d-block">
 
@@ -155,9 +159,9 @@ class About extends Component {
     };
 };
 export default withTracker(() => {
-    Meteor.subscribe('homeLinks');
+    // Meteor.subscribe('homeLinks');
     return {
-        homeLink: HomeLinks.findOne({}),
+        // homeLink: HomeLinks.findOne({}),
         currentUser: Meteor.user(),
     };
   })(About);

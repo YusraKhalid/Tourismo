@@ -44,13 +44,6 @@ class Home extends Component {
             </div>,
             document.getElementById('signin')
             );
-        const requiredLink = this.props.homeLink;
-        if (requiredLink){
-            document.getElementById("guide-link").href = requiredLink;
-            render(<li><a href={'../'+requiredLink.link}>{requiredLink.text}</a></li>,
-                document.getElementById('link')
-                );
-        }
     }
     
 
@@ -58,10 +51,10 @@ class Home extends Component {
         const top = document.getElementById('top-section');
         // console.log("URL: ", window.location);
         top.classList.remove('page-inside');
+        
         // document.getElementById('home-description').innerText = "Wallow yourself in the true colours of Pakistan!";
         // document.getElementById('home-trips').innerHTML = '<p class="pt-4  animated fadeInUpBig"><a href="/DisplayTrips" class="btn uppercase btn-outline-light d-sm-inline d-block py-3">See Trips</a></p>'
         // document.getElementById('scroll-down').innerHTML = '<p  className=" animated fadeInUpBig slower"><a href="#next-section" class="scroll-down smoothscroll"> <span class="fa fa-play"></span> Scroll Down</a></p>';
-        const requiredLink = this.props.homeLink;
         
         ReactDom.render(<div><center><section class="section testimonial-section bg-light-2">
                     <div class="container">
