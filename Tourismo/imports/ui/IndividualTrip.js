@@ -24,8 +24,11 @@ class IndividualTrip extends Component {
             Meteor.call('trips.book',this.props.trips[0]._id, parseInt(seats), (error, result) => {
               console.log('error: ', error);
               if (error) {
-                this.props.history.push("/SignupCustomer");
-              }
+                if (error='Error: Phone not found [not-registered]'){
+                  this.props.history.push("/SignupCustomer");
+                }
+                this.refs.error.replaceWith(error);
+              } 
             });
           } 
           else {
@@ -105,8 +108,11 @@ class IndividualTrip extends Component {
               <div className='trip-booking'>
               <form className='tripBooking' onSubmit={this.handleSubmit.bind(this)}>
                 <b>Number of participants or seats: </b>
-                <input type='number' ref='seats'></input>
+                <input type='number' className='seat-input' ref='seats'></input>
                 <button type='submit'>Book</button>
+                <div className='error'>
+                  <span ref='error'></span>
+                </div>
               </form></div>
               {trip ?
               <div className='trip-detail'>
@@ -121,67 +127,6 @@ class IndividualTrip extends Component {
               </div>:""}
             </ul>
             <div className='clear-end'></div>
-
-
-            <section class="section bg-light-2">
-    <div class="container">
-      <div class="row justify-content-center text-center mb-5">
-        <div class="col-md-8">
-          <h2 class="heading" data-aos="fade-up">Experience Once In Your Life Time</h2>
-          <p class="lead" data-aos="fade-up" data-aos-delay="100">Pakistan, a land of diverse culture, consumes you by WANDERLUST!</p>
-          <p>Away from the hurly-burly of life, encounter a getaway in Pakistan, which makes you want more of the stupendous panoramas, it offers.</p>
-      </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up">
-          <div class="d-block ftco-img-flaticon">
-            <img src="fonts/flaticon/svg/001-breakfast.svg" alt="Free Template by Free-Template.co" class="img-fluid mb-4"/>
-            <h3>Good Foods</h3>
-            <p>Pakistan, a soil known for its herbs and spices, has an unparalleled melange of foods. From desserts to mountains, every single traditional food has its own profound history. </p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="d-block ftco-img-flaticon">
-            <img src="fonts/flaticon/svg/002-planet-earth.svg" alt="Free Template by Free-Template.co" class="img-fluid mb-4"/>
-            <h3>Travel Anywhere</h3>
-            <p>From discovering the historic vicinages of the south to expriencing the entrancing vistas of the north, travel it ALL! </p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="d-block ftco-img-flaticon">
-            <img src="fonts/flaticon/svg/003-airplane.svg" alt="Free Template by Free-Template.co" class="img-fluid mb-4"/>
-            <h3>Travel Mode</h3>
-            <p>Take an airbus or a roadbus.
-            Board a chairlift to wander through the mountains or mount a rickshaw to meander through the cities.YOU make the call!</p>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
-          <div class="d-block ftco-img-flaticon">
-            <img src="fonts/flaticon/svg/004-beach.svg" alt="Free Template by Free-Template.co" class="img-fluid mb-4"/>
-            <h3>Seashore</h3>
-            <p>Take a day-trip or reserve a personal cabana at your chosen seaside. Have fun cruising or plan a cookout with your pals!  </p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="400">
-          <div class="d-block ftco-img-flaticon">
-            <img src="fonts/flaticon/svg/005-mountains.svg"  class="img-fluid mb-4"/>
-            <h3>Hills</h3>
-            <p>Indulge in the riveting and tranquil mornings at the mountaintops or be a wayfarer and hike across the mountains. </p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="500">
-          <div class="d-block ftco-img-flaticon">
-            <img src="fonts/flaticon/svg/005-mountains.svg"  class="img-fluid mb-4"/>
-            <h3>Hills</h3>
-            <p>Indulge in the riveting and tranquil mornings at the mountaintops or be a wayfarer and hike across the mountains. </p>
-          </div>
-        </div>
-
-      </div>
-    </section>
           </div>
         );
     };

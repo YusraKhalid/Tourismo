@@ -8,6 +8,7 @@ export const UserTripBookings = new Mongo.Collection('userTripBookings');
 
 if (Meteor.isServer) {
     // This code only runs on the server
+    const today = new Date();
   Meteor.publish('trips', () => {
     return Trips.find({},{
       fields: {
@@ -96,15 +97,16 @@ Meteor.methods({
           throw new Meteor.Error('not-registered', "Phone not found");
           // this.props.history.push('/SignupCustomer');
         }
-        // console.log("Bookings", bookings);
+        console.log("Bookings", bookings);
         Trips.update(tripId, { $set: { bookings: bookings , seats: totalSeats} });
         UserTripBookings.insert({
           customer: Meteor.userId(),
           trip_id: tripId,
           trip_name: trip.destination,
+          trip_startDate: trip.startDate,
           seats: seats
         })
-        // console.log("trip: ", Trips.findOne(tripId));
+        console.log("booked: ", Trips.findOne(tripId));
         return ("Booked");
       }
     },

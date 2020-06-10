@@ -65,6 +65,7 @@ class Company extends Component {
   }
 
   render() {
+    console.log("comp: ", this.props.comp);
     render(<div>
       <Account /><br/>
       </div>,
@@ -98,7 +99,9 @@ class Company extends Component {
         {/* <section> */}
         <header>
         <h1>{this.props.id} <br/>
-          <center>All Trips of  {this.props.trips[0] ? this.props.trips[0].company : ""}</center>
+          <center>
+            {/* {this.props.comp ? <img width='20%' height='20%' src={this.props.comp.profile.dp} /> : ""} <br/> */}
+          All Trips of  {this.props.trips[0] ? this.props.trips[0].company : ""}</center>
         </h1>
         <center>
           <h2 className='trip-company-rate'>Rating: <img src={this.state.rating} width='150px' ref='rate'></img></h2>
@@ -163,5 +166,6 @@ class Company extends Component {
         trips: Trips.find({ owner: (window.location.pathname).match('[^/]*$')[0] }, { sort: { createdAt: -1 } }).fetch(),
         currentUser: Meteor.user(),
         reviews: Reviews.find({company: (window.location.pathname).match('[^/]*$')[0]}).fetch(),
+        comp: Meteor.users.findOne({_id:(window.location.pathname).match('[^/]*$')[0]})
     };
   })(Company);

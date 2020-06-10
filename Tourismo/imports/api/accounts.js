@@ -29,6 +29,7 @@ if (Meteor.isServer) {
 Meteor.methods({
 
     'user.addFields'(userId, fields){
+        console.log('fields: ', fields);
         if (Roles.userIsInRole(userId, 'company')){
             Meteor.users.update(userId, {
                 $set: {

@@ -18,23 +18,21 @@
 }
 */
 
+/* body {
+  font-family: 'Sofia';
+} */
+
+
 .logo-name{
   font-size: x-large;
-  /* text-size-adjust: large; */
-  /* border: chocolate 2px solid; */
 }
 
 .not-loggin{
-  /* border: chocolate 2px solid; */
   margin-bottom: -30px;
 }
 
 .nav-custom{
-  /* padding: -20px; */
   margin-bottom: -90px;
-  /* margin-top: 10px; */
-  /* padding-bottom: 1px; */
-  /* border: purple 2px solid; */
   align-content: center;
 }
 
@@ -93,12 +91,14 @@
 .about{
   background-image: url('/images/hero_2.jpg');
   border: #16d3c6 2px solid;
+  box-shadow: 0 3px 20px -5px rgba(0, 0, 0, 0.5);
   /* background-color: tomato; */
 }
 
 .about2{
   background-image: url('/images/hero_1.jpg');
-  border: #65c0ba 2px solid;
+  border: #16d3c6 2px solid;
+  box-shadow: 0 3px 20px -5px rgba(0, 0, 0, 0.5);
 }
 
 .trip-name{
@@ -151,6 +151,8 @@
   background: url('/public/images/button.jpg');
   cursor: pointer;
 }
+
+
 
 .slider::-moz-range-thumb {
   width: 20px;
@@ -224,12 +226,19 @@
   color: red;
 }
 
+.shadow{
+  box-shadow: 0 3px 20px -5px rgba(101, 250, 242, 0.5);
+
+}
+
 
 .dp{
   border-radius: 50%;
   object-fit: cover;
   width:50px;
   height:50px;
+  /* border: #65c0ba 1px solid; */
+  box-shadow: 0 3px 20px -5px rgba(101, 250, 242, 0.5);
 }
 
 .delete {
@@ -456,6 +465,33 @@
 @media only screen and (max-width: 600px) {
   .trip-img{
     width: 100%
+  }
+  
+  .seat-input{
+    width: 50%;
+    margin-right: 10px;
+  }
+
+  .trip-booking{
+    padding: 10px;
+    clear: left;
+  }
+
+  .nav-item-mobile{
+    font-size: x-small;
+  }
+
+  .logo-name{
+    font-size: small;
+  }
+
+  .not-loggin{
+    margin-bottom: -30px;
+  }
+  
+  .nav-custom{
+    margin-bottom: -70px;
+    align-content: center;
   }
 
   .contact{

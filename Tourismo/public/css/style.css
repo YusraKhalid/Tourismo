@@ -1,6 +1,7 @@
 body {
   background: #fff;
-  font-family: "Mukta Mahee", arial, sans-serif;
+  /* font-family: "Mukta Mahee", arial, sans-serif; */
+  font-family: 'Sofia';
   font-weight: 200;
   font-size: 18px;
   line-height: 1.8;
@@ -30,7 +31,8 @@ a:hover {
 
 h1, h2, h3, h4, h5 {
   color: #000;
-  font-family: "Abril Fatface", times, serif;
+  font-family: 'Metal Mania', cursive;
+  /* font-family: "Abril Fatface", times, serif; */
 }
 
 .container-fluid {
@@ -136,7 +138,8 @@ textarea.form-control {
 }
 
 .site-navbar nav .menu {
-  font-family: "Abril Fatface", times, serif;
+  /* font-family: "Abril Fatface", times, serif; */
+  font-family: 'Metal Mania', cursive;
 }
 
 .site-navbar nav .menu li a {
@@ -167,7 +170,8 @@ textarea.form-control {
 }
 
 .site-navbar .extra-info h3 {
-  font-family: "Mukta Mahee", arial, sans-serif;
+  font-family: 'Metal Mania', cursive;
+  /* font-family: "Mukta Mahee", arial, sans-serif; */
   text-transform: uppercase;
   font-size: 13px;
   letter-spacing: .2em;
@@ -237,7 +241,8 @@ textarea.form-control {
 
 .site-hero-inner .heading {
   font-size: 80px;
-  font-family: "Abril Fatface", times, serif;
+  font-family: 'Metal Mania', cursive;
+  /* font-family: "Abril Fatface", times, serif; */
   color: rgb(1, 70, 1);
   line-height: 1;
   font-weight: bold;
@@ -488,7 +493,8 @@ textarea.form-control {
 
 .heading-serif, .testimonial-section .heading, .slider-section .heading, .blog-post-entry .heading {
   font-size: 70px;
-  font-family: "Abril Fatface", times, serif;
+  font-family: 'Metal Mania', cursive;
+  /* font-family: "Abril Fatface", times, serif; */
   line-height: 1;
   margin-bottom: 30px;
 }
@@ -568,7 +574,8 @@ textarea.form-control {
 
 .testimonial blockquote p {
   line-height: 1.5;
-  font-family: "Mukta Mahee", arial, sans-serif;
+  font-family: 'Sofia';
+  /* font-family: "Mukta Mahee", arial, sans-serif; */
   font-size: 20px;
   color: #000;
   font-style: italic;
@@ -954,7 +961,8 @@ textarea.form-control {
 .side-box .heading, .sidebar-search .heading {
   font-size: 18px;
   margin-bottom: 30px;
-  font-family: "Mukta Mahee", arial, sans-serif;
+  font-family: 'Metal Mania', cursive;
+  /* font-family: "Mukta Mahee", arial, sans-serif; */
 }
 
 .post-list li {
@@ -1009,7 +1017,8 @@ textarea.form-control {
 }
 
 .contact-section .contact-info p {
-  font-family: "Abril Fatface", times, serif;
+  /* font-family: "Abril Fatface", times, serif; */
+  font-family: 'Sofia';
   color: #000;
   font-size: 30px;
   margin-bottom: 30px;
@@ -1018,7 +1027,8 @@ textarea.form-control {
 .contact-section .contact-info p .d-block {
   font-size: 14px;
   letter-spacing: .2em;
-  font-family: "Mukta Mahee", arial, sans-serif;
+  /* font-family: "Mukta Mahee", arial, sans-serif; */
+  font-family: 'Sofia';
   text-transform: uppercase;
   color: #65c0ba;
   font-weight: bold;

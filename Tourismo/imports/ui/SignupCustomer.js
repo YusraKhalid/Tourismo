@@ -3,21 +3,23 @@ import '../api/accounts.js';
 
 class SignupCustomer extends Component {
     onSubmit(event) {
+      event.preventDefault();
         const fields = {
             name: this.refs.name.value,
             age: this.refs.age.value,
             phone: this.refs.phone.value,
-            city: this.refs.city.value,
             cnic: this.refs.cnic.value,
         };
         // for email verification:    https://docs.meteor.com/api/passwords.html#Accounts-createUser
-        event.preventDefault();
+        
         const userId = Meteor.user()._id
+        // console.log('Fields: ', fields);
         Meteor.call('user.addFields', userId, fields);
         window.location.pathname = '/';
     }
 
     render() {
+      // console.log("opened");
         document.getElementById('only-home').innerHTML = '<span></span>';
         document.getElementById('home-description').innerText = "";
         document.getElementById('home-trips').innerHTML = ''
@@ -45,7 +47,7 @@ class SignupCustomer extends Component {
               </div>
               <div className="row">
                 <div className="col-md-12  col-lg-12 col-sm-12 col-xs-12  form-group">
-                  <input type="text" ref="phone" placeholder="Phone Number" className="form-control " pattern="[0-9]{11}"/>
+                <input type="tel" ref="phone" placeholder="Phone#" className="form-control "/>
                 </div>
               </div>
               {/* <div className="row">

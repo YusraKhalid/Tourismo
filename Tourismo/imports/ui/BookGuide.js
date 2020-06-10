@@ -77,6 +77,8 @@ class BookGuide extends Component {
         return(acceptedRequests.map((acceptedRequest)=>{
             return(
                 <tr><td><div className='acceptedRequest' >
+                    Your request is accepted by <b>{acceptedRequest.guide_name}</b>.<br/>
+                    Phone number is <b>{acceptedRequest.guide_phone}</b><br/>
                     CNIC Number is <b>{acceptedRequest.guide_cnic}</b><br/>
                     For the following booking<br/>
                     <div>
@@ -129,7 +131,7 @@ class BookGuide extends Component {
                                     {/* <ul> */}
                                     <center><table className='mytable table table-striped'>
                                         <tbody>
-                                            {/* {this.renderBookings()} */}
+                                            {this.renderBookings()}
                                         </tbody>
                                     </table>
                                     </center>
@@ -368,7 +370,7 @@ class BookGuide extends Component {
                                                 </div>
                                                 <div className="row">
                                                     <div className="col-md-6 form-group">
-                                                        <input type="submit" value="Sign Up" className="btn btn-primary"/>
+                                                        <input type="submit" value="Book" className="btn btn-primary"/>
                                                     </div>
                                                 </div>
                                                 {/* <button type="submit">Submit</button>    */}

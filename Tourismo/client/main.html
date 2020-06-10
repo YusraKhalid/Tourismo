@@ -16,13 +16,14 @@
   <link rel="stylesheet" href="/css/aos.css">
   <link rel="stylesheet" href="/css/fancybox.min.css">
   <link rel="stylesheet" href="/css/animsition.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
   <!-- Icons to support Material Design -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
-
-  <link rel="stylesheet" href="/fonts/ionicons/css/ionicons.min.css">
-  <link rel="stylesheet" href="/fonts/fontawesome/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="/fonts/ionicons/css/ionicons.min.css"> -->
+  <!-- <link rel="stylesheet" href="/fonts/fontawesome/css/font-awesome.min.css"> -->
 
   <!-- Theme Style -->
   <link rel="stylesheet" href="/css/style.css">
@@ -31,75 +32,9 @@
 </head>
 <body>
 
-    <!-- <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="/">Vacation<span>Travel Agency</span></a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
-	      </button>
-
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-	          <li class="nav-item"><a href="destination.html" class="nav-link">Destination</a></li>
-	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-	          <li class="nav-item cta"><a href="#" class="nav-link">Book Now</a></li>
-
-	        </ul>
-	      </div>
-	    </div>
-	  </nav> -->
-    
-<!-- 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <div class=" w-100 order-1 order-md-0 ">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="navbar-brand mx-auto" href="/">TOURISMO</a>
-                </li>
-                
-            </ul>
-        </div>
-        <div class="navbar-collapse collapse mx-auto order-0 dual-collapse2">
-      
-                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item active">
-                    <a class="nav-link" href="/">Home</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="//codeply.com">Trips</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" id='guide-link' href="Login">Book Guide</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Review</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Log In</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Sign Up</a>
-                </li>
-            </ul>
-        </div>
-    </nav> -->
-
   <header class="sticky-top">
-    <nav class="navbar navbar-expand-md  navbar-dark bg-dark">
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
         <div class=" w-100 order-1  order-md-0 ">
-            <!-- <div class="col-4 site-logo animated fadeInDownBig"> <a href="/" class="animsition-link"><img id='logo' src="/images/logo-lightgrey.png"></a> </div> -->
-
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="navbar-brand logo-name mx-auto animated fadeInDownBig " href="/">  T <img width='25px' src='/images/logo-withoutname-white.png'/>URISMO</a>
@@ -107,82 +42,35 @@
                 
             </ul>
         </div>
-        <!-- <div class="animated fadeInDownBig"> <a href="/" class="animsition-link"><img id='logo' src="/images/logo-grey.png"></a> </div> -->
-
-        <!-- <div class="navbar-collapse collapse mx-auto order-0 dual-collapse2">
-      
-                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div> -->
         <div id='nav-custom' class="navbar-collapse animated fadeInDownBig collapse w-100 order-3 dual-collapse2">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active ">
-                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link nav-item-mobile" href="/">Home</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/DisplayTrips">Trips</a>
+                <li class="active">
+                    <a class="nav-link nav-item-mobile" href="/DisplayTrips">Trips</a>
                 </li>
-                <li class="nav-item active" id='link'>
-                    <a class="nav-link" href="Login">Book Guide</a>
+                <li class="nav-item  active" id='link'>
+                    <a class="nav-link nav-item-mobile" href="Login">Book Guide</a>
                 </li>
-                <!-- <li class="nav-item active">
-                    <a class="nav-link" href="#">Review</a>
+                <li class="nav-item  active">
+                    <a class="nav-link nav-item-mobile" href="About">About</a>
+                </li>
+                <!-- <li class="nav-item  active">
+                    <a class="nav-link nav-item-mobile" href="Contact">Contact Us</a>
                 </li> -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="About">About</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="Contact">Contact Us</a>
-                </li>
                 <li class="nav-item active" id='signin' >
-                    <a class="nav-link" href="Login">Log In</a>
+                    <a class="nav-link nav-item-mobile" href="Login">Log In</a>
                 </li>
-                <!-- <li class="nav-item active">
-                    <a class="nav-link" href="#">Sign Up</a>
-                </li> -->
             </ul>
-            <!-- <span id='signin'></span> -->
         </div>
         
     </nav>
-    <!-- <span id='signin'></span> -->
       <div class="container-fluid">
       <div class="row">
-          <!-- <div class="col-4 site-logo animated fadeInDownBig"><a href="/" class="animsition-link"><img id='logo' src="/img/logo.png"></a></div> -->
           <div class="col-8">
           <div>
-          <!-- <div id='userdata'> -->
-            <!-- <div style="float: right;">
-              <h5><span id='dp'></span><br/><span id='username'></span></h5><br/>
-              <span id='sign-button'></span>
-          </div> -->
-          <!-- </div> -->
           </div>
-          <!-- <div class="site-menu-toggle js-site-menu-toggle animated fadeInDownBig">
-              <span></span>
-              <span></span>
-              <span></span>
-          </div> -->
-          <!-- END menu-toggle -->
-
-          <!-- <div class="site-navbar js-site-navbar">
-              <nav role="/navigation">
-              <div class="container">
-                  <div class="row full-height align-items-center">
-                  <div class="col-md-12 justify-content-center">
-                      <ul class="list-unstyled menu">
-                      <li><a href="/" class="animsition-link">Home</a></li>
-                      <li><a href="/DisplayTrips" class="animsition-link">Trips</a></li>
-                      <span id='link'></span>
-                        <li><a href="/Login" class="animsition-link">Sign In</a></li>
-                      <li class="active"><a href="Signup" class="animsition-link">Sign Up</a></li>
-                      </ul>
-                  </div>
-                  </div>
-              </div>
-              </nav>
-          </div> -->
           </div>
       </div>
       </div>
@@ -190,19 +78,6 @@
   <!-- END head -->
   
 <div id='top'>
-  <!-- <section class="site-hero overlay page-inside" style="background-image: url(images/hero_3.jpg)">
-    <div class="container">
-      <div class="row site-hero-inner justify-content-center align-items-center">
-        <div class="col-md-10 text-center">
-          <h1 class="heading" data-aos="fade-up">Blog</h1>
-          <p class="sub-heading mb-5" data-aos="fade-up" data-aos-delay="100">
-            A free template by <a href="https://free-template.co" target="_blank">Free-Template.co</a>. Download and share!
-          </p>
-        </div>
-      </div>
-    </div>
-  </section> -->
-
 
   <section id='top-section' class="site-hero overlay page-inside" style="background-image: url(/images/hero_3.jpg)">
       <div class="container">
@@ -212,7 +87,6 @@
           <p id='home-description' class="sub-heading mb-5  animated fadeInUpBig slower">
               Wallow yourself in the true colours of Pakistan!
           </p>
-          <!-- <span id='home-trips'></span> -->
           <p class="pt-4 animated fadeInUpBig" id='home-trips'>
               <a href="DisplayTrips" class="btn uppercase btn-outline-light d-sm-inline d-block py-3  animated fadeInUpBig">See Trips</a>
               <a href="BookGuide" class="btn uppercase btn-outline-light d-sm-inline d-block py-3  animated fadeInUpBig">Book Guide</a>
@@ -221,7 +95,6 @@
           </div>
       </div>
       <span id='scroll-down'></span>
-      <!-- <p  data-aos="fade-up" data-aos-offset="-500"><a href="#next-section" class="scroll-down smoothscroll"> <span class="fa fa-play"></span> Scroll Down</a></p> -->
       </div>
   </section>
   <!-- END section -->
@@ -230,28 +103,6 @@
   <div id="render-target"></div>
   <div id='second-main'></div>
 
-  
-
-  <!-- <section class="section" id="next-section">
-      <div class="container">
-      <div class="row align-items-center">
-          <div class="col-lg-6 mb-4" data-aos="fade-up">
-          <p><img src="/images/img_1_long.jpg" alt="Free Template by Free-Template.co" class="img-fluid"></p>
-          </div>
-          <div class="col-lg-6 pl-lg-5" data-aos="fade-up">
-          <h2 class="mb-4">Welcome To Our Website</h2>
-          <p >Plan your tour with TOURISMO! </p>
-          <p>Tourismo is your way to travel the bewitching loci of Pakitan. Taking you to each and every niche, Tourismo ensures the welfare and serenity of its excursionist. </p>
-          <p class="pt-4">
-              <a href="https://vimeo.com/channels/staffpicks/93951774"  data-fancybox class="btn-play d-flex">
-              <span class="icon align-self-center mr-3"><span class="fa fa-play"></span></span>
-              <span class="text align-self-center">Watch The Video</span>
-              </a>
-          </p>
-          </div>
-      </div>
-      </div>
-  </section> -->
 <div id='only-home'>
   <section class="section slider-section">
       <div class="container">
@@ -335,106 +186,9 @@
     </div>
     </div>
 </section>
-<!-- 
-  <section class="section blog-post-entry bg-light slant-top">
-      <div class="container">
-      <div class="row justify-content-center text-center mb-5">
-          <div class="col-md-8 primary-bg-text">
-          <h2 class="heading animated fadeInUpBig" >Newsletter</h2>
-          <p class="lead animated fadeInUpBig">Pakistan has been declared world's third highest potential adventure destination for 2020. With its bustling streets, captivating nature, and warm people, Pakistan is a bundle of pure joy!  </p>
-          </div>
-      </div>
-      <div class="row">
-          <div class="col-lg-4 col-md-6 col-sm-6 col-12 post animated fadeInUpBig" data-aos-delay="100">
-
-          <div class="media media-custom d-block mb-4">
-              <a href="#" class="mb-4 d-block"><img src="/images/img_1.jpg" alt="Image placeholder" class="img-fluid"></a>
-              <div class="media-body">
-              <span class="meta-post">February 26, 2018</span>
-              <h2 class="mt-0 mb-3"><a href="#">45 Best Places To Unwind</a></h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
-              </div>
-          </div>
-
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-6 col-12 post" data-aos="fade-up" data-aos-delay="200">
-          <div class="media media-custom d-block mb-4">
-              <a href="#" class="mb-4 d-block"><img src="/images/img_2.jpg" alt="Image placeholder" class="img-fluid"></a>
-              <div class="media-body">
-              <span class="meta-post">February 26, 2018</span>
-              <h2 class="mt-0 mb-3"><a href="#">45 Best Places To Unwind</a></h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
-              </div>
-          </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-12 col-12 post" data-aos="fade-up" data-aos-delay="300">
-          <div class="media media-custom d-block mb-4">
-              <a href="#" class="mb-4 d-block"><img src="/images/img_3.jpg" alt="Image placeholder" class="img-fluid"></a>
-              <div class="media-body">
-              <span class="meta-post">February 26, 2018</span>
-              <h2 class="mt-0 mb-3"><a href="#">45 Best Places To Unwind</a></h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
-              </div>
-          </div>
-          </div>
-      </div>
-      </div>
-  </section> -->
-  <!-- END section -->
 
 
   <div id='reviews'>
-  <!-- <section class="section testimonial-section bg-light-2">
-      <div class="container">
-      <div class="row justify-content-center text-center mb-5">
-          <div class="col-md-8">
-          <h2 class="heading" data-aos="fade-up">Happy Customers</h2>
-          </div>
-      </div>
-      <div class="row">
-          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="testimonial">
-              <div class="author-image mb-3">
-              <img src="/images/person_1.jpg" alt="Image placeholder" class="rounded-circle">
-              </div>
-              <blockquote>
-
-              <p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-              </blockquote>
-              <p><em>&mdash; Clare Gupta</em></p>
-              
-          </div>
-          </div> -->
-          <!-- END col -->
-          <!-- <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="testimonial">
-              <div class="author-image mb-3">
-              <img src="/images/person_2.jpg" alt="Image placeholder" class="rounded-circle">
-              </div>
-              <blockquote>
-              <p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.rdquo;</p>
-              </blockquote>
-              <p><em>&mdash; Rogie Slater</em></p>
-          </div>
-          </div> -->
-          <!-- END col -->
-
-          <!-- <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-          <div class="testimonial">
-              <div class="author-image mb-3">
-              <img src="/images/person_3.jpg" alt="Image placeholder" class="rounded-circle">
-              </div>
-              <blockquote>
-
-              <p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-              </blockquote>
-              <p><em>&mdash; John Doe</em></p>
-          </div>
-          </div> -->
-          <!-- END col -->
-      <!-- </div>
-      </div>
-  </section> -->
   </div>
 
   <section class="section visit-section">
@@ -447,61 +201,23 @@
       </div>
       <div class="row">
           <div class="col-lg-3 col-md-6 visit mb-3" data-aos="fade-right">
-          <a href="/Company/qWMPCs5nZ3ZM9Y7mi"><img src="/images/img_8.jpg" alt="Image placeholder" class="img-fluid"> </a>
-          <h3><a href="/Company/qWMPCs5nZ3ZM9Y7mi">Excursion</a></h3>
-          <!-- <div class="reviews-star float-left">
-              <span class="ion-android-star"></span>
-              <span class="ion-android-star"></span>
-              <span class="ion-android-star"></span>
-              <span class="ion-android-star"></span>
-              <span class="ion-android-star-outline"></span>
-          </div>
-          <span class="reviews-count float-right">
-              3,239 reviews
-          </span> -->
+          <a href="/Company/NdGa2uepBptCM3dD8"><img src="/images/img_8.jpg" alt="Image placeholder" class="img-fluid"> </a>
+          <h3><a href="/Company/NdGa2uepBptCM3dD8">Excursion</a></h3>
+
           </div>
           <div class="col-lg-3 col-md-6 visit mb-3" data-aos="fade-right" data-aos-delay="100">
           <a href="Company/aDngZv9WtZ49GSrvb"><img src="/images/img_7.jpg" alt="Image placeholder" class="img-fluid"> </a>
           <h3><a href="/Company/aDngZv9WtZ49GSrvb">Travel Pakistan</a></h3>
-          <!-- <div class="reviews-star float-left">
-              <span class="ion-android-star"></span>
-              <span class="ion-android-star"></span>
-              <span class="ion-android-star"></span>
-              <span class="ion-android-star-half"></span>
-              <span class="ion-android-star-outline"></span>
-          </div>
-          <span class="reviews-count float-right">
-              4,921 reviews
-          </span> -->
+
           </div>
           <div class="col-lg-3 col-md-6 visit mb-3" data-aos="fade-right" data-aos-delay="200">
           <a href="/Company/Bn5dLn5yswsCmvEGF"><img src="/images/img_4.jpg" alt="Image placeholder" class="img-fluid"> </a>
           <h3><a href="/Company/Bn5dLn5yswsCmvEGF">Ser O Seahat</a></h3>
-          <!-- <div class="reviews-star float-left">
-              <span class="ion-android-star"></span>
-              <span class="ion-android-star"></span>
-              <span class="ion-android-star"></span>
-              <span class="ion-android-star"></span>
-              <span class="ion-android-star-outline"></span>
-          </div>
-          <span class="reviews-count float-right">
-              2,112 reviews
-          </span> -->
+
           </div>
           <div class="col-lg-3 col-md-6 visit mb-3" data-aos="fade-right" data-aos-delay="300">
           <a href="/Company/kpSB56Kn29aEWeMXk"><img src="/images/img_5.jpg" alt="Image placeholder" class="img-fluid"> </a>
           <h3><a href="/Company/kpSB56Kn29aEWeMXk">Adventure Club</a></h3>
-          <!-- <div class="reviews-star float-left">
-              <span class="ion-android-star"></span>
-              <span class="ion-android-star"></span>
-              <span class="ion-android-star"></span>
-              <span class="ion-android-star"></span>
-              <span class="ion-android-star-half"></span>
-              <span class="ion-android-star-outline"></span>
-          </div>
-          <span class="reviews-count float-right">
-              6,421 reviews
-          </span> -->
           </div>
       </div>
       </div>
@@ -599,16 +315,6 @@
                 <li data-aos="fade-up"><a href="/Signup">As a Trip Company</a></li>
             </ul>
             </div>
-          <!-- <div class="col-md-3 mb-5">
-          <h3>Subscribe</h3>
-          <p>Sign up for our newsletter</p>
-          <form action="#" class="footer-newsletter">
-              <div class="form-group" data-aos="fade-up">
-              <input type="email" class="form-control" placeholder="Your email...">
-              <button type="submit" class="btn"><span class="fa fa-paper-plane"></span></button>
-              </div>
-          </form>
-          </div> -->
       </div>
       <div class="row bordertop text-center pt-5">
           <p class="col-md-12">&copy; Copyright 2020. All Rights Reserved. <br> Designed &amp; Developed by Team Tourismo</p>

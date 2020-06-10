@@ -7,7 +7,7 @@ import { Reviews } from '../api/reviews.js';
 // import { Trips } from '../api/trips.js';
 import Review from './Review.js';
 import ReactDom from 'react-dom';
-import ScrollAnimation from 'react-animate-on-scroll';
+// import ScrollAnimation from 'react-animate-on-scroll';
 
 // import '/js/main.js'
 // import HomeReview from './HomeReview'
@@ -104,7 +104,7 @@ class Home extends Component {
                 <div className="container">
                 <div className="row align-items-center">
                     <div className="col-lg-6 mb-4  animated fadeInUpBig">
-                    <p><img src="/images/index1BG.jpg" alt="Image" className="img-fluid"/> 
+                    <p><img src="/images/index1BG.jpg" alt="Image" className="img-fluid shadow"/> 
                     </p>
                     </div>
                     <div className="col-lg-6 pl-lg-5" data-aos="fade-up">

@@ -48,7 +48,7 @@ class SignupGuide extends Component {
               </div>
               <div className="row">
                 <div className="col-md-12 col-lg-12 col-sm-12 col-xs-12 form-group">
-                  <input type="number" ref="phone" placeholder="Phone Number" className="form-control "/>
+                <input type="tel" ref="phone" placeholder="Phone#" className="form-control "/>
                 </div>
                 </div>
                 <div className="row">

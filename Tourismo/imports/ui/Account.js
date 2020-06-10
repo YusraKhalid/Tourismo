@@ -27,7 +27,7 @@ class Account extends Component {
         const requiredLink = this.props.homeLink;
         if (requiredLink){
             // document.getElementById("guide-link").href = requiredLink;
-            render(<a className='nav-link' href={'../'+requiredLink.link}>{requiredLink.text}</a>,
+            render(<a className='nav-link nav-item-mobile' href={'../'+requiredLink.link}>{requiredLink.text}</a>,
                 document.getElementById('link')
                 );
         }
@@ -42,10 +42,10 @@ class Account extends Component {
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     {/* <a class="nav-link" href='#'>  */}
-                    <button className=' nav-link sign-button' onClick={this.signout.bind(this)}>Sign out </button>
+                    <button className=' nav-link nav-item-mobile sign-button' onClick={this.signout.bind(this)}>Sign out </button>
                      {/* </a> */}
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item nav-item-mobile active">
                 {profile?<img className='dp' src={profile.dp}></img>:""}<br/><br/>
                     <h5>
                         <div color='black' className='username'>{user}</div>
@@ -67,10 +67,10 @@ class Account extends Component {
             // <div align='right'>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="Login">Log In</a>
+                    <a class="nav-link nav-item-mobile" href="Login">Log In</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="Signup">Sign Up</a>
+                    <a class="nav-link nav-item-mobile" href="Signup">Sign Up</a>
                 </li>
                 {/* <li class="nav-item active">
                 <img className='dp' src=""></img> <br/><br/>
