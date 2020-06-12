@@ -67,10 +67,10 @@ class Account extends Component {
             // <div align='right'>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link nav-item-mobile" href="Login">Log In</a>
+                    <a class="nav-link nav-item-mobile" href="../Login">Log In</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link nav-item-mobile" href="Signup">Sign Up</a>
+                    <a class="nav-link nav-item-mobile" href="../Signup">Sign Up</a>
                 </li>
                 {/* <li class="nav-item active">
                 <img className='dp' src=""></img> <br/><br/>

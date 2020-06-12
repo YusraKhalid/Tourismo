@@ -10,7 +10,7 @@ import { render } from 'react-dom';
 class TourGuide extends Component {
 
     handleAccept(){
-        var accept = confirm("Sure you want to remove this?");
+        var accept = confirm("Sure you want to accept this?");
         if( accept == true ) {
         // alert("Sure you want to accept") (
             console.log("accepted", this._id);
@@ -21,16 +21,19 @@ class TourGuide extends Component {
     renderBookings(bookings){
         // const bookings = this.props.guideBookings;
         return(bookings.map((booking)=>{
+            const cost = booking.days * 1000 + booking.hours * 300;
             return(
                     <tr><td>
                     <div className='booking' >
                         <center><h5>{booking.destination}</h5></center>
-                        destination:<b>{booking.destination}</b> <br/>
-                        Days:<b>{booking.days}</b><br/>
-                        hours:<b>{booking.hours}</b><br/>
-                        Date:<b>{booking.date}</b><br/>
-                        departure:<b>{booking.departure}</b><br/>
-                        additionalInformation:<b>{booking.additionalInformation}</b><br/>
+                        destination: <b><span className='trip-data'>{booking.destination}</span></b> <br/>
+                        Cost: <span className='trip-data'>{cost} </span> <br/>
+                        Days: <b><span className='trip-data'>{booking.days}</span></b><br/>
+                        hours: <b><span className='trip-data'>{booking.hours}</span></b><br/>
+                        Date: <b><span className='trip-data'>{booking.date}</span></b><br/>
+                        departure: <b><span className='trip-data'>{booking.departure}</span></b><br/>
+                        {booking.pickup? <div>Pickup: <b><span className='trip-data'>{booking.pickup} </span> </b> </div> :""}
+                        additionalInformation: <b><span className='trip-data'>{booking.additionalInformation}</span></b><br/>
                         <div className='accept' float='left'>
                             <button type='button' onClick={this.handleAccept.bind(booking)}>Accept Offer</button>
                         </div>
@@ -44,6 +47,7 @@ class TourGuide extends Component {
     renderOtherBookings(bookings){
         // const bookings = this.props.guideBookings;
         return(bookings.map((booking)=>{
+            const cost = booking.days * 1000 + booking.hours * 300;
             return(
                 <div className='bookings-others'>
                     <table className=' mytable other-table table'>
@@ -51,12 +55,14 @@ class TourGuide extends Component {
                             <tr><td>
                             <div className='booking' >
                                 <center><h5>{booking.destination}</h5></center>
-                                destination:<b>{booking.destination}</b> <br/>
-                                Days:<b>{booking.days}</b><br/>
-                                hours:<b>{booking.hours}</b><br/>
-                                Date:<b>{booking.date}</b><br/>
-                                departure:<b>{booking.departure}</b><br/>
-                                additionalInformation:<b>{booking.additionalInformation}</b><br/>
+                                destination: <b><span className='trip-data'>{booking.destination}</span></b> <br/>
+                                Cost: <span className='trip-data'>{cost} </span> <br/>
+                                Days: <b><span className='trip-data'>{booking.days}</span></b><br/>
+                                hours: <b><span className='trip-data'>{booking.hours}</span></b><br/>
+                                Date: <b><span className='trip-data'>{booking.date}</span></b><br/>
+                                departure: <b><span className='trip-data'>{booking.departure}</span></b><br/>
+                                {booking.pickup? <div>Pickup: <b><span className='trip-data'>{booking.pickup} </span> </b> </div> :""}
+                                additionalInformation: <b><span className='trip-data'>{booking.additionalInformation}</span></b><br/>
                             </div>
                             </td></tr>
                         </tbody>
@@ -73,19 +79,22 @@ class TourGuide extends Component {
     renderAcceptedRequests(){
         const acceptedRequests = this.props.acceptedRequests;
         return(acceptedRequests.map((acceptedRequest)=>{
+            const cost = acceptedRequest.days * 1000 + acceptedRequest.hours * 300;
             return(
                 <tr><td>
                 <div className='acceptedRequest' >
-                    Your Request you accepted is by <b>{acceptedRequest.customer_name}</b><br/>
+                    Your accepted request is by <b>{acceptedRequest.customer_name}</b><br/>
                     The Contact Number is <b>{acceptedRequest.customer_phone}</b><br/>
                     For the following booking<br/>
                     <div>
-                    destination:<b>{acceptedRequest.destination}</b> <br/>
-                    Days:<b>{acceptedRequest.days}</b><br/>
-                    hours:<b>{acceptedRequest.hours}</b><br/>
-                    Date:<b>{acceptedRequest.date}</b><br/>
-                    departure:<b>{acceptedRequest.departure}</b><br/>
-                    additionalInformation:<b>{acceptedRequest.additionalInformation}</b><br/>
+                    destination: <b><span className='trip-data'>{acceptedRequest.destination}</span></b> <br/>
+                    Cost: <span className='trip-data'>{cost} </span> <br/>
+                    Days: <b><span className='trip-data'>{acceptedRequest.days}</span></b><br/>
+                    hours: <b><span className='trip-data'>{acceptedRequest.hours}</span></b><br/>
+                    Date: <b><span className='trip-data'>{acceptedRequest.date}</span></b><br/>
+                    {acceptedRequest.departure? <div>departure: <b><span className='trip-data'>{acceptedRequest.departure}</span></b><br/></div> :""}
+                    {acceptedRequest.pickup? <div>Pickup: <b><span className='trip-data'>{acceptedRequest.pickup} </span> </b> </div> :""}
+                    additionalInformation: <b><span className='trip-data'>{acceptedRequest.additionalInformation}</span></b><br/>
                     </div>
                 </div>
                 </td></tr>

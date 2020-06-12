@@ -17,20 +17,25 @@ class Company extends Component {
     super(props);
     this.state = {
       hideCompleted: false,
-      rating: ''
+      rating: '',
     };
   }
   handleSubmit(event){
     event.preventDefault();
     if (Meteor.userId()){
       console.log("adding");
-    const review = {
-      company: (window.location.pathname).match('[^/]*$')[0],
-      rating: this.refs.rate.value,
-      remarks: this.refs.remarks.value,
-      reviewer_dp: this.props.currentUser.profile.dp
-    }
-    Meteor.call('reviews.insert', review);
+      const review = {
+        company: (window.location.pathname).match('[^/]*$')[0],
+        rating: this.refs.rate.value,
+        remarks: this.refs.remarks.value,
+        reviewer_dp: this.props.currentUser.profile.dp
+      }
+      if (this.props.thisReviewer){
+        var replace = confirm("You already have following review for this company. Do you want to replace it? Rating:"+ this.props.thisReviewer[0].rating +" Review:"+this.props.thisReviewer[0].remarks);
+        if (replace == true){
+          Meteor.call('reviews.insert', review);
+        }
+      }
   }
   else{
     this.props.history.push('/Login');
@@ -64,7 +69,29 @@ class Company extends Component {
     });
   }
 
+  renderCompanyData(){
+    console.log("Windo id: ", (window.location.pathname).match('[^/]*$')[0]);
+    Meteor.call('users.companyData', (window.location.pathname).match('[^/]*$')[0],
+    (err, result) => {
+      if(err){
+        console.log("Error: ", err);
+      }
+      else{
+        console.log('Result Company: ', result);
+        this.refs.phone.replaceWith(result[0].phone);
+        if (result[0].intro){
+          this.refs.intro.replaceWith(result[0].intro);
+        }
+        if (result[0].link){
+          this.refs.link.replaceWith(result[0].link);
+        }
+        this.refs.address.replaceWith(result[0].address);
+      }
+    })
+  }
+
   render() {
+    this.renderCompanyData();
     console.log("comp: ", this.props.comp);
     render(<div>
       <Account /><br/>
@@ -101,9 +128,20 @@ class Company extends Component {
         <h1>{this.props.id} <br/>
           <center>
             {/* {this.props.comp ? <img width='20%' height='20%' src={this.props.comp.profile.dp} /> : ""} <br/> */}
-          All Trips of  {this.props.trips[0] ? this.props.trips[0].company : ""}</center>
+            {/* All Trips of   */}
+            {this.props.trips[0] ? this.props.trips[0].company : ""}
+          </center>
         </h1>
         <center>
+          <div className='company-intro'>
+            <span ref='intro'></span><br/>
+            {/* <span ref='license'></span><br/> */}
+            <div className='trip-data'>
+              <span ref='address'></span><br/>
+              <span ref='link'></span><br/>
+              <span ref='phone'></span><br/>
+            </div>
+          </div>
           <h2 className='trip-company-rate'>Rating: <img src={this.state.rating} width='150px' ref='rate'></img></h2>
         </center>
         </header>
@@ -166,6 +204,7 @@ class Company extends Component {
         trips: Trips.find({ owner: (window.location.pathname).match('[^/]*$')[0] }, { sort: { createdAt: -1 } }).fetch(),
         currentUser: Meteor.user(),
         reviews: Reviews.find({company: (window.location.pathname).match('[^/]*$')[0]}).fetch(),
+        thisReviewer: Reviews.find({company: (window.location.pathname).match('[^/]*$')[0], reviewer: Meteor.userId()}).fetch(),
         comp: Meteor.users.findOne({_id:(window.location.pathname).match('[^/]*$')[0]})
     };
   })(Company);

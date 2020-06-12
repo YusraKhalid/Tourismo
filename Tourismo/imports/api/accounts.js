@@ -41,6 +41,7 @@ Meteor.methods({
                 company: fields.company,
                 city: fields.city,
                 license: fields.license,
+                intro: fields.intro,
                 }
             });
         }
@@ -81,4 +82,12 @@ Meteor.methods({
         const check = Roles.userIsInRole(userId, role);
         return check;
     },
+
+    'users.companyData'(id){
+        console.log("ID: ", id);
+        console.log("Return value ",Meteor.users.find({_id:id},{phone:1, address:1, link:1, license:1, intro:1}).fetch());
+        return(
+            Meteor.users.find({_id:id},{phone:1, address:1, link:1, license:1, intro:1}).fetch()
+        )
+    }
 })

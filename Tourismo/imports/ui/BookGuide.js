@@ -21,6 +21,7 @@ class BookGuide extends Component {
             date : this.refs.date.value,
             departure : this.refs.departure.value,
             additionalInformation : this.refs.additionalInformation.value,
+            pickup: this.refs.pickup
         };
         var flag = true;
         const date = new Date(guide.date);
@@ -32,8 +33,12 @@ class BookGuide extends Component {
           flag = false
           this.refs.incorrectDays.replaceWith('Enter valid number of days or hours');
         }
+        const cost = guide.days * 1000 + guide.hours * 300;
         if (flag == true){
-            Meteor.call('guideBookings.book', guide);      
+            var book = confirm("Do you want to book guide for Rs. "+cost+" ?");
+            if( book == true ) {
+               Meteor.call('guideBookings.book', guide);   
+            }   
         }
     
         // Clear form
@@ -54,17 +59,20 @@ class BookGuide extends Component {
     renderBookings(){
         const bookings = this.props.guideBookings;
         return(bookings.map((booking)=>{
+            const cost = booking.days * 1000 + booking.hours * 300;
             return(
                 <tr><td><div className='booking'>
                     <div className='delete'>
                         <button type='button' onClick={this.handleRemove.bind(booking)}>x</button>
                     </div>
-                    destination:<b>{booking.destination}</b> <br/>
-                    Days:<b>{booking.days}</b><br/>
-                    hours:<b>{booking.hours}</b><br/>
-                    Date:<b>{booking.date}</b><br/>
-                    departure:<b>{booking.departure}</b><br/>
-                    additionalInformation:<b>{booking.additionalInformation}</b><br/>
+                    Destination: <b><span className='trip-data'>{booking.destination}</span></b> <br/>
+                    Cost: <span className='trip-data'>{cost} </span> <br/>
+                    Days: <b><span className='trip-data'>{booking.days}</span></b><br/>
+                    hours: <b><span className='trip-data'>{booking.hours}</span></b><br/>
+                    Date: <b><span className='trip-data'>{booking.date}</span></b><br/>
+                    Departure: <b><span className='trip-data'>{booking.departure}</span></b><br/>
+                    {booking.pickup? <div>Pickup: <b><span className='trip-data'>{booking.pickup} </span> </b> </div> :""}
+                    additionalInformation: <b><span className='trip-data'>{booking.additionalInformation}</span></b><br/>
                 </div>
                 </td></tr>
             )
@@ -75,19 +83,22 @@ class BookGuide extends Component {
     renderAcceptedRequests(){
         const acceptedRequests = this.props.acceptedRequests;
         return(acceptedRequests.map((acceptedRequest)=>{
+            const cost = acceptedRequest.days * 1000 + acceptedRequest.hours * 300;
             return(
                 <tr><td><div className='acceptedRequest' >
-                    Your request is accepted by <b>{acceptedRequest.guide_name}</b>.<br/>
-                    Phone number is <b>{acceptedRequest.guide_phone}</b><br/>
-                    CNIC Number is <b>{acceptedRequest.guide_cnic}</b><br/>
+                    Your request is accepted by <b><span className='trip-data'>{acceptedRequest.guide_name}</span></b>.<br/>
+                    Phone number is <b><span className='trip-data'>{acceptedRequest.guide_phone}</span></b><br/>
+                    CNIC Number is <b><span className='trip-data'>{acceptedRequest.guide_cnic}</span></b><br/>
                     For the following booking<br/>
                     <div>
-                    destination:<b>{acceptedRequest.destination}</b> <br/>
-                    Days:<b>{acceptedRequest.days}</b><br/>
-                    hours:<b>{acceptedRequest.hours}</b><br/>
-                    Date:<b>{acceptedRequest.date}</b><br/>
-                    departure:<b>{acceptedRequest.departure}</b><br/>
-                    additionalInformation:<b>{acceptedRequest.additionalInformation}</b><br/>
+                    destination: <b><span className='trip-data'>{acceptedRequest.destination}</span></b> <br/>
+                    Cost: <span className='trip-data'>{cost} </span> <br/>
+                    Days: <b><span className='trip-data'>{acceptedRequest.days}</span></b><br/>
+                    hours: <b><span className='trip-data'>{acceptedRequest.hours}</span></b><br/>
+                    Date: <b><span className='trip-data'>{acceptedRequest.date}</span></b><br/>
+                    {acceptedRequest.departure? <div>departure: <b><span className='trip-data'>{acceptedRequest.departure}</span></b><br/></div> :""}
+                    {acceptedRequest.pickup? <div>Pickup: <b><span className='trip-data'>{acceptedRequest.pickup} </span> </b> </div> :""}
+                    additionalInformation: <b><span className='trip-data'>{acceptedRequest.additionalInformation}</span></b><br/>
                     </div>
                 </div>
                 </td></tr>
@@ -126,8 +137,8 @@ class BookGuide extends Component {
                                             </tbody>
                                         </table>
                                     </center>
-                                    {/* {this.props.guideBookings[0] ? */}
-                                    {/* <center><h3>Pending Requests</h3></center> :""} */}
+                                    {this.props.guideBookings[0] ?
+                                    <center><h3>Pending Requests</h3></center> :""}
                                     {/* <ul> */}
                                     <center><table className='mytable table table-striped'>
                                         <tbody>
@@ -159,7 +170,6 @@ class BookGuide extends Component {
                                     <form className="bg-white p-md-5 p-4 mb-5 hire-guide" onSubmit={this.handleSubmit.bind(this)} >
                                         <div className="row">
                                             <div className="col-md-12 form-group">
-                                                {/* <div className='form-field'>Destination that you want to explore:</div> */}
                                                     <input autoComplete
                                                     type="text"
                                                     ref="destination"
@@ -169,140 +179,191 @@ class BookGuide extends Component {
                                                     />
                                                     <datalist id="cities">
                                                         <option value="" disabled defaultValue>Destination that you want to explore</option>
-                                                        <option>	Alpūrai	</option>
-                                                        <option>	Athmuqam	</option>
-                                                        <option>	Attock City	</option>
-                                                        <option>	Awārān	</option>
-                                                        <option>	Ayubia	</option>
-                                                        <option>	Babusar	</option>
-                                                        <option>	Badīn	</option>
-                                                        <option>	Bāgh	</option>
-                                                        <option>	Bahāwalnagar	</option>
-                                                        <option>	Bahāwalpur	</option>
-                                                        <option>	Bannu	</option>
-                                                        <option>	Bardār	</option>
-                                                        <option>	Bārkhān	</option>
-                                                        <option>	Batgrām	</option>
-                                                        <option>	Bhakkar	</option>
-                                                        <option>	Chakwāl	</option>
-                                                        <option>	Chaman	</option>
-                                                        <option>	Chārsadda	</option>
-                                                        <option>	Chilās	</option>
-                                                        <option>	Chiniot	</option>
-                                                        <option>	Chitrāl	</option>
-                                                        <option>	Dādu	</option>
-                                                        <option>	Daggar	</option>
-                                                        <option>	Dālbandīn	</option>
-                                                        <option>	Dasu	</option>
-                                                        <option>	Dera Allāhyār	</option>
-                                                        <option>	Dera Bugti	</option>
-                                                        <option>	Dera Ghāzi Khān	</option>
-                                                        <option>	Dera Ismāīl Khān	</option>
-                                                        <option>	Dera Murād Jamāli	</option>
-                                                        <option>	Eidgāh	</option>
-                                                        <option>	Faisalābād	</option>
-                                                        <option>	Gākuch	</option>
-                                                        <option>	Gandāvā	</option>
-                                                        <option>	Ghotki	</option>
-                                                        <option>	Gilgit	</option>
-                                                        <option>	Gujrānwāla	</option>
-                                                        <option>	Gujrāt	</option>
-                                                        <option>	Gwādar	</option>
-                                                        <option>	Hāfizābād	</option>
-                                                        <option>	Hangu	</option>
-                                                        <option>	Harīpur	</option>
-                                                        <option>	Hyderābād City	</option>
-                                                        <option>	Islamabad	</option>
-                                                        <option>	Jacobābād	</option>
-                                                        <option>	Jāmshoro	</option>
-                                                        <option>	Jhang City	</option>
-                                                        <option>	Jhang Sadr	</option>
-                                                        <option>	Jhelum	</option>
-                                                        <option>	Kalāt	</option>
-                                                        <option>	Kandhkot	</option>
-                                                        <option>	Karachi	</option>
-                                                        <option>	Karak	</option>
-                                                        <option>	Kashmir	</option>
-                                                        <option>	Kasūr	</option>
-                                                        <option>	Khairpur	</option>
-                                                        <option>	Khānewāl	</option>
-                                                        <option>	Khārān	</option>
-                                                        <option>	Khushāb	</option>
-                                                        <option>	Khuzdār	</option>
-                                                        <option>	Kohāt	</option>
-                                                        <option>	Kohlu	</option>
-                                                        <option>	Kotli	</option>
+                                                        <option>  Abbottābād  	</option>
+                                                        <option>	Alīābad 	</option>
+                                                        <option>	Alpūrai 	</option>
+                                                        <option>	Altit	</option>
+                                                        <option>	Askole	</option>
+                                                        <option>	Astore	</option>
+                                                        <option>	Athmuqam	    </option>
+                                                        <option>	Attock City </option>
+                                                        <option>	Awārān  	</option>
+                                                        <option>	Ayubia  	</option>
+                                                        <option>	Babusar 	</option>
+                                                        <option>	Badīn   	</option>
+                                                        <option>	Bāgh    	</option>
+                                                        <option>	Bahāwalnagar    </option>
+                                                        <option>	Bahāwalpur  </option>
+                                                        <option>	Balghar	</option>
+                                                        <option>	Bannu   	</option>
+                                                        <option>	Barah Valley	</option>
+                                                        <option>	Bardār  	</option>
+                                                        <option>	Bārkhān 	</option>
+                                                        <option>	Batgrām 	</option>
+                                                        <option>	Bhakkar 	</option>
+                                                        <option>	Bunji	</option>
+                                                        <option>	Chakwāl 	</option>
+                                                        <option>	Chalunka	</option>
+                                                        <option>	Chaman  	</option>
+                                                        <option>	Chārsadda   </option>
+                                                        <option>	Chilas	</option>
+                                                        <option>	Chilās  	</option>
+                                                        <option>	Chiniot 	</option>
+                                                        <option>	Chitrāl 	</option>
+                                                        <option>	Chitral.	</option>
+                                                        <option>	Dādu    	</option>
+                                                        <option>	Daggar  	</option>
+                                                        <option>	Dālbandīn   </option>
+                                                        <option>	Danyor	</option>
+                                                        <option>	Dasu    	</option>
+                                                        <option>	Dera All	āhyār   </option>
+                                                        <option>	Dera Bugti  </option>
+                                                        <option>	Dera Ghāzi Khān </option>
+                                                        <option>	Dera Ismāīl Khān    </option>
+                                                        <option>	Dera Murād Jamāli   </option>
+                                                        <option>	Eidgāh  	</option>
+                                                        <option>	Fairy Meadows	</option>
+                                                        <option>	Faisalābād  </option>
+                                                        <option>	Gākuch  	</option>
+                                                        <option>	Gandāvā 	</option>
+                                                        <option>	Ghotki  	</option>
+                                                        <option>	Gilgit  	</option>
+                                                        <option>	Gorikot	</option>
+                                                        <option>	Gujrānwāla  </option>
+                                                        <option>	Gujrāt  	</option>
+                                                        <option>	Gulmit	</option>
+                                                        <option>	Gwādar  	</option>
+                                                        <option>	Hāfizābād   </option>
+                                                        <option>	Haji Gham	</option>
+                                                        <option>	Haldi	</option>
+                                                        <option>	Hangu   	</option>
+                                                        <option>	Harīpur 	</option>
+                                                        <option>	Hassanabad Chorbat	</option>
+                                                        <option>	Hunza	</option>
+                                                        <option>	Hushe	</option>
+                                                        <option>	Hussainabad	</option>
+                                                        <option>	Hyderābād City  </option>
+                                                        <option>	Islamabad   </option>
+                                                        <option>	Jacobābād   </option>
+                                                        <option>	Jaglot	</option>
+                                                        <option>	Jalal Abad	</option>
+                                                        <option>	Jāmshoro	    </option>
+                                                        <option>	Jhang City  </option>
+                                                        <option>	Jhang Sadr  </option>
+                                                        <option>	Jhelum  	</option>
+                                                        <option>	Jutal	</option>
+                                                        <option>	Kalam	</option>
+                                                        <option>	Kalāt   	</option>
+                                                        <option>	Kandhkot	    </option>
+                                                        <option>	Karachi 	</option>
+                                                        <option>	Karak   	</option>
+                                                        <option>	Karimabad	</option>
+                                                        <option>	Kashmir 	</option>
+                                                        <option>	Kasūr   	</option>
+                                                        <option>	Keris Valley	</option>
+                                                        <option>	Khairpur	    </option>
+                                                        <option>	Khānewāl	    </option>
+                                                        <option>	Khaplu	</option>
+                                                        <option>	Khārān  	</option>
+                                                        <option>	Kharfaq	</option>
+                                                        <option>	Khushāb 	</option>
+                                                        <option>	Khuzdār 	</option>
+                                                        <option>	Kohāt   	</option>
+                                                        <option>	Kohlu   	</option>
+                                                        <option>	Kotli   	</option>
                                                         <option>	Kumrat	</option>
-                                                        <option>	Kundiān	</option>
-                                                        <option>	Lahore	</option>
-                                                        <option>	Lakki Marwat	</option>
-                                                        <option>	Lārkāna	</option>
-                                                        <option>	Leiah	</option>
-                                                        <option>	Lodhrān	</option>
-                                                        <option>	Loralai	</option>
-                                                        <option>	Malakand	</option>
-                                                        <option>	Mandi Bahāuddīn	</option>
-                                                        <option>	Mānsehra	</option>
-                                                        <option>	Mardan	</option>
-                                                        <option>	Masīwāla	</option>
-                                                        <option>	Mastung	</option>
-                                                        <option>	Matiāri	</option>
-                                                        <option>	Mehra	</option>
-                                                        <option>	Miānwāli	</option>
-                                                        <option>	Mīrpur Khās	</option>
-                                                        <option>	Multān	</option>
-                                                        <option>	Murree	</option>
-                                                        <option>	Mūsa Khel Bāzār	</option>
-                                                        <option>	Muzaffargarh	</option>
-                                                        <option>	Nankāna Sāhib	</option>
-                                                        <option>	Nārowāl	</option>
-                                                        <option>	Nathia Gali	</option>
-                                                        <option>	Naushahro Fīroz	</option>
-                                                        <option>	Nawābshāh	</option>
+                                                        <option>	Kumrat  	</option>
+                                                        <option>	Kundiān 	</option>
+                                                        <option>	Lahore  	</option>
+                                                        <option>	Lakki Marwat    </option>
+                                                        <option>	Lārkāna 	</option>
+                                                        <option>	Leiah   	</option>
+                                                        <option>	Lodhrān 	</option>
+                                                        <option>	Loralai 	</option>
+                                                        <option>	Maiun	</option>
+                                                        <option>	Malakand	    </option>
+                                                        <option>	Mandi Bahāuddīn </option>
+                                                        <option>	Mānsehra	    </option>
+                                                        <option>	Mardan  	</option>
+                                                        <option>	Masīwāla	    </option>
+                                                        <option>	Mastung 	</option>
+                                                        <option>	Matiāri 	</option>
+                                                        <option>	Mehra   	</option>
+                                                        <option>	Miānwāli	    </option>
+                                                        <option>	Minimarg	</option>
+                                                        <option>	Mīrpur Khās </option>
+                                                        <option>	Misgar	</option>
+                                                        <option>	Multān  	</option>
+                                                        <option>	Murree  	</option>
+                                                        <option>	Mūsa Khel Bāzār </option>
+                                                        <option>	Muzaffar	garh    </option>
+                                                        <option>	Nagar Khas	</option>
+                                                        <option>	Naltar Valley	</option>
+                                                        <option>	Nankāna 	Sāhib   </option>
+                                                        <option>	Naran Kaghan.	</option>
+                                                        <option>	Nārowāl 	</option>
+                                                        <option>	Nasirabad	</option>
+                                                        <option>	Nathia Gali </option>
+                                                        <option>	Naushahro Fīroz </option>
+                                                        <option>	Nawābshāh   </option>
                                                         <option>	Neelam	</option>
-                                                        <option>	New Mīrpur	</option>
-                                                        <option>	Nowshera	</option>
-                                                        <option>	Okāra	</option>
-                                                        <option>	Pākpattan	</option>
-                                                        <option>	Panjgūr	</option>
-                                                        <option>	Parachinār	</option>
-                                                        <option>	Peshāwar	</option>
-                                                        <option>	Pishin	</option>
-                                                        <option>	Qila Abdullāh	</option>
-                                                        <option>	Qila Saifullāh	</option>
-                                                        <option>	Quetta	</option>
-                                                        <option>	Rahīmyār Khān	</option>
-                                                        <option>	Rājanpur	</option>
-                                                        <option>	Rāwala Kot	</option>
-                                                        <option>	Rāwalpindi	</option>
-                                                        <option>	Rawlakot	</option>
-                                                        <option>	Sādiqābād	</option>
-                                                        <option>	Sāhīwāl	</option>
-                                                        <option>	Saidu Sharif	</option>
-                                                        <option>	Sānghar	</option>
-                                                        <option>	Sargodha	</option>
-                                                        <option>	Serai	</option>
-                                                        <option>	Shahdād Kot	</option>
-                                                        <option>	Sheikhupura	</option>
-                                                        <option>	Shikārpur	</option>
-                                                        <option>	Siālkot City	</option>
-                                                        <option>	Sibi	</option>
-                                                        <option>	Sukkur	</option>
-                                                        <option>	Swābi	</option>
-                                                        <option>	Tando Allāhyār	</option>
-                                                        <option>	Tando Muhammad Khān	</option>
-                                                        <option>	Tānk	</option>
-                                                        <option>	Thatta	</option>
-                                                        <option>	Timargara	</option>
-                                                        <option>	Toba Tek Singh	</option>
-                                                        <option>	Tolipeer	</option>
-                                                        <option>	Turbat	</option>
-                                                        <option>	Umarkot	</option>
-                                                        <option>	Upper Dir	</option>
-                                                        <option>	Uthal	</option>
-                                                        <option>	Vihāri	</option>
-                                                        <option>	Zhob	</option>
-                                                        <option>	Ziārat	</option>
+                                                        <option>	Neelam  	</option>
+                                                        <option>	New Mīrpur  </option>
+                                                        <option>	Nowshera	    </option>
+                                                        <option>	Okāra   	</option>
+                                                        <option>	Oshikhandass	</option>
+                                                        <option>	Pākpattan   </option>
+                                                        <option>	Palas	</option>
+                                                        <option>	Panjgūr 	</option>
+                                                        <option>	Parachinār  </option>
+                                                        <option>	Pasu	</option>
+                                                        <option>	Peshāwar	    </option>
+                                                        <option>	Pishin  	</option>
+                                                        <option>	Qila Abdullāh   </option>
+                                                        <option>	Qila Saifullāh  </option>
+                                                        <option>	Quetta  	</option>
+                                                        <option>	Rahīmyār	 Khān   </option>
+                                                        <option>	Rājanpur	    </option>
+                                                        <option>	Rāwala Kot  </option>
+                                                        <option>	Rāwalpindi  </option>
+                                                        <option>	Rawlakot	    </option>
+                                                        <option>	Sādiqābād   </option>
+                                                        <option>	Sāhīwāl 	</option>
+                                                        <option>	Saidu Sharif    </option>
+                                                        <option>	Sānghar 	</option>
+                                                        <option>	Sargodha	    </option>
+                                                        <option>	Serai   	</option>
+                                                        <option>	Shahdād Kot </option>
+                                                        <option>	Sheikhupura </option>
+                                                        <option>	Shigar	</option>
+                                                        <option>	Shikārpur   </option>
+                                                        <option>	Shimshal	</option>
+                                                        <option>	Siālkot City    </option>
+                                                        <option>	Sibi    </option>
+                                                        <option>	Skardu City.	</option>
+                                                        <option>	Sost	</option>
+                                                        <option>	Sukkur  	</option>
+                                                        <option>	Sultan Abad	</option>
+                                                        <option>	Swābi   	</option>
+                                                        <option>    Swat    </option>
+                                                        <option>	Taghafari	</option>
+                                                        <option>	Tando Allāhyār  </option>
+                                                        <option>	Tando Muhammad Khān </option>
+                                                        <option>	Tānk    	</option>
+                                                        <option>	Thatta  	</option>
+                                                        <option>	Timargara   </option>
+                                                        <option>	Toba Tek	Singh  </option>
+                                                        <option>	Tolipeer	    </option>
+                                                        <option>	Tolti Kharmang	</option>
+                                                        <option>	Turbat  	</option>
+                                                        <option>	Umarkot 	</option>
+                                                        <option>	Upper Dir   </option>
+                                                        <option>	Uthal   	</option>
+                                                        <option>	Vihāri  	</option>
+                                                        <option>	Yugo	</option>
+                                                        <option>	Zhob    	</option>
+                                                        <option>	Ziārat  	</option>
+                                                        <option>  Other   </option>
                                                         </datalist>
                                                     </div>
                                                 </div>
@@ -347,6 +408,20 @@ class BookGuide extends Component {
                                                     </div>
                                                 </div>
                                                 <div className="row">
+                                                    <div className="col-md-12 form-group">                                          
+                                                    {/* <div className='form-field'>Date: </div>   */}
+                                                        <input
+                                                        defaultValue="12:00"
+                                                        type="time"
+                                                        ref="time"
+                                                        placeholder='Pick Up Time'
+                                                        className="form-control "
+                                                        />
+                                                        <div className='error'>
+                                                        <span ref='incorrectDate' className='error' ></span></div>
+                                                    </div>
+                                                </div>
+                                                <div className="row">
                                                     <div className="col-md-12 form-group">
                                                         {/* <div className='form-field'>Do you want to take the guide to another destination? If so enter the destination you will departure from: </div>  */}
                                                         <input
@@ -355,6 +430,24 @@ class BookGuide extends Component {
                                                         placeholder="If traveling to another destination. Enter departure destination"
                                                         className="form-control "
                                                         />
+                                                    </div>
+                                                </div>
+                                                <div className="row">
+                                                    <div className="col-md-12 form-group">
+                                                        <input autoComplete
+                                                        type="text"
+                                                        ref="pickup"
+                                                        list='pickup'
+                                                        className="form-control "
+                                                        placeholder='Pickup Location'
+                                                        />
+                                                        <datalist id="pickup">
+                                                            <option value="" disabled defaultValue>Pickup Location</option>
+                                                            <option>    Bus Stop  	</option>
+                                                            <option>	Airport 	</option>
+                                                            <option>	Train Station 	</option>
+                                                            <option>	Other	</option>
+                                                        </datalist>
                                                     </div>
                                                 </div>
                                                 <div className="row">

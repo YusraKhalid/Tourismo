@@ -24,16 +24,17 @@ class IndividualTrip extends Component {
             Meteor.call('trips.book',this.props.trips[0]._id, parseInt(seats), (error, result) => {
               console.log('error: ', error);
               if (error) {
-                if (error='Error: Phone not found [not-registered]'){
+                if (error=='Error: Phone not found [not-registered]'){
                   this.props.history.push("/SignupCustomer");
                 }
                 this.refs.error.replaceWith(error);
+              }
+              else{
+                alert("Your seats were booked");
+                window.location.pathname = '/DisplayTrips';
               } 
             });
           } 
-          else {
-            alert("Your seats were not booked");
-          }
       }
       else{
         window.location.pathname = '/Login';
@@ -57,11 +58,13 @@ class IndividualTrip extends Component {
         console.log("renderbookings", bookings);
         return(bookings.map((booking)=>{
             return(
-              <div className='booking'>
-                Booked by: <b> {booking.customer_name} </b><br/>
-                Contact Number: <b> {booking.customer_phone} </b><br/>
-                Number of seats: <b> {booking.seats} </b>
-              </div>
+              <tr><td>
+                <div className='booking'>
+                  Booked by: <b> {booking.customer_name} </b><br/>
+                  Contact Number: <b> {booking.customer_phone} </b><br/>
+                  Number of seats: <b> {booking.seats} </b>
+                </div>
+              </td></tr>
             )
           })
         )
@@ -98,7 +101,9 @@ class IndividualTrip extends Component {
             <div className="container">
               {/* <base href={window.location.origin}/> */}
             <header>
-            <h1>Trips</h1>
+            <center>
+              <h1>Trip</h1>
+            </center>
             </header>
             <ul className='trips'>
               {/* {trip ? <div>
@@ -121,7 +126,14 @@ class IndividualTrip extends Component {
                 <br/>
               {trip.bookings ? 
                   <div className='trip-bookings'>
-                    {this.renderBookings()}
+                    <center>
+                      <h1>Bookings</h1>
+                    </center>
+                    <table className='mytable table table-striped'>
+                      <tbody>
+                        {this.renderBookings()}
+                      </tbody>
+                    </table>  
                   </div> 
                 :""}
               </div>:""}

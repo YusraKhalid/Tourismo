@@ -22,6 +22,21 @@
   font-family: 'Sofia';
 } */
 
+.company-intro{
+  width: 70%;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  background-color: #e2e2e29f;
+  box-shadow: 0 3px 20px -5px rgba(0, 0, 0, 0.5);
+}
+
+.trip-data{
+  /* color: #000; */
+  text-shadow:  rgba(0, 0, 0, 0.5) 1px 1px;
+  /* background-color: #65c0ba; */
+}
 
 .logo-name{
   font-size: x-large;
@@ -354,6 +369,7 @@
   width: 49%;
   float: right;
   border: rgb(181, 181, 181) solid 2px;
+  box-shadow: 0 3px 20px -5px rgba(0, 0, 0, 0.5);
 }
 
 .trip-bookings{

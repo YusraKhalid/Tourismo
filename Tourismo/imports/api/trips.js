@@ -49,12 +49,15 @@ Meteor.methods({
         throw new Meteor.Error('not-authorized');
       }
       console.log("company", Meteor.user({"_id":this.userId}))
+      if (!trip.phone){
+        trip.phone = Meteor.users.findOne({_id: Meteor.userId()}).phone;
+      }
       Trips.insert({
         destination: trip.destination,
         createdAt: new Date(),
         owner: this.userId,
         company: Meteor.user({"_id":this.userId}).company,
-        days: trip.days,
+        phone: trip.phone,
         startDate: trip.startDate,
         endDate: trip.endDate,
         departure: trip.departure,
@@ -77,6 +80,12 @@ Meteor.methods({
       Trips.remove(tripId);
     },
 
+    'trip.companyPhone'(id){
+      return (
+        Meteor.users.findOne({_id: id}).phone
+      )
+    },
+
     'trips.book'(tripId, seats){
       if (Roles.userIsInRole(Meteor.userId(), 'customer')){
         const customer = Meteor.users.findOne({_id: Meteor.userId()});
@@ -87,12 +96,26 @@ Meteor.methods({
           bookings = trip.bookings;
           totalSeats = seats + trip.seats;
         }
-          bookings.push({
-            customer_id: customer._id,
-            customer_name: customer.name,
-            customer_phone: customer.phone,
-            seats: seats,
-          });
+        const prev = UserTripBookings.findOne({customer: Meteor.userId(), trip_id: tripId});
+        if (prev){
+          var index = 0;
+          for (var i = 0; i < bookings.length; i++){
+            if (bookings[i].customer_id == Meteor.userId()){
+              index = i;
+            }
+          }
+          const prev_booking = bookings.splice(index,1);
+          seats = seats + parseInt(prev.seats);
+          console.log("New seats: ", seats);
+          UserTripBookings.remove({_id:prev._id});
+        }
+        bookings.push({
+          customer_id: customer._id,
+          customer_name: customer.name,
+          customer_phone: customer.phone,
+          seats: seats,
+        });
+        console.log("Search booking: ", bookings);
         if (!customer.phone){
           throw new Meteor.Error('not-registered', "Phone not found");
           // this.props.history.push('/SignupCustomer');
@@ -109,7 +132,27 @@ Meteor.methods({
         console.log("booked: ", Trips.findOne(tripId));
         return ("Booked");
       }
+      else{
+        throw new Meteor.Error('not-authorized');
+      }
     },
+
+    'trip.removeBooking'(bookingId){
+      const booking = UserTripBookings.findOne({_id:bookingId});
+      const trip = Trips.findOne(booking.trip_id);
+      var bookings = trip.bookings;
+      var index = 0;
+      for (var i = 0; i < bookings.length; i++){
+        if (bookings[i].customer_id == Meteor.userId()){
+          index = i;
+        }
+      }
+      const prev_booking = bookings.splice(index,1);
+      totalSeats = trip.seats - booking.seats;
+      Trips.update(trip._id, { $set: { bookings: bookings , seats: totalSeats} });
+      UserTripBookings.remove({_id:bookingId});
+    }
+    ,
 
     'trips.search'(search){
       console.log('tripsearch: ', search);

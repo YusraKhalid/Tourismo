@@ -48,8 +48,8 @@ class About extends Component {
                             <div class="text" data-aos="fade-right" data-aos-delay="200">
                             <h2>Our aim</h2>
                             
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
+                            <p>Tourismo is ambitious to help Pakistan grow its tourism industry, by boosting its market potential. We promise our tourists, locals, and travel partners a platform with developed features, which has been built in terms of the customers’ interest. The tourists can opt for the best travel packages whereas, the locals can register as city guides. </p>
+                            {/* <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p> */}
                         </div>
                         </div>
                     </div>
@@ -61,10 +61,10 @@ class About extends Component {
                         <div class="half d-md-flex d-block">
 
                         <div class="text" data-aos="fade-right" data-aos-delay="200">
-                            <h2>Our motivation</h2>
-                            
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
+                            <h2>Our Motivation</h2>
+                            <p>Tourismo is market place, whereTravel agencies, city guides and tourists can interconnect and avail the best opportunities on the market. Here, at Tourismo, we aspire to give our hosts and guests the best domain to work hand in hand.</p>
+                            <p>Pakistan, the top travel destination for 2020, is a mighty hub of mesmerizing landscapes, historical sites and cultural heritages. We are eager to portray the different aspects of Pakistan in the most pure and captivating ways. </p>
+                            {/* <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p> */}
                         </div>
                         <div class="image about2" data-aos="fade"></div>
                         </div>
@@ -116,6 +116,7 @@ class About extends Component {
                         <div class="col-md-8">
                             <h2 class="heading" data-aos="fade-up">Meet the team</h2>
                             <p class="lead" data-aos="fade-up">Meet the brains behind tourismo</p>
+
                         </div>
                         </div>
                         <div class="row">
@@ -124,7 +125,7 @@ class About extends Component {
                             <div class="media media-custom d-block mb-4">
                             <a href="#" class="mb-4 d-block"><img src="images/person_3.jpg" alt="Image placeholder" class="img-fluid"/></a>
                             <div class="media-body">
-                                <p> In the whispers of wind,<br/>lies the great stories.<br/>told by nature, <br/>heard only by a few</p>
+                                <p> In the whispers of wind, lies the great stories. Told by nature, heard only by a few</p>
                                 <span class="meta-post">Co-Founder</span>
                                 <h2 class="mt-0 mb-3"><a href="#">Yusra Khalid</a></h2>
                             </div>
@@ -135,6 +136,7 @@ class About extends Component {
                             <div class="media media-custom d-block mb-4">
                             <a href="#" class="mb-4 d-block"><img src="images/person_1.jpg" alt="Image placeholder" class="img-fluid"/></a>
                             <div class="media-body">
+                                <p>Travel makes one modest, you realise what a tiny place you occupy in the world.</p>
                                 <span class="meta-post">Co-Founder</span>
                                 <h2 class="mt-0 mb-3"><a href="#">Hibba Fatima</a></h2>
                             </div>
@@ -144,6 +146,7 @@ class About extends Component {
                             <div class="media media-custom d-block mb-4">
                             <a href="#" class="mb-4 d-block"><img src="images/person_2.jpg" alt="Image placeholder" class="img-fluid"/></a>
                             <div class="media-body">
+                                <p>The world is a book and those who do not travel, read only one page of it.</p>
                                 <span class="meta-post">Co-Founder</span>
                                 <h2 class="mt-0 mb-3"><a href="#">Nimra.</a></h2>
                             </div>
