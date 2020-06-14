@@ -11,9 +11,9 @@ export default class Trip extends Component {
       if (err) {
         console.error("Got error in company:", error);
       } else {
-        const wholenumber = Math.floor(result);
+        var wholenumber = Math.floor(result);
         if ((result - wholenumber) >= 0.5){
-          wholenumber += 0.5 
+          wholenumber = wholenumber + 0.5; 
         }
         this.refs.rate.src = "/images/rating/Star_rating_" + wholenumber + "_of_5.png";  //replaceWith(result);
         // console.log("href: ", this.refs.rate.src);
@@ -47,7 +47,7 @@ export default class Trip extends Component {
       private: this.props.trip.private,
     });
 
-    // console.log("trip", this.props.trip);
+    console.log("trip", this.props.trip);
     if (!this.props.trip.phone){
       const phone = this.getPhone(this.props.trip.company)
     }

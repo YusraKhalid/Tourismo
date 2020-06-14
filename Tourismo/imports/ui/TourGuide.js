@@ -32,6 +32,7 @@ class TourGuide extends Component {
                         hours: <b><span className='trip-data'>{booking.hours}</span></b><br/>
                         Date: <b><span className='trip-data'>{booking.date}</span></b><br/>
                         departure: <b><span className='trip-data'>{booking.departure}</span></b><br/>
+                        {booking.time? <div>Time: <b><span className='trip-data'>{booking.time} </span> </b> </div> :""}
                         {booking.pickup? <div>Pickup: <b><span className='trip-data'>{booking.pickup} </span> </b> </div> :""}
                         additionalInformation: <b><span className='trip-data'>{booking.additionalInformation}</span></b><br/>
                         <div className='accept' float='left'>
@@ -61,6 +62,7 @@ class TourGuide extends Component {
                                 hours: <b><span className='trip-data'>{booking.hours}</span></b><br/>
                                 Date: <b><span className='trip-data'>{booking.date}</span></b><br/>
                                 departure: <b><span className='trip-data'>{booking.departure}</span></b><br/>
+                                {booking.time? <div>Time: <b><span className='trip-data'>{booking.time} </span> </b> </div> :""}
                                 {booking.pickup? <div>Pickup: <b><span className='trip-data'>{booking.pickup} </span> </b> </div> :""}
                                 additionalInformation: <b><span className='trip-data'>{booking.additionalInformation}</span></b><br/>
                             </div>
@@ -83,8 +85,8 @@ class TourGuide extends Component {
             return(
                 <tr><td>
                 <div className='acceptedRequest' >
-                    Your accepted request is by <b>{acceptedRequest.customer_name}</b><br/>
-                    The Contact Number is <b>{acceptedRequest.customer_phone}</b><br/>
+                    Your accepted request is by <b><span className='trip-data'>{acceptedRequest.customer_name}</span></b><br/>
+                    The Contact Number is <b><span className='trip-data'>{acceptedRequest.customer_phone}</span></b><br/>
                     For the following booking<br/>
                     <div>
                     destination: <b><span className='trip-data'>{acceptedRequest.destination}</span></b> <br/>
@@ -94,6 +96,7 @@ class TourGuide extends Component {
                     Date: <b><span className='trip-data'>{acceptedRequest.date}</span></b><br/>
                     {acceptedRequest.departure? <div>departure: <b><span className='trip-data'>{acceptedRequest.departure}</span></b><br/></div> :""}
                     {acceptedRequest.pickup? <div>Pickup: <b><span className='trip-data'>{acceptedRequest.pickup} </span> </b> </div> :""}
+                    {acceptedRequest.time? <div>Time: <b><span className='trip-data'>{acceptedRequest.time} </span> </b> </div> :""}
                     additionalInformation: <b><span className='trip-data'>{acceptedRequest.additionalInformation}</span></b><br/>
                     </div>
                 </div>
@@ -144,7 +147,7 @@ class TourGuide extends Component {
         document.getElementById('scroll-down').innerHTML = '';
         return(
             <div>
-                <h1><center>Tour Guide</center></h1>
+                <h1><center>City Captain</center></h1>
                 <section className="section contact-section bg-light-2">
                 <div className='bookings-accepted'>
                     {/* <section className="section contact-section"> */}

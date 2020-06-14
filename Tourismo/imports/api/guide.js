@@ -38,6 +38,7 @@ if (Meteor.isServer) {
 Meteor.methods({
 
     'guideBookings.book'(guide){
+      console.log("GUIDE: ", guide);
       // Make sure the user is logged in before inserting a trip
       if (! Meteor.userId()) {
         throw new Meteor.Error('not-authorized');
@@ -56,9 +57,11 @@ Meteor.methods({
         date: guide.date,
         departure: guide.departure,
         additionalInformation: guide.additionalInformation,
-      },function(){
-                    return ("Request approved");
-                  });
+        pickup: guide.pickup,
+        time: guide.time
+      })
+      return ("Request approved");
+      
     },
 
     'guideBookings.remove'(bookingId) {

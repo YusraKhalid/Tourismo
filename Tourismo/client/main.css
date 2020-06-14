@@ -22,6 +22,25 @@
   font-family: 'Sofia';
 } */
 
+.login-left{
+  float: left;
+  /* background-color: purple; */
+  width: 50%;
+  padding-left: 10%;
+  padding-top: 5%;
+  padding-right: 5%;
+  padding-bottom: 5%;
+}
+
+.login-right{
+  float: right;
+  /* background-color: rosybrown; */
+  width: 50%;
+  padding-right: 10%;
+  padding-left: 5%;
+  padding-bottom: 5%;
+}
+
 .company-intro{
   width: 70%;
   padding-left: 5%;
@@ -51,7 +70,12 @@
   align-content: center;
 }
 
+.user-role{
+  margin: -10px;
+}
+
 .username{
+  margin-top: -10px;
   color: black;
 }
 
@@ -181,15 +205,16 @@
 .search-fields{
   float: left;
   padding: 2%;
+  /* background-color: #65c0ba; */
 }
 
-/* .search-form-div{ */
-  /* border: solid green 2px; */
-/* } */
+/* .search-form-div{ 
+  border: solid green 2px;
+ } */
 
 .search-form{
   /* border: hotpink 2px solid; */
-  padding-left: 10%;
+  padding-left: 1%;
 }
 
 
@@ -435,7 +460,7 @@
   float: left;
   padding: 2%;
   width: 30%;
-  height: 400px;
+  height: 550px;
 }
 
 .all-other-requests{
@@ -482,7 +507,39 @@
   .trip-img{
     width: 100%
   }
+
+  .user-role{
+    margin-top: -10px;
+    margin-left: 10px;
+  }
   
+  .username{
+    margin-top: -6px;
+    margin-right: -2px;
+    color: black;
+  }
+
+  .login-left{
+    float: left;
+    /* background-color: purple; */
+    width: 100%;
+    padding: 10%;
+  }
+  
+  .login-right{
+    float: right;
+    /* background-color: rosybrown; */
+    width: 100%;
+    padding: 10%;
+
+  }
+  
+  .sign-form-mobile{
+    background-color: #65c0ba;
+    width: 100%;
+    float: left;
+  }
+
   .seat-input{
     width: 50%;
     margin-right: 10px;
@@ -506,7 +563,7 @@
   }
   
   .nav-custom{
-    margin-bottom: -70px;
+    margin-bottom: -68px;
     align-content: center;
   }
 
@@ -632,6 +689,7 @@
     /* float: left; */
     padding: 2%;
     width: 90%;
+    /* background-color: purple; */
   }
 
   .reviews{

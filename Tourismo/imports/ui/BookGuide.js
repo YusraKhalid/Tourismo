@@ -21,7 +21,8 @@ class BookGuide extends Component {
             date : this.refs.date.value,
             departure : this.refs.departure.value,
             additionalInformation : this.refs.additionalInformation.value,
-            pickup: this.refs.pickup
+            pickup: this.refs.pickup.value,
+            time: this.refs.time.value
         };
         var flag = true;
         const date = new Date(guide.date);
@@ -34,10 +35,17 @@ class BookGuide extends Component {
           this.refs.incorrectDays.replaceWith('Enter valid number of days or hours');
         }
         const cost = guide.days * 1000 + guide.hours * 300;
+        console.log("Guide: ", guide);
         if (flag == true){
             var book = confirm("Do you want to book guide for Rs. "+cost+" ?");
+            console.log("book: ",book);
             if( book == true ) {
-               Meteor.call('guideBookings.book', guide);   
+                console.log("book: ",book);
+               Meteor.call('guideBookings.book', guide,(err,result)=>{
+                   if (err){
+                       console.log('Error: ', err);
+                   }
+               });   
             }   
         }
     
@@ -72,6 +80,7 @@ class BookGuide extends Component {
                     Date: <b><span className='trip-data'>{booking.date}</span></b><br/>
                     Departure: <b><span className='trip-data'>{booking.departure}</span></b><br/>
                     {booking.pickup? <div>Pickup: <b><span className='trip-data'>{booking.pickup} </span> </b> </div> :""}
+                    {booking.time? <div>Time: <b><span className='trip-data'>{booking.time} </span> </b> </div> :""}
                     additionalInformation: <b><span className='trip-data'>{booking.additionalInformation}</span></b><br/>
                 </div>
                 </td></tr>
@@ -98,6 +107,7 @@ class BookGuide extends Component {
                     Date: <b><span className='trip-data'>{acceptedRequest.date}</span></b><br/>
                     {acceptedRequest.departure? <div>departure: <b><span className='trip-data'>{acceptedRequest.departure}</span></b><br/></div> :""}
                     {acceptedRequest.pickup? <div>Pickup: <b><span className='trip-data'>{acceptedRequest.pickup} </span> </b> </div> :""}
+                    {acceptedRequest.time? <div>Time: <b><span className='trip-data'>{acceptedRequest.time} </span> </b> </div> :""}
                     additionalInformation: <b><span className='trip-data'>{acceptedRequest.additionalInformation}</span></b><br/>
                     </div>
                 </div>
@@ -122,7 +132,7 @@ class BookGuide extends Component {
         
         return(
             <div>
-                <center><h1 data-aos="fade-up">Book Tour Guide</h1></center>
+                <center><h1 data-aos="fade-up">Book City Captain</h1></center>
                 <div className='bookings-right'>
                 <section className="section contact-section">
                             {/* <div className="container-contact"> */}
@@ -340,7 +350,7 @@ class BookGuide extends Component {
                                                         <option>	Shimshal	</option>
                                                         <option>	Siālkot City    </option>
                                                         <option>	Sibi    </option>
-                                                        <option>	Skardu City.	</option>
+                                                        <option>	Skardu	</option>
                                                         <option>	Sost	</option>
                                                         <option>	Sukkur  	</option>
                                                         <option>	Sultan Abad	</option>

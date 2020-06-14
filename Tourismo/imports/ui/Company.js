@@ -17,7 +17,6 @@ class Company extends Component {
     super(props);
     this.state = {
       hideCompleted: false,
-      rating: '',
     };
   }
   handleSubmit(event){
@@ -30,12 +29,25 @@ class Company extends Component {
         remarks: this.refs.remarks.value,
         reviewer_dp: this.props.currentUser.profile.dp
       }
-      if (this.props.thisReviewer){
+      console.log("old reviews: ",this.props.thisReviewer);
+      if (this.props.thisReviewer[0]){
         var replace = confirm("You already have following review for this company. Do you want to replace it? Rating:"+ this.props.thisReviewer[0].rating +" Review:"+this.props.thisReviewer[0].remarks);
         if (replace == true){
-          Meteor.call('reviews.insert', review);
+          Meteor.call('reviews.insert', review, (err, result) => {
+            if(result){
+              alert("Review has been added");
+            }
+          });
         }
       }
+      else{
+        Meteor.call('reviews.insert', review, (err, result) => {
+          if(result){
+            alert("Review has been added");
+          }
+        });
+      }
+      
   }
   else{
     this.props.history.push('/Login');
@@ -90,6 +102,23 @@ class Company extends Component {
     })
   }
 
+  getRating(){
+    var wholenumber = 0
+    Meteor.call('reviews.companyRate', (window.location.pathname).match('[^/]*$')[0],
+      (err, result) => {
+      if (err) {
+        console.error("Got error in company:", error);
+      } 
+      else {
+        wholenumber = Math.floor(result);
+        if ((result - wholenumber) >= 0.5){
+          wholenumber += 0.5 
+        }
+        this.refs.rateStar.src = "/images/rating/Star_rating_" + wholenumber + "_of_5.png";
+      }
+    });
+  }
+
   render() {
     this.renderCompanyData();
     console.log("comp: ", this.props.comp);
@@ -104,19 +133,7 @@ class Company extends Component {
       //         document.getElementById('link')
       //         );
       // }
-    Meteor.call('reviews.companyRate', (window.location.pathname).match('[^/]*$')[0],
-      (err, result) => {
-      if (err) {
-        console.error("Got error in company:", error);
-      } else {
-        const wholenumber = Math.floor(result);
-        if ((result - wholenumber) >= 0.5){
-          wholenumber += 0.5 
-        }
-        this.state.rating = "/images/rating/Star_rating_" + wholenumber + "_of_5.png";
-        // this.state.rating = result;
-      }
-    });
+    
     document.getElementById('only-home').innerHTML = '<span></span>';
     document.getElementById('home-description').innerText = "";
     document.getElementById('home-trips').innerHTML = ''
@@ -142,7 +159,8 @@ class Company extends Component {
               <span ref='phone'></span><br/>
             </div>
           </div>
-          <h2 className='trip-company-rate'>Rating: <img src={this.state.rating} width='150px' ref='rate'></img></h2>
+          <h2 className='trip-company-rate'>Rating: <img src={this.getRating()} width='150px' ref='rateStar'></img></h2>
+          {/* {this.getRating()} */}
         </center>
         </header>
         <ul className='trips'>

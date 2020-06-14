@@ -48,7 +48,7 @@ class About extends Component {
                             <div class="text" data-aos="fade-right" data-aos-delay="200">
                             <h2>Our aim</h2>
                             
-                            <p>Tourismo is ambitious to help Pakistan grow its tourism industry, by boosting its market potential. We promise our tourists, locals, and travel partners a platform with developed features, which has been built in terms of the customers’ interest. The tourists can opt for the best travel packages whereas, the locals can register as city guides. </p>
+                            <p>Tourismo is ambitious to help Pakistan grow its tourism industry, by boosting its market potential. We promise our tourists, locals, and travel partners a platform with developed features, which has been built in terms of the customers’ interest. The tourists can opt for the best travel packages whereas, the locals can register as city captains. </p>
                             {/* <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p> */}
                         </div>
                         </div>
@@ -62,7 +62,7 @@ class About extends Component {
 
                         <div class="text" data-aos="fade-right" data-aos-delay="200">
                             <h2>Our Motivation</h2>
-                            <p>Tourismo is market place, whereTravel agencies, city guides and tourists can interconnect and avail the best opportunities on the market. Here, at Tourismo, we aspire to give our hosts and guests the best domain to work hand in hand.</p>
+                            <p>Tourismo is market place, whereTravel agencies, city captains and tourists can interconnect and avail the best opportunities on the market. Here, at Tourismo, we aspire to give our hosts and guests the best domain to work hand in hand.</p>
                             <p>Pakistan, the top travel destination for 2020, is a mighty hub of mesmerizing landscapes, historical sites and cultural heritages. We are eager to portray the different aspects of Pakistan in the most pure and captivating ways. </p>
                             {/* <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p> */}
                         </div>

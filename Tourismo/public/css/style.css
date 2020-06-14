@@ -191,7 +191,7 @@ textarea.form-control {
 .site-hero {
   background-size: cover;
   background-position: center center;
-  height: 100vh;
+  height: 91vh;
   min-height: 700px;
   width: 100%;
 }
@@ -235,8 +235,8 @@ textarea.form-control {
 }
 
 .site-hero-inner {
-  height: 100vh;
-  min-height: 700px;
+  height: 10vh;
+  min-height: 650px;
 }
 
 .site-hero-inner .heading {

@@ -20,6 +20,8 @@ class App extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const today = new Date();
+    const startDate = new Date(this.refs.startDate.value);
+    const endDate = new Date(this.refs.endDate.value);
     const trip = {
         userId: Meteor.userId(),
         destination : this.refs.destination.value,
@@ -28,11 +30,9 @@ class App extends Component {
         endDate : this.refs.endDate.value,
         departure : this.refs.departure.value,
         destinationInformation : this.refs.destinationInformation.value,
-        price: this.refs.price.value,
+        price: parseInt(this.refs.price.value),
         detail : this.refs.detail.value};
     var flag = true;
-    const startDate = new Date(trip.startDate);
-    const endDate = new Date(trip.endDate);
     if ((today > startDate) | (today > endDate)){
       flag = false;
       this.refs.incorrectDate.replaceWith("Enter the future date");
@@ -57,7 +57,7 @@ class App extends Component {
 
     // Clear form
     this.refs.destination.value = '';
-    this.refs.days.value = '0';
+    this.refs.cost.value = '0';
     this.refs.startDate.value = '';
     this.refs.endDate.value = '';
     this.refs.image.value = '';
@@ -282,7 +282,7 @@ class App extends Component {
                               <option>	Shimshal	</option>
                               <option>	Siālkot City    </option>
                               <option>	Sibi    </option>
-                              <option>	Skardu City.	</option>
+                              <option>	Skardu	</option>
                               <option>	Sost	</option>
                               <option>	Sukkur  	</option>
                               <option>	Sultan Abad	</option>
@@ -507,7 +507,7 @@ class App extends Component {
                               <option>	Shimshal	</option>
                               <option>	Siālkot City    </option>
                               <option>	Sibi    </option>
-                              <option>	Skardu City.	</option>
+                              <option>	Skardu	</option>
                               <option>	Sost	</option>
                               <option>	Sukkur  	</option>
                               <option>	Sultan Abad	</option>

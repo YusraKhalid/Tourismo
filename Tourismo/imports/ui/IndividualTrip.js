@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Trips } from '../api/trips.js';
+import { Trips, UserTripBookings } from '../api/trips.js';
 import Trip from './Trip.js';
 import Account from './Account';
 import { render } from 'react-dom';
@@ -18,23 +18,41 @@ class IndividualTrip extends Component {
       event.preventDefault();
         if (Meteor.userId()){
           const seats = this.refs.seats.value;
-          console.log("Seats: ", seats);
-          var book = confirm("Do you want to book "+seats+" seats?");
-          if( book == true ) {
-            Meteor.call('trips.book',this.props.trips[0]._id, parseInt(seats), (error, result) => {
-              console.log('error: ', error);
-              if (error) {
-                if (error=='Error: Phone not found [not-registered]'){
-                  this.props.history.push("/SignupCustomer");
+          // console.log("Seats: ", seats);
+          if (this.props.userBooking[0]){
+            const prev = this.props.userBooking[0];
+            var book = confirm("You have already booked "+ prev.seats+" seats for this trip. Do you want you add "+seats+" seats to the booking?");
+            if( book == true ) {
+              Meteor.call('trips.book',this.props.trips[0]._id, parseInt(seats), (error, result) => {
+                console.log('error: ', error);
+                if (error) {
+                  this.refs.error.replaceWith(error);
                 }
-                this.refs.error.replaceWith(error);
-              }
-              else{
-                alert("Your seats were booked");
-                window.location.pathname = '/DisplayTrips';
-              } 
-            });
-          } 
+                else{
+                  alert("Your seats were booked");
+                  window.location.pathname = '/DisplayTrips';
+                } 
+              });
+            } 
+          }
+          else{
+            var book = confirm("Do you want to book "+seats+" seats?");
+            if( book == true ) {
+              Meteor.call('trips.book',this.props.trips[0]._id, parseInt(seats), (error, result) => {
+                console.log('error: ', error);
+                if (error) {
+                  if (error=='Error: Phone not found [not-registered]'){
+                    this.props.history.push("/SignupCustomer");
+                  }
+                  this.refs.error.replaceWith(error);
+                }
+                else{
+                  alert("Your seats were booked");
+                  window.location.pathname = '/DisplayTrips';
+                } 
+              });
+            } 
+          }
       }
       else{
         window.location.pathname = '/Login';
@@ -149,11 +167,13 @@ export default withTracker(() => {
     Meteor.subscribe('Meteor.users');
     Meteor.subscribe('tripsBookings');
     console.log("userid: ", Meteor.userId());
+    Meteor.subscribe('userTripBookings')
     // Meteor.subscribe('homeLinks');
     return {
         // homeLink: HomeLinks.findOne({}),
         trips: Trips.find({ _id: (window.location.pathname).match('[^/]*$')[0] }).fetch(),
         currentUser: Meteor.user(),   
+        userBooking: UserTripBookings.find({trip_id:(window.location.pathname).match('[^/]*$')[0]}).fetch()
         // bookings: Trips.find({owner: Meteor.userId()}).fetch()
         // role: Meteor.users.find('customer')
     };

@@ -221,7 +221,7 @@ class SignupCompany extends Component {
                         <option>	Shimshal	</option>
                         <option>	Siālkot City    </option>
                         <option>	Sibi    </option>
-                        <option>	Skardu City.	</option>
+                        <option>	Skardu	</option>
                         <option>	Sost	</option>
                         <option>	Sukkur  	</option>
                         <option>	Sultan Abad	</option>

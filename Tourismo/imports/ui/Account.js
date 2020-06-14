@@ -35,6 +35,7 @@ class Account extends Component {
         if (this.props.currentUser){
             const user = this.props.currentUser.username;
             const profile = this.props.currentUser.profile;
+            // document.getElementById("user-role").replaceWith(requiredLink.user);
             document.getElementById('nav-custom').classList.add('nav-custom');
             // console.log("user", this.props.currentUser);
         return(
@@ -42,7 +43,7 @@ class Account extends Component {
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     {/* <a class="nav-link" href='#'>  */}
-                    <button className=' nav-link nav-item-mobile sign-button' onClick={this.signout.bind(this)}>Sign out </button>
+                    <button className=' nav-link nav-item-mobile sign-button' onClick={this.signout.bind(this)}> Sign out </button>
                      {/* </a> */}
                 </li>
                 <li class="nav-item nav-item-mobile active">
@@ -50,6 +51,7 @@ class Account extends Component {
                     <h5>
                         <div color='black' className='username'>{user}</div>
                     </h5>
+                    <div className='user-role'>{requiredLink.user}</div>
                 </li>
                 {/* {this.renderprofile()} */}
             </ul>
@@ -67,10 +69,10 @@ class Account extends Component {
             // <div align='right'>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link nav-item-mobile" href="../Login">Log In</a>
+                    <a class="nav-link nav-item-mobile" href="../Login"> Log In </a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link nav-item-mobile" href="../Signup">Sign Up</a>
+                    <a class="nav-link nav-item-mobile" href="../Signup"> Sign Up </a>
                 </li>
                 {/* <li class="nav-item active">
                 <img className='dp' src=""></img> <br/><br/>
