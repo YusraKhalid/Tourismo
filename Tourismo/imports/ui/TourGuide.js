@@ -31,7 +31,7 @@ class TourGuide extends Component {
                         Days: <b><span className='trip-data'>{booking.days}</span></b><br/>
                         hours: <b><span className='trip-data'>{booking.hours}</span></b><br/>
                         Date: <b><span className='trip-data'>{booking.date}</span></b><br/>
-                        departure: <b><span className='trip-data'>{booking.departure}</span></b><br/>
+                        {booking.departure? <div>Departure: <b><span className='trip-data'>{booking.departure}</span></b><br/></div> :""}
                         {booking.time? <div>Time: <b><span className='trip-data'>{booking.time} </span> </b> </div> :""}
                         {booking.pickup? <div>Pickup: <b><span className='trip-data'>{booking.pickup} </span> </b> </div> :""}
                         additionalInformation: <b><span className='trip-data'>{booking.additionalInformation}</span></b><br/>
@@ -61,7 +61,7 @@ class TourGuide extends Component {
                                 Days: <b><span className='trip-data'>{booking.days}</span></b><br/>
                                 hours: <b><span className='trip-data'>{booking.hours}</span></b><br/>
                                 Date: <b><span className='trip-data'>{booking.date}</span></b><br/>
-                                departure: <b><span className='trip-data'>{booking.departure}</span></b><br/>
+                                {booking.departure? <div>Departure: <b><span className='trip-data'>{booking.departure}</span></b><br/></div> :""}
                                 {booking.time? <div>Time: <b><span className='trip-data'>{booking.time} </span> </b> </div> :""}
                                 {booking.pickup? <div>Pickup: <b><span className='trip-data'>{booking.pickup} </span> </b> </div> :""}
                                 additionalInformation: <b><span className='trip-data'>{booking.additionalInformation}</span></b><br/>
@@ -135,13 +135,6 @@ class TourGuide extends Component {
             </div>,
             document.getElementById('signin')
             );
-        // const requiredLink = this.props.homeLink;
-        // if (requiredLink){
-        //     render(<li><a href={'../'+requiredLink.link}>{requiredLink.text}</a></li>,
-        //         document.getElementById('link')
-        //         );
-        // }
-        document.getElementById('only-home').innerHTML = '<span></span>';
         document.getElementById('home-description').innerText = "";
         document.getElementById('home-trips').innerHTML = ''
         document.getElementById('scroll-down').innerHTML = '';
@@ -150,8 +143,6 @@ class TourGuide extends Component {
                 <h1><center>City Captain</center></h1>
                 <section className="section contact-section bg-light-2">
                 <div className='bookings-accepted'>
-                    {/* <section className="section contact-section"> */}
-                        {/* <div className="container-contact"> */}
                             <div className="row-contact">
                                 <div data-aos="fade-up">
                                     <center><h3>Accepted Requests</h3>
@@ -162,36 +153,24 @@ class TourGuide extends Component {
                                         </table>
                                     </center>
                                 </div>
-                            {/* </div> */}
                         </div>
-                    {/* </section> */}
                 </div>
                 <div className='bookings-special'>
-                    {/* <section className="section contact-section"> */}
-                        {/* <div className="containesr-contact"> */}
                             <div className="row-contact">
                                 <div className='matching' data-aos="fade-up">
                                             {this.getMatching()}
-                                            {/* <td><tr> */}
                                             <span id='matching'></span>
-                                            {/* </tr></td> */}
                                 </div>
                             </div>
-                        {/* </div> */}
-                    {/* </section> */}
                 </div>
                 
                 <div className='clear-end'></div>
                 </section>
                 <section className="section contact-section">
                     <center><h3>Other requests Available</h3>
-                    {/* <table className='mytable table table-striped'>
-                            <tbody> */}
                             <div className='all-other-requests'>
                                 {this.renderOtherBookings(this.props.guideBookings)}
                             </div>
-                            {/* </tbody>
-                        </table> */}
                     </center>
                 </section>
                 <div className='clear-end'></div>

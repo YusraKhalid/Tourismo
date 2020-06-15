@@ -34,7 +34,7 @@ export default class Trip extends Component {
     Meteor.call('trip.companyPhone', id,
       (err, result) => {
         if (result){
-          console.log("Phone result:", result)
+          // console.log("Phone result:", result)
           this.refs.phone.replaceWith(result);
           return(result)
         }

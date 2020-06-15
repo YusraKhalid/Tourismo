@@ -24,6 +24,10 @@ class BookGuide extends Component {
             pickup: this.refs.pickup.value,
             time: this.refs.time.value
         };
+        if (guide.destination==guide.departure){
+            delete guide.departure;
+        }
+        console.log("guide: ", guide);
         var flag = true;
         const date = new Date(guide.date);
         if (today > date){
@@ -78,7 +82,7 @@ class BookGuide extends Component {
                     Days: <b><span className='trip-data'>{booking.days}</span></b><br/>
                     hours: <b><span className='trip-data'>{booking.hours}</span></b><br/>
                     Date: <b><span className='trip-data'>{booking.date}</span></b><br/>
-                    Departure: <b><span className='trip-data'>{booking.departure}</span></b><br/>
+                    {booking.departure? <div>Departure: <b><span className='trip-data'>{booking.departure}</span></b><br/></div> :""}
                     {booking.pickup? <div>Pickup: <b><span className='trip-data'>{booking.pickup} </span> </b> </div> :""}
                     {booking.time? <div>Time: <b><span className='trip-data'>{booking.time} </span> </b> </div> :""}
                     additionalInformation: <b><span className='trip-data'>{booking.additionalInformation}</span></b><br/>
@@ -125,7 +129,7 @@ class BookGuide extends Component {
           </div>,
           document.getElementById('signin')
           );
-        document.getElementById('only-home').innerHTML = '<span></span>';
+        // document.getElementById('only-home').innerHTML = '<span></span>';
         document.getElementById('home-description').innerText = "";
         document.getElementById('home-trips').innerHTML = ''
         document.getElementById('scroll-down').innerHTML = '';
@@ -172,10 +176,6 @@ class BookGuide extends Component {
                             {/* <div className="container-contact"> */}
                                 <div>
                                 <div data-aos="fade-up">
-                                    {/*                                       
-                                        <form action="#" method="post" className="bg-white p-md-5 p-4 mb-5" onSubmit={this.onSubmit.bind(this)}>
-                                        <div className="row">
-                                            <div className="col-md-12 form-group"></div> */}
 
                                     <form className="bg-white p-md-5 p-4 mb-5 hire-guide" onSubmit={this.handleSubmit.bind(this)} >
                                         <div className="row">
@@ -436,6 +436,7 @@ class BookGuide extends Component {
                                                         {/* <div className='form-field'>Do you want to take the guide to another destination? If so enter the destination you will departure from: </div>  */}
                                                         <input
                                                         type="text"
+                                                        list='cities'
                                                         ref="departure"
                                                         placeholder="If traveling to another destination. Enter departure destination"
                                                         className="form-control "

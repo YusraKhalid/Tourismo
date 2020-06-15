@@ -156,118 +156,20 @@ Meteor.methods({
 
     'trips.search'(search){
       console.log('tripsearch: ', search);
-      if (search.departure){
-        if ((search.date)&&(search.location)&&(search.price != 0)){
-          console.log("return trip: ", Trips.find({departure:search.departure, destination:search.location, price: { $lte: search.price }, startDate: { $lte: search.date}, endDate: {$gte: search.date}}).fetch()
-          )
-          return(
-            Trips.find({departure:search.departure, destination:search.location, price: { $lte: search.price }, startDate: { $lte: search.date}, endDate: {$gte: search.date}}).fetch()
-          )
-        }
-        if ((search.date)&&(search.location)){
-          console.log("return trip: ", Trips.find({departure:search.departure, destination:search.location, startDate: { $lte: search.date}, endDate: {$gte: search.date}}).fetch()
-          )
-
-          return(
-            Trips.find({departure:search.departure, destination:search.location, startDate: { $lte: search.date}, endDate: {$gte: search.date}}).fetch()
-          )
-        }
-        if ((search.location)&&(search.price != 0)){
-          console.log("return trip: ", Trips.find({departure:search.departure, destination:search.location, price: { $lte: search.price }}).fetch()
-          )
-
-          return(
-            Trips.find({departure:search.departure, destination:search.location, price: { $lte: search.price }}).fetch()
-          )
-        }
-        if ((search.date)&&(search.price != 0)){
-          console.log("return trip: ", Trips.find({departure:search.departure, price: { $lte: search.price }, startDate: { $lte: search.date}, endDate: {$gte: search.date}}).fetch()
-          )
-          return(
-            Trips.find({departure:search.departure, price: { $lte: search.price }, startDate: { $lte: search.date}, endDate: {$gte: search.date}}).fetch()
-          )
-        }
-        if ((search.date)){
-          console.log("return trip: ", Trips.find({departure:search.departure,  startDate: { $lte: search.date}, endDate: {$gte: search.date}}).fetch()
-          )
-          return(
-            Trips.find({departure:search.departure,  startDate: { $lte: search.date}, endDate: {$gte: search.date}}).fetch()
-          )
-        }
-        if ((search.location)){
-          console.log("return trip: ", Trips.find({departure:search.departure, destination:search.location}).fetch()
-          )
-          return(
-            Trips.find({destination:search.location}).fetch()
-          )
-        }
-        if ((search.price != 0)){
-          console.log("return trip: ", Trips.find({departure:search.departure, price: { $lte: search.price }}).fetch()
-          )
-          return(
-            Trips.find({departure:search.departure, price: { $lte: search.price }}).fetch()
-          )
-        }
+      if (!search.location){
+        search.location = {$ne: ""};
       }
-
+      if (!search.departure){
+        search.departure = {$ne: ""};
+      }
+      if (!search.date){
+        console.log("New search: ",Trips.find({departure:search.departure, destination:search.location, price: { $lte: search.price },}).fetch());
+        return Trips.find({departure:search.departure, destination:search.location, price: { $lte: search.price },}).fetch();
+      }
       else{
-        if ((search.date)&&(search.location)&&(search.price != 0)){
-          console.log("return trip: ", Trips.find({destination:search.location, price: { $lte: search.price }, startDate: { $lte: search.date}, endDate: {$gte: search.date}}).fetch()
-          )
-          return(
-            Trips.find({destination:search.location, price: { $lte: search.price }, startDate: { $lte: search.date}, endDate: {$gte: search.date}}).fetch()
-          )
-        }
-        if ((search.date)&&(search.location)){
-          console.log("return trip: ", Trips.find({destination:search.location, startDate: { $lte: search.date}, endDate: {$gte: search.date}}).fetch()
-          )
-
-          return(
-            Trips.find({destination:search.location, startDate: { $lte: search.date}, endDate: {$gte: search.date}}).fetch()
-          )
-        }
-        if ((search.location)&&(search.price != 0)){
-          console.log("return trip: ", Trips.find({destination:search.location, price: { $lte: search.price }}).fetch()
-          )
-
-          return(
-            Trips.find({destination:search.location, price: { $lte: search.price }}).fetch()
-          )
-        }
-        if ((search.date)&&(search.price != 0)){
-          console.log("return trip: ", Trips.find({price: { $lte: search.price }, startDate: { $lte: search.date}, endDate: {$gte: search.date}}).fetch()
-          )
-          return(
-            Trips.find({price: { $lte: search.price }, startDate: { $lte: search.date}, endDate: {$gte: search.date}}).fetch()
-          )
-        }
-        if ((search.date)){
-          console.log("return trip: ", Trips.find({ startDate: { $lte: search.date}, endDate: {$gte: search.date}}).fetch()
-          )
-          return(
-            Trips.find({ startDate: { $lte: search.date}, endDate: {$gte: search.date}}).fetch()
-          )
-        }
-        if ((search.location)){
-          console.log("return trip: ", Trips.find({destination:search.location}).fetch()
-          )
-          return(
-            Trips.find({destination:search.location}).fetch()
-          )
-        }
-        if ((search.price != 0)){
-          console.log("return trip: ", Trips.find({price: { $lte: search.price }}).fetch()
-          )
-          return(
-            Trips.find({price: { $lte: search.price }}).fetch()
-          )
-        }
+        console.log("New search: ",  Trips.find({departure:search.departure, destination:search.location, price: { $lte: search.price }, startDate: { $lte: search.date}, endDate: {$gte: search.date}}).fetch());
+        return Trips.find({departure:search.departure, destination:search.location, price: { $lte: search.price }, startDate: { $lte: search.date}, endDate: {$gte: search.date}}).fetch();
       }
-      console.log("return trip: ", Trips.find({}).fetch()
-      )
-      return(
-        Trips.find({}).fetch()
-      )
     },
 
     'trips.price'(){

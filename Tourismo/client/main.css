@@ -1,26 +1,4 @@
-/* CSS declarations go here */
-/* body {
-  font-family: sans-serif;
-  background-color: #315481;
-  background-image: linear-gradient(to bottom, #315481, #918e82 100%);
-  background-attachment: fixed;
- 
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
- 
-  padding: 0;
-  margin: 0;
- 
-  font-size: 14px;
-}
-*/
 
-/* body {
-  font-family: 'Sofia';
-} */
 
 .login-left{
   float: left;
@@ -540,6 +518,8 @@
     float: left;
   }
 
+  /* .img-fluid{max-width:100%;height:auto} */
+
   .seat-input{
     width: 50%;
     margin-right: 10px;
@@ -551,19 +531,34 @@
   }
 
   .nav-item-mobile{
-    font-size: x-small;
+    font-size: xx-small;
   }
 
   .logo-name{
+    padding-bottom: 50%;
+    margin-top: -10px;
+    /* margin-bottom: 15%; */
+    /* background-color: rosybrown; */
+  }
+
+  .logo-name-mobile{
     font-size: small;
+    margin-top: -10px;
+    /* padding-bottom: 50px; */
+  }
+
+  .logo-nav-scope{
+    width: 15px;
   }
 
   .not-loggin{
-    margin-bottom: -30px;
+    margin-top: -10px;
+    margin-bottom: -40px;
   }
   
   .nav-custom{
-    margin-bottom: -68px;
+    /* margin-top: -5px; */
+    margin-bottom: -70px;
     align-content: center;
   }
 
@@ -638,6 +633,7 @@
   }
 
   .dp{
+    margin-top: 10%;
     border-radius: 50%;
     object-fit: cover;
     width: 30px;
@@ -774,146 +770,3 @@
       text-align: center;
     }
 }
-
-
-
-
-/*
-#rate{
-  width: 5%;
-  height: 5%;
-}
- 
-.container {
-  max-width: 600px;
-  margin: 0 auto;
-  min-height: 100%;
-  background: white;
-}
- 
-header {
-  background: #d2edf4;
-  background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
-  padding: 20px 15px 15px 15px;
-  position: relative;
-}
- 
-#login-buttons {
-  display: block;
-}
- 
-h1 {
-  font-size: 1.5em;
-  margin: 0;
-  margin-bottom: 10px;
-  display: inline-block;
-  margin-right: 1em;
-}
- 
-form {
-  margin-top: 10px;
-  margin-bottom: -10px;
-  position: relative;
-}
- 
-.new-task input {
-  box-sizing: border-box;
-  padding: 10px 0;
-  background: transparent;
-  border: 0.25;
-  width: 100%;
-  padding-right: 80px;
-  font-size: 1em;
-}
- 
-.new-task input:focus{
-  outline: 0;
-}
-
-.error{
-  color: red;
-}
-.booking{
-  background: none;
-  border:#eee solid 1px;
-  fill: black;
-  padding-top: 2%;
-  padding-bottom: 2%;
-  padding-left: 2%;
-}
- 
-ul.trips {
-  margin: 0;
-  padding: 0;
-  background: white;
-
-}
-
-
- 
-.delete {
-  float: right;
-  font-weight: bold;
-  background: none;
-  font-size: 1em;
-  border: none;
-  position: relative;
-}
- 
-li {
-  position: relative;
-  list-style: none;
-  padding: 15px;
-  border: #eee solid 1px;
-}
- 
-li .text {
-  margin-left: 10px;
-}
- 
-li.checked {
-  color: #888;
-}
- 
-li.checked .text {
-  text-decoration: line-through;
-}
- 
-li.private {
-  background: #eee;
-  border-color: #ddd;
-}
- 
-header .hide-completed {
-  float: right;
-}
- 
-.toggle-private {
-  margin-left: 5px;
-}
- 
-@media (max-width: 600px) {
-  li {
-    padding: 12px 15px;
-  }
- 
-  .search {
-    width: 150px;
-    clear: both;
-  }
- 
-  .new-task input {
-    padding-bottom: 5px;
-  }
-}
-
- */
-
-
-
-
-
-
-
-
-

@@ -11,7 +11,8 @@ if (Meteor.isServer) {
   Meteor.publish('guideBookings', () => {
     if (Roles.userIsInRole(Meteor.userId(), 'guide')){
     return GuideBookings.find({
-      destination: { $ne: Meteor.users.findOne({_id: Meteor.userId()}).city }
+      destination: { $ne: Meteor.users.findOne({_id: Meteor.userId()}).city },
+      departure: { $ne: Meteor.users.findOne({_id: Meteor.userId()}).city }
     });
   }
   if (Roles.userIsInRole(Meteor.userId(), 'customer')){
@@ -107,10 +108,7 @@ Meteor.methods({
       const guide = Meteor.users.findOne({_id: userId});
       console.log("user ", guide);
       return(
-        GuideBookings.find({destination: guide.city}).fetch()
+        GuideBookings.find({$or: [{destination: guide.city},{departure: guide.city}]}).fetch()
       )
     }
-
-
-
   });

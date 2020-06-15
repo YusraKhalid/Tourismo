@@ -15,36 +15,15 @@ class About extends Component {
             </div>,
             document.getElementById('signin')
             );
-        // const requiredLink = this.props.homeLink;
-        // if (requiredLink){
-        //     render(<a className='nav-link' href={'../'+requiredLink.link}>{requiredLink.text}</a>,
-        //         document.getElementById('link')
-        //         );
-        // }
-        document.getElementById('only-home').innerHTML = '<span></span>';
         document.getElementById('home-description').innerText = "";
         document.getElementById('home-trips').innerHTML = ''
         document.getElementById('scroll-down').innerHTML = '';
         return(
             <div>
-                    {/* <section class="site-hero overlay page-inside">
-                    <div class="container">
-                        <div class="row site-hero-inner justify-content-center align-items-center">
-                        <div class="col-md-10 text-center">
-                            <h1 class="heading" data-aos="fade-up">About Us</h1>
-                        </div>
-                        </div>
-                    </div>
-                    </section> */}
-
                     <section class="section ">
-                        {/* <center>
-                            <h1 className='title' data-aos="fade-up">About Us</h1>
-                        </center>
-                        <br/> */}
                           <div class="container">
                             <div class="half d-md-flex d-block">
-                            <div class="image about" data-aos="fade"></div>
+                            <div class="image about" data-aos="fade-left"></div>
                             <div class="text" data-aos="fade-right" data-aos-delay="200">
                             <h2>Our aim</h2>
                             
@@ -66,49 +45,10 @@ class About extends Component {
                             <p>Pakistan, the top travel destination for 2020, is a mighty hub of mesmerizing landscapes, historical sites and cultural heritages. We are eager to portray the different aspects of Pakistan in the most pure and captivating ways. </p>
                             {/* <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p> */}
                         </div>
-                        <div class="image about2" data-aos="fade"></div>
+                        <div class="image about2" data-aos="fade-left"></div>
                         </div>
                         </div>
                     </section>
-
-
-
-{/* 
-                    <section class="section slider-section bglight-2">
-                    <div class="container">
-                        <div class="row justify-content-center text-center mb-5">
-                        <div class="col-md-8">
-                            <h2 class="heading" data-aos="fade-up">Gallery</h2>
-                        </div>
-                        </div>
-                        <div class="row">
-                        <div class="col-md-12">
-                            <div class="home-slider major-caousel owl-carousel mb-5" data-aos="fade-up" data-aos-delay="200">
-                            <div class="slider-item">
-                                <img src="/images/slider-1.jpg" alt="Image placeholder" class="img-fluid"/>
-                            </div>
-                            <div class="slider-item">
-                                <img src="/images/slider-2.jpg" alt="Image placeholder" class="img-fluid"/>
-                            </div>
-                            <div class="slider-item">
-                                <img src="/images/slider-3.jpg" alt="Image placeholder" class="img-fluid"/>
-                            </div>
-                            <div class="slider-item">
-                                <img src="/images/slider-4.jpg" alt="Image placeholder" class="img-fluid"/>
-                            </div>
-                            <div class="slider-item">
-                                <img src="/images/slider-5.jpg" alt="Image placeholder" class="img-fluid"/>
-                            </div>
-                            <div class="slider-item">
-                                <img src="/images/slider-6.jpg" alt="Image placeholder" class="img-fluid"/>
-                            </div>
-                            </div>
-                        </div>
-
-                        
-                        </div>
-                    </div>
-                    </section> */}
 
                     <section class="section ">
                     <div class="container">

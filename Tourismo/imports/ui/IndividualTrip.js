@@ -94,23 +94,13 @@ class IndividualTrip extends Component {
         </div>,
         document.getElementById('signin')
         );
-        // const requiredLink = this.props.homeLink;
-        // if (requiredLink){
-        //     render(<li><a href={'../'+requiredLink.link}>{requiredLink.text}</a></li>,
-        //         document.getElementById('link')
-        //         );
-        // }
+
       const trip = this.props.trips[0];
       if (trip){
         console.log("TRip id:", trip._id);
       }
       console.log("Bookings",this.props.bookings);
-      // console.log("PAth:----------: ", window.location);
 
-      // console.log("user", this.props.currentUser);
-      // console.log("role", this.props.role);
-      console.log("Path: ", window.location);
-      document.getElementById('only-home').innerHTML = '<span></span>';
       document.getElementById('home-description').innerText = "";
       document.getElementById('home-trips').innerHTML = ''
       document.getElementById('scroll-down').innerHTML = '';

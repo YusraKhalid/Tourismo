@@ -25,7 +25,7 @@ class App extends Component {
       return locations[this.refs.search.value];
     }
     else{
-      this.refs.search.value
+      return this.refs.search.value;
       // return {'q':'destination: ','l': this.refs.search.value};
     }
   }
@@ -55,7 +55,7 @@ class App extends Component {
           );
         }
         else{
-          console.log("Price: ", result[0].price-this.refs.priceRange.value);
+          // console.log("Price: ", result[0].price-this.refs.priceRange.value);
           render(
             this.renderTrips(result),
             document.getElementById('render-trips')
@@ -121,13 +121,6 @@ class App extends Component {
       </div>,
       document.getElementById('signin')
       );
-      // const requiredLink = this.props.homeLink;
-      //   if (requiredLink){
-      //       render(<li><a href={'../'+requiredLink.link}>{requiredLink.text}</a></li>,
-      //           document.getElementById('link')
-      //           );
-      //   }
-      document.getElementById('only-home').innerHTML = '<span></span>';
       document.getElementById('home-description').innerText = "";
       document.getElementById('home-trips').innerHTML = ''
       document.getElementById('scroll-down').innerHTML = '';
@@ -156,7 +149,7 @@ class App extends Component {
           <form className='search-form' onSubmit={this.handleSubmit.bind(this)}>
           <div class="slidecontainer search-fields">
           Price Range:
-            <input type="range" min="500" max="50000" defaultValue='50000' ref='priceRange' class="slider" id="myRange"/>
+            <input type="range" min="500" max="100000" defaultValue='100000' ref='priceRange' class="slider" id="myRange"/>
             <p>Rs. <span id="demo"></span></p>
           </div>
           <div class="form-group search-fields">

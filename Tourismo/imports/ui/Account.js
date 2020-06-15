@@ -15,18 +15,10 @@ class Account extends Component {
             </div>
         )
       }
-    //   renderprofile(){
-    //     const user = this.props.currentUser.username;
-    //     const profile = this.props.currentUser.profile;
-    //       render(
-    //         <h5>{profile?<img className='dp' src={profile.dp}></img>:""}<br/><div className='username'>{user}</div></h5>,
-    //         this.document.getElementById('userdata')
-    //       );
-    //   }
+
     render() {
         const requiredLink = this.props.homeLink;
         if (requiredLink){
-            // document.getElementById("guide-link").href = requiredLink;
             render(<a className='nav-link nav-item-mobile' href={'../'+requiredLink.link}>{requiredLink.text}</a>,
                 document.getElementById('link')
                 );
@@ -51,7 +43,7 @@ class Account extends Component {
                     <h5>
                         <div color='black' className='username'>{user}</div>
                     </h5>
-                    <div className='user-role'>{requiredLink.user}</div>
+                    <div className='user-role'>{requiredLink? requiredLink.user :""}</div>
                 </li>
                 {/* {this.renderprofile()} */}
             </ul>
