@@ -136,7 +136,7 @@ class BookGuide extends Component {
         
         return(
             <div>
-                <center><h1 data-aos="fade-up">Book City Captain</h1></center>
+                <center><h1 data-aos="fade-up">Book Tour Guides</h1></center>
                 <div className='bookings-right'>
                 <section className="section contact-section">
                             {/* <div className="container-contact"> */}

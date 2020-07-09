@@ -140,7 +140,7 @@ class TourGuide extends Component {
         document.getElementById('scroll-down').innerHTML = '';
         return(
             <div>
-                <h1><center>City Captain</center></h1>
+                <h1><center>Tour Guide</center></h1>
                 <section className="section contact-section bg-light-2">
                 <div className='bookings-accepted'>
                             <div className="row-contact">

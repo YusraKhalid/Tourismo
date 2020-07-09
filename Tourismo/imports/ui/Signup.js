@@ -90,7 +90,7 @@ class Signup extends Component {
                       <option value="" disabled selected>Choose role</option>
                           <option value="customer">Tourist</option>
                           <option value="company">Company</option>
-                          <option value="guide">City Captain</option>
+                          <option value="guide">Tour Guide</option>
                       </select>              
                     </div>
                     <div className="col-md-12 form-group">

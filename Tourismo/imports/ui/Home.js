@@ -86,9 +86,9 @@ class Home extends Component {
                         <div class="row justify-content-center text-center mb-5">
                         <div class="col-md-8">
                         <h2 class="heading animated fadeInUpBig">City Captian Facility</h2>
-                        <p class="lead animated fadeInUpBig"  data-aos-delay="100">Tourismo also serves you the city captain facility! </p>
+                        <p class="lead animated fadeInUpBig"  data-aos-delay="100">Tourismo also serves you the tour guide facility! </p>
                         <p>Not only it renders personal tour guide facility and also brings all travel agencies to a single platform, it provide the opportunity to earn by exploring.
-                            Moreover, we assure complete comfort and well-being of our precious tourists. To make the exploring and avdentures reliable we also provide the ability to hire a city captain.</p>
+                            Moreover, we assure complete comfort and well-being of our precious tourists. To make the exploring and avdentures reliable we also provide the ability to hire a tour guide.</p>
                         </div>
                         </div>
                         <div class="row">
