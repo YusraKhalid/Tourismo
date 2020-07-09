@@ -1,5 +1,5 @@
 # Tourismo
-Go to the directory containing .meteor directory
+
 
 # Installing Requirements
 Install requirements by 
